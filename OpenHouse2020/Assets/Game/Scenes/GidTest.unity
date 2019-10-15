@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 8798715520859962975, guid: 580359e1b7acc25429dfc1da35c429b9,
         type: 3}
       propertyPath: m_Name
-      value: Cube (5)
+      value: Refillable
       objectReference: {fileID: 0}
     - target: {fileID: 8798715520859962975, guid: 580359e1b7acc25429dfc1da35c429b9,
         type: 3}
@@ -476,9 +476,50 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8a38b7350df9a9c438e568993a00e5c5, type: 2}
+      objectReference: {fileID: 2100000, guid: d92ef32394b5f474385d74b565a7bdd7, type: 2}
+    - target: {fileID: 8798715520859962965, guid: 580359e1b7acc25429dfc1da35c429b9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580359e1b7acc25429dfc1da35c429b9, type: 3}
+--- !u!1 &698647847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8798715520859962975, guid: 580359e1b7acc25429dfc1da35c429b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 698647846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &698647848
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698647847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &698647849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698647847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a27669e2de8554d826a5d77d3e1fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!4 &776520177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8798715520859962974, guid: 580359e1b7acc25429dfc1da35c429b9,
@@ -599,7 +640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.69
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.x
