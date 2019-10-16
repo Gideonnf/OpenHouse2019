@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VegRefill : MonoBehaviour
 {
-    StockManagement stockInst = StockManagement.stockInstance;
-
+    //StockManagement stockInst = StockManagement.stockInstance;
+    public GameObject gameManagerRef;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +27,8 @@ public class VegRefill : MonoBehaviour
         else
         {
             Destroy(other.gameObject);
-            StockManagement.stockInstance.VegetableStock++;
-
+            //StockManagement.stockInstance.VegetableStock++;
+            gameManagerRef.GetComponent<StockManagement>().VegetableStock++;
         }
     }
 }

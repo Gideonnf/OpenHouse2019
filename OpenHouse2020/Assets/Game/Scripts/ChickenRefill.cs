@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ChickenRefill : MonoBehaviour
 {
-    StockManagement stockInst = StockManagement.stockInstance;
+    public GameObject gameManagerRef;
+    //StockManagement stockInst = StockManagement.stockInstance;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class ChickenRefill : MonoBehaviour
         else
         {
             Destroy(other.gameObject);
-            StockManagement.stockInstance.incrementChickenStock();
+            gameManagerRef.GetComponent<StockManagement>().ChickenStock++;
             Debug.Log("Inside Refill :" + StockManagement.stockInstance.ChickenStock);
 
         }

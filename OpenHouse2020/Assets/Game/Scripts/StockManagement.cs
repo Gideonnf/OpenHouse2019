@@ -15,10 +15,10 @@ public class StockManagement : MonoBehaviour
 
     private void Awake()
     {
-        if (stockInstance != null && stockInstance != this)
-            Destroy(stockInstance);
-        else
-            stockInstance = this;
+        //if (stockInstance != null && stockInstance != this)
+        //    Destroy(stockInstance);
+        //else
+        //    stockInstance = this;
        
     }
 
