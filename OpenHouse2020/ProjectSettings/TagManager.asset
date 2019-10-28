@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ChickenRefil
   - VegRefill
+  - Hands
   layers:
   - Default
   - TransparentFX
