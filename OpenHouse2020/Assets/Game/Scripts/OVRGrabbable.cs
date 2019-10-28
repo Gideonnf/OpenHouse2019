@@ -25,6 +25,8 @@ public class OVRGrabbable : MonoBehaviour
     [SerializeField]
     protected bool m_allowOffhandGrab = true;
     [SerializeField]
+    protected bool fixedMovement = false;
+    [SerializeField]
     protected bool m_snapPosition = false;
     [SerializeField]
     protected bool m_snapOrientation = false;
@@ -36,6 +38,7 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
+
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -51,6 +54,16 @@ public class OVRGrabbable : MonoBehaviour
     public bool isGrabbed
     {
         get { return m_grabbedBy != null; }
+    }
+
+    virtual public void updateFixedPosition(Vector3 grabbablePosition)
+    {
+
+    }
+
+    public bool isFixedMovement
+    {
+        get { return fixedMovement;  }
     }
 
 	/// <summary>

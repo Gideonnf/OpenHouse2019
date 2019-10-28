@@ -19,7 +19,7 @@ public class StockManagement : MonoBehaviour
         //    Destroy(stockInstance);
         //else
         //    stockInstance = this;
-       
+      // DebugManager
     }
 
     // Start is called before the first frame update

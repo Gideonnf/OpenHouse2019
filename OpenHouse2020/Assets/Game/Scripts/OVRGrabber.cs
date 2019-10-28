@@ -245,7 +245,7 @@ public class OVRGrabber : MonoBehaviour
             {
                 closestGrabbable.grabbedBy.OffhandGrabbed(closestGrabbable);
             }
-
+            
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
@@ -301,6 +301,15 @@ public class OVRGrabber : MonoBehaviour
         {
             return;
         }
+        
+        if (m_grabbedObj.isFixedMovement)
+        {
+            //DebugManager.Instance.setDebugColor(Color.blue);
+            Vector3 newPosition = pos + rot * m_grabbedObjectPosOff;
+            grabbedObject.updateFixedPosition(newPosition);
+            return;
+        }
+        
 
         Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
         Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
