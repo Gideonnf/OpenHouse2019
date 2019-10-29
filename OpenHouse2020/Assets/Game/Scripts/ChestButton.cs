@@ -13,7 +13,7 @@ public class ChestButton : MonoBehaviour
         if (collision.CompareTag("Hands"))
             bOnOff = !bOnOff;
 
-        if (bOnOff)
+        if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
         {
             this.gameObject.GetComponent<Renderer>().material.color = Color.green;
             this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex());
