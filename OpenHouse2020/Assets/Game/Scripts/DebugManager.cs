@@ -16,7 +16,10 @@ public class DebugManager : MonoBehaviour
 
 
     public GameObject debugCube;
-    public GameObject debugText;
+    public GameObject debugTextObject;
+
+    Text debugText;
+    Renderer cubeRenderer;
 
     private void Awake()
     {
@@ -34,7 +37,11 @@ public class DebugManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setDebugColor(Color.red);
+        //setDebugColor(Color.red);
+        debugText = debugTextObject.GetComponentInChildren<Text>();
+        cubeRenderer = debugCube.GetComponent<Renderer>();
+
+        //debugText.text = "AOISFHASIOGHA";
     }
 
     // Update is called once per frame
@@ -46,8 +53,6 @@ public class DebugManager : MonoBehaviour
     // Change the cube debug color
     public void setDebugColor(Color color)
     {
-        var cubeRenderer = debugCube.GetComponent<Renderer>();
-
         cubeRenderer.material.SetColor("_Color", color);
     }
 
@@ -55,7 +60,9 @@ public class DebugManager : MonoBehaviour
     // Use the debug text box the hand to keep track of variables
     public void setDebugText(string newText)
     {
-        var debugTextBox = debugText.GetComponent<Text>().text = newText;
+        setDebugColor(Color.red);
+
+        debugText.text = newText;
     }
 
 }

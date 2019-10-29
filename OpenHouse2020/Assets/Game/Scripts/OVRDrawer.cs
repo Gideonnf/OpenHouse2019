@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OVRDrawer : OVRGrabbable
 {
-    Transform startingTransform;
+    Vector3 startingPosition;
     Transform handlePosition;
     Quaternion startingRot;
     Rigidbody cubeRB;
@@ -16,7 +16,7 @@ public class OVRDrawer : OVRGrabbable
     {
         base.Start();
         // Store the starting y position of the object
-        startingTransform = transform;
+        startingPosition = transform.position;
         startingRot = transform.rotation;
 
         cubeRB = GetComponent<Rigidbody>();
@@ -26,12 +26,12 @@ public class OVRDrawer : OVRGrabbable
     {
         // thrs no base to start anyway lmao get nae ned
         base.Start();
-        DebugManager.Instance.setDebugColor(Color.magenta);
 
         // Calculate the distance travelled
-        float distanceTravelled = (this.transform.position - startingTransform.position).magnitude;
+        float distanceTravelled = (this.transform.position - startingPosition).magnitude;
+        DebugManager.Instance.setDebugColor(Color.magenta);
 
-        DebugManager.Instance.setDebugText(distanceTravelled.ToString());
+        DebugManager.Instance.setDebugText("Cur:" + this.transform.position.ToString() + ", Init:" + startingPosition.ToString() + "\n" + "distance :" + distanceTravelled.ToString());
         // if the distance travelled reaches the max
         // it cant move anymore
         if (distanceTravelled > maxDisplacement)
@@ -54,7 +54,7 @@ public class OVRDrawer : OVRGrabbable
     void Update()
     {
         transform.rotation = startingRot;
-        float distance = (m_grabbedBy.transform.position - handlePosition.position).magnitude;
+       // float distance = (m_grabbedBy.transform.position - handlePosition.position).magnitude;
         //Debug.Log(distance);
         //transform.position.y = startingYPos;
     }
