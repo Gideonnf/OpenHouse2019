@@ -25,6 +25,7 @@ public class ClockRandomiser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        go_Clock = this.gameObject;
         arr_clockMaterials = GetComponent<Renderer>().materials;
 
         n_clockStates = (Clock_States)rnd.Next(0, (int)Clock_States.NUM_OF_STATES);
