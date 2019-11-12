@@ -130,10 +130,10 @@ public class OvrAvatar : MonoBehaviour
     private Vector4 clothingAlphaOffset = new Vector4(0f, 0f, 0f, 1f);
     private UInt64 clothingAlphaTexture = 0;
 
-    // Lipsync
-    private OVRLipSyncMicInput micInput = null;
-    private OVRLipSyncContext lipsyncContext = null;
-    private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
+    //// Lipsync
+    //private OVRLipSyncMicInput micInput = null;
+    //private OVRLipSyncContext lipsyncContext = null;
+    //private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
     private float[] visemes = new float[VISEME_COUNT];
     private AudioSource audioSource;
     private ONSPAudioSource spatializedSource;
@@ -1003,19 +1003,19 @@ public class OvrAvatar : MonoBehaviour
         if (GetComponent<OvrAvatarLocalDriver>() != null)
         {
             // Use mic.
-            lipsyncContext.audioLoopback = false;
-            if (CanOwnMicrophone && IsValidMic())
-            {
-                micInput = MouthAnchor.gameObject.AddComponent<OVRLipSyncMicInput>();
-                micInput.enableMicSelectionGUI = false;
-                micInput.MicFrequency = 44100;
-                micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
-            }
+        //    lipsyncContext.audioLoopback = false;
+        //    if (CanOwnMicrophone && IsValidMic())
+        //    {
+        //        micInput = MouthAnchor.gameObject.AddComponent<OVRLipSyncMicInput>();
+        //        micInput.enableMicSelectionGUI = false;
+        //        micInput.MicFrequency = 44100;
+        //        micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
+        //    }
 
-            // Set lipsync animation parameters in SDK
-            CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
-            CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
-            CAPI.ovrAvatar_SetVisemeMultiplier(sdkAvatar, VISEME_LEVEL_MULTIPLIER);
+        //    // Set lipsync animation parameters in SDK
+        //    CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
+        //    CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
+        //    CAPI.ovrAvatar_SetVisemeMultiplier(sdkAvatar, VISEME_LEVEL_MULTIPLIER);
         }
     }
 
@@ -1149,18 +1149,18 @@ public class OvrAvatar : MonoBehaviour
             spatializedSource.Near = 0.1f;
 
             // Add phoneme context to the mouth anchor
-            lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
-            if (lipsyncContext == null)
-            {
-                lipsyncContext = MouthAnchor.gameObject.AddComponent<OVRLipSyncContext>();
-            }
+            //lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
+            //if (lipsyncContext == null)
+            //{
+            //    lipsyncContext = MouthAnchor.gameObject.AddComponent<OVRLipSyncContext>();
+            //}
 
-            lipsyncContext.provider = EnableLaughter
-                ? OVRLipSync.ContextProviders.Enhanced_with_Laughter
-                : OVRLipSync.ContextProviders.Enhanced;
+            //lipsyncContext.provider = EnableLaughter
+            //    ? OVRLipSync.ContextProviders.Enhanced_with_Laughter
+            //    : OVRLipSync.ContextProviders.Enhanced;
 
-            // Ignore audio callback if microphone is owned by VoIP
-            lipsyncContext.skipAudioSource = !CanOwnMicrophone;
+            //// Ignore audio callback if microphone is owned by VoIP
+            //lipsyncContext.skipAudioSource = !CanOwnMicrophone;
 
             StartCoroutine(WaitForMouthAudioSource());
         }
@@ -1239,38 +1239,38 @@ public class OvrAvatar : MonoBehaviour
 
     public void UpdateVoiceData(short[] pcmData, int numChannels)
     {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
+      //if (lipsyncContext != null && micInput == null)
+      //{
+      //    lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
+      //}
     }
     public void UpdateVoiceData(float[] pcmData, int numChannels)
     {
-      if (lipsyncContext != null && micInput == null)
-      {
-          lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
-      }
+      //if (lipsyncContext != null && micInput == null)
+      //{
+      //    lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
+      //}
     }
 
 
     private void UpdateFacewave()
     {
-        if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
-        {
-            // Get the current viseme frame
-            currentFrame = lipsyncContext.GetCurrentPhonemeFrame();
+        //if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
+        //{
+        //    // Get the current viseme frame
+        //    currentFrame = lipsyncContext.GetCurrentPhonemeFrame();
 
-            // Verify length (-1 for laughter)
-            if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
-            {
-                Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
-                return;
-            }
+        //    // Verify length (-1 for laughter)
+        //    if (currentFrame.Visemes.Length != (VISEME_COUNT - 1))
+        //    {
+        //        Debug.LogError("Unexpected number of visemes " + currentFrame.Visemes);
+        //        return;
+        //    }
 
-            // Copy to viseme array
-            currentFrame.Visemes.CopyTo(visemes, 0);
-            // Copy laughter as final element
-            visemes[VISEME_COUNT - 1] = EnableLaughter ? currentFrame.laughterScore : 0.0f;
+        //    // Copy to viseme array
+        //    currentFrame.Visemes.CopyTo(visemes, 0);
+        //    // Copy laughter as final element
+        //    visemes[VISEME_COUNT - 1] = EnableLaughter ? currentFrame.laughterScore : 0.0f;
 
             // Send visemes to native implementation.
             for (int i = 0; i < VISEME_COUNT; i++)
@@ -1278,6 +1278,6 @@ public class OvrAvatar : MonoBehaviour
                 RuntimeVisemes.visemeParams[i] = visemes[i];
             }
             CAPI.ovrAvatar_SetVisemes(sdkAvatar, RuntimeVisemes);
-        }
-    }
+     }
 }
+

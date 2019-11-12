@@ -396,7 +396,7 @@ PlayerSettings:
     m_Devices:
     - WindowsMR
   - m_BuildTarget: Android
-    m_Enabled: 1
+    m_Enabled: 0
     m_Devices: []
   - m_BuildTarget: Facebook
     m_Enabled: 1
