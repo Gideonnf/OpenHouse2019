@@ -9,6 +9,7 @@ public class OVRDrawer : OVRGrabbable
     Quaternion startingRot;
     Rigidbody cubeRB;
 
+    public GameObject drawerObject;
     public float maxDisplacement = 0.7f;
 
     // Start is called before the first frame update
@@ -31,19 +32,26 @@ public class OVRDrawer : OVRGrabbable
         float distanceTravelled = (this.transform.position - startingPosition).magnitude;
         DebugManager.Instance.setDebugColor(Color.magenta);
 
-        DebugManager.Instance.setDebugText("Cur:" + this.transform.position.ToString() + ", Init:" + startingPosition.ToString() + "\n" + "distance :" + distanceTravelled.ToString());
+        if (cubeRB.isKinematic)
+        {
+            cubeRB.isKinematic = false;
+        }
+
+
+        DebugManager.Instance.setDebugText("Grabbed position" + drawerObject.transform.InverseTransformPoint(grabbablePosition).ToString() + "\n" + "current pos" + drawerObject.transform.InverseTransformPoint(transform.position).ToString());
+      //  DebugManager.Instance.setDebugText("Cur:" + this.transform.position.ToString() + ", Init:" + startingPosition.ToString() + "\n" + "distance :" + distanceTravelled.ToString());
         // if the distance travelled reaches the max
         // it cant move anymore
         if (distanceTravelled > maxDisplacement)
         {
-            DebugManager.Instance.setDebugColor(Color.green);
+            //DebugManager.Instance.setDebugColor(Color.green);
 
             return;
         }
         else
         {
             //cubeRB.AddForce(transform.forward * 2);
-            transform.Translate(transform.forward * Time.deltaTime);
+            //transform.Translate(transform.forward * Time.deltaTime);
             DebugManager.Instance.setDebugColor(Color.cyan);
 
         }
@@ -57,5 +65,53 @@ public class OVRDrawer : OVRGrabbable
        // float distance = (m_grabbedBy.transform.position - handlePosition.position).magnitude;
         //Debug.Log(distance);
         //transform.position.y = startingYPos;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        DebugManager.Instance.setDebugColor(Color.blue);
+
+        DebugManager.Instance.setDebugText("Enter Collision");
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        DebugManager.Instance.setDebugColor(Color.blue);
+
+        DebugManager.Instance.setDebugText("Enter Trigger");
+    }
+
+    public void OnCollisionStay(Collision collision)
+    {
+        DebugManager.Instance.setDebugColor(Color.green);
+
+        //if (m_grabbedBy)
+            DebugManager.Instance.setDebugText("Is Colliding");
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        DebugManager.Instance.setDebugColor(Color.green);
+
+        if (m_grabbedBy)
+        {
+            DebugManager.Instance.setDebugText("Is Triggering");
+            //cubeRB.AddForce(-transform.right * 2);
+        }
+    }
+
+
+    public void OnCollisionExit(Collision collision)
+    {
+        DebugManager.Instance.setDebugColor(Color.grey);
+
+        DebugManager.Instance.setDebugText("Left Collision");
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        DebugManager.Instance.setDebugColor(Color.grey);
+
+        DebugManager.Instance.setDebugText("Left Trigger");
     }
 }
