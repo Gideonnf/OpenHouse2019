@@ -249,6 +249,11 @@ public class OVRGrabber : MonoBehaviour
             m_grabbedObj = closestGrabbable;
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
+            // If it is independent, it wont be updated in this script
+
+            if (m_grabbedObj.GetComponent<OVRGrabbable>().isIndependent)
+                return;
+
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
 

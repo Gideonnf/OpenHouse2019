@@ -33,6 +33,9 @@ public class OVRGrabbable : MonoBehaviour
     [SerializeField]
     protected Collider[] m_grabPoints = null;
 
+    [Tooltip("Decides if the object handles its own movement and rotation")]
+    public bool isIndependent = false;
+
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
