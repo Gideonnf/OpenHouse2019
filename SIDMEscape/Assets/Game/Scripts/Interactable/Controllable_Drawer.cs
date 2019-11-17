@@ -33,10 +33,14 @@
 
         protected GameObject grabbedObject;
         protected Rigidbody grabbedObjectRB;
-        protected Transform trackPoint;
+        //protected Transform trackPoint;
         protected Transform initialAttachPoint;
         protected Rigidbody controllerAttachPoint;
+        protected Transform grabbedObjectAttachPoint;
         protected bool previousKinematicState;
+
+        private Vector3 previousPosition;
+        private Vector3 movementVelocity;
 
         // Start is called before the first frame update
         void Start()
@@ -47,7 +51,7 @@
         // Update is called once per frame
         protected virtual void Update()
         {
-            if(trackPoint != null)
+            if(grabbedObjectAttachPoint != null)
             {
                 ProcessUpdate();
             }
@@ -55,11 +59,59 @@
 
         protected virtual void ProcessUpdate()
         {
-            if (trackPoint != null)
+            if (grabbedObjectAttachPoint != null)
             {
-                float distance = Vector3.Distance(trackPoint.position, initialAttachPoint.position);
+                float distance = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
+                if (distance > detachDistance)
+                {
 
+                }
+                else
+                {
+                    Vector3 currentPosition = transform.localPosition;
+                    Vector3 movePosition = currentPosition + Vector3.Scale((transform.InverseTransformPoint(controllerAttachPoint.transform.position) - transform.InverseTransformPoint(grabbedObjectAttachPoint.position)), transform.localScale);
+                    Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
+
+                    previousPosition = transform.localPosition;
+                    // Update to the new position
+                    UpdatePosition(targetPosition, false);
+                    // Set the velocity of movement
+                    movementVelocity = transform.localPosition - previousPosition;
+                }
             }
+        }
+
+        /// <summary>
+        /// Used for updating the position of the drawer
+        /// </summary>
+        /// <param name="newPosition"> The new position to move to </param>
+        /// <param name="additive"> if its being added to the current position, set to true. Used for example, constant forward movement</param>
+        /// <param name="forceClamp"> usually always clamp the position</param>
+        protected virtual void UpdatePosition(Vector3 newPosition, bool additive, bool forceClamp = true)
+        {
+            transform.localPosition = (additive ? transform.localPosition + newPosition : newPosition);
+            if (forceClamp)
+            {
+               ClampPosition();
+            }
+
+            // This is for checking against limits
+            // Similar to the EmitEvents
+            // TODO: Implement this part
+            // a bit late for me to do it now
+            UpdateControllable();
+        }
+
+        protected virtual void ClampPosition()
+        {
+            transform.localPosition = new Vector3(ClampAxis(xAxisLimit, transform.localPosition.x), ClampAxis(yAxisLimit, transform.localPosition.y), ClampAxis(zAxisLimit, transform.localPosition.z));
+        }
+
+        protected virtual float ClampAxis(Limit2D limits, float axisValue)
+        {
+            axisValue = (axisValue < limits.minimum + minMaxThreshold ? limits.minimum : axisValue);
+            axisValue = (axisValue > limits.maximum - minMaxThreshold ? limits.maximum : axisValue);
+            return Mathf.Clamp(axisValue, limits.minimum, limits.maximum);
         }
 
         protected override void UpdateControllable()
@@ -88,6 +140,16 @@
                 initialAttachPoint = grabbedObject.transform;
             }
 
+            // Create a game object attached to the interactable
+            if(grabbedObjectAttachPoint == null)
+            {
+                grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
+                grabbedObjectAttachPoint.SetParent(this.transform);
+                grabbedObjectAttachPoint.position = transform.position;
+                grabbedObjectAttachPoint.rotation = transform.rotation;
+                grabbedObjectAttachPoint.localScale = Vector3.one;
+            }
+
             if (controllerAttachPoint == null)
             {
                 // Store the rigid bodyof the controller as reference
@@ -103,11 +165,17 @@
         {
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
             grabbedObject = null;
-            trackPoint = null;
+            //trackPoint = null;
             initialAttachPoint = null;
             controllerAttachPoint = null;
+            if(grabbedObjectAttachPoint != null)
+            {
+                Destroy(grabbedObjectAttachPoint.gameObject);
+            }
 
-            if(grabbedObjectRB != null)
+
+
+            if (grabbedObjectRB != null)
             {
                 grabbedObjectRB.isKinematic = previousKinematicState;
             }

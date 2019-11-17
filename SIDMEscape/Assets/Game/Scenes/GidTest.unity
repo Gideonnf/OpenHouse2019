@@ -1677,6 +1677,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d1636ed6e25764eb8317643b7b5e50, type: 3}
+--- !u!1 &1362657533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1265203079505300928, guid: a5d1636ed6e25764eb8317643b7b5e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1362657532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1362657534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362657533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d1c034038d3bf44a384e509ba755bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+  isIndependent: 1
+  isGrabbable: 0
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  detachDistance: 1
+  trackingSpeed: 10
+  resetSpeed: 0
+  forceKinematics: 1
+  minMaxThreshold: 0.01
+  minMaxNormalizedThreshold: 0.01
 --- !u!1001 &1364306123
 PrefabInstance:
   m_ObjectHideFlags: 0
