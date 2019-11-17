@@ -102,11 +102,20 @@
             UpdateControllable();
         }
 
+        /// <summary>
+        /// Clamps the position of the drawer so that it won't go out of the limits
+        /// </summary>
         protected virtual void ClampPosition()
         {
             transform.localPosition = new Vector3(ClampAxis(xAxisLimit, transform.localPosition.x), ClampAxis(yAxisLimit, transform.localPosition.y), ClampAxis(zAxisLimit, transform.localPosition.z));
         }
 
+        /// <summary>
+        /// Clamps the value of the x position to the limits of the axis
+        /// </summary>
+        /// <param name="limits"> The minimum and maximum limits set for the axis </param>
+        /// <param name="axisValue"> THe local position/The value to clamp between the axis limits </param>
+        /// <returns></returns>
         protected virtual float ClampAxis(Limit2D limits, float axisValue)
         {
             axisValue = (axisValue < limits.minimum + minMaxThreshold ? limits.minimum : axisValue);
@@ -189,6 +198,7 @@
             return endResult;
         }
 
+        //TODO: Reset the drawer position
         protected virtual void ResetPosition()
         {
 
