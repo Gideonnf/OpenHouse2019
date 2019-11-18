@@ -137,7 +137,7 @@ public class OVRGrabber : MonoBehaviour
         GetComponent<Rigidbody>().MovePosition(destPos);
         GetComponent<Rigidbody>().MoveRotation(destRot);
 
-        if (!m_parentHeldObject)
+        if (!m_parentHeldObject || !m_grabbedObj.isIndependent)
         {
             MoveGrabbedObject(destPos, destRot);
         }
@@ -250,7 +250,6 @@ public class OVRGrabber : MonoBehaviour
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
             // If it is independent, it wont be updated in this script
-
             if (m_grabbedObj.GetComponent<OVRGrabbable>().isIndependent)
                 return;
 

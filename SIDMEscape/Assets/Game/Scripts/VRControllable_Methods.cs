@@ -61,6 +61,18 @@ namespace VRControllables
             return worldDirections[(int)Mathf.Clamp(axisIndex, 0f, worldDirections.Length)];
         }
 
+        /// <summary>
+        /// The Vector3ShallowCompare method compares two given Vector3 objects based on the given threshold, which is the equavelent of checking the distance between two Vector3 objects are above the threshold distance.
+        /// </summary>
+        /// <param name="vectorA">The Vector3 to compare against.</param>
+        /// <param name="vectorB">The Vector3 to compare with</param>
+        /// <param name="threshold">The distance in which the two Vector3 objects can be within to be considered true</param>
+        /// <returns>Returns `true` if the given Vector3 objects are within the given threshold distance.</returns>
+        public static bool Vector3ShallowCompare(Vector3 vectorA, Vector3 vectorB, float threshold)
+        {
+            return (Vector3.Distance(vectorA, vectorB) < threshold);
+        }
+
         #region FunctionsToFindGameObjects
 
         /// <summary>

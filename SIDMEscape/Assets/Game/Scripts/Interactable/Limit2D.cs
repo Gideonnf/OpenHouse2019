@@ -2,8 +2,10 @@
 {
     using UnityEngine;
 
+    [System.Serializable]
     public class Limit2D
     {
+        public string name;
         public float maximum;
         public float minimum;
 

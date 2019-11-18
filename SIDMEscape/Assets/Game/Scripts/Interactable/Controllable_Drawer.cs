@@ -10,21 +10,22 @@
         public float detachDistance = 1f;
 
         [Header("Drawer Settings")]
-        
         [Tooltip("How fast the object will track the hand when grabbed")]
         public float trackingSpeed = 10.0f;
         [Tooltip("The speed that the object will return to original position")]
         public float resetSpeed = 0.0f;
         [Tooltip("If true, the grabbedObject will have it's rigidbody kinematic set to true")]
         public bool forceKinematics = true;
+        //[Tooltip("The maximum distance that the drawer can go through")]
+        //public float maxDistance = 0.1f;
 
         [Header("Drawer Limitations")]
-        [Tooltip("The minimum and maximum limit that the object can move along the x-axis")]
-        public Limit2D xAxisLimit = Limit2D.zero;
-        [Tooltip("The minimum and maximum limit that the object can move along the y-axis")]
-        public Limit2D yAxisLimit = Limit2D.zero;
-        [Tooltip("The minimum and maximuim limit that the object can move along the z-axis")]
-        public Limit2D zAxisLimit = Limit2D.zero;
+        [Tooltip("The minimum and maximum limit that the object can move along the x-axis, y-axis and z-axis")]
+        public Limit2D[] axisLimit = new Limit2D[3];
+        //[Tooltip("The minimum and maximum limit that the object can move along the y-axis")]
+        //public Limit2D yAxisLimit = Limit2D.zero;
+        //[Tooltip("The minimum and maximuim limit that the object can move along the z-axis")]
+        //public Limit2D zAxisLimit = Limit2D.zero;
         [Tooltip("the threshold the position needs to be in to register a min or max position")]
         public float minMaxThreshold = 0.01f;
         [Tooltip("The threshold the normalized position value needs to be within to register a min or max normalized position value.")]
@@ -43,9 +44,12 @@
         private Vector3 movementVelocity;
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Awake()
         {
-
+            base.Awake();
+            axisLimit[0].name = "x-Axis Limit";
+            axisLimit[1].name = "y-Axis Limit";
+            axisLimit[2].name = "z-Axis Limit";
         }
 
         // Update is called once per frame
@@ -55,6 +59,39 @@
             {
                 ProcessUpdate();
             }
+        }
+
+        /// <summary>
+        /// 
+        /// The GetValue method returns the current position of the drawer
+        /// </summary>
+        /// <returns>The actual position of the button.</returns>
+        public virtual float GetValue()
+        {
+            return transform.localPosition[(int)operateAxis];
+        }
+
+        protected virtual Vector3 AxisDirection(bool local = false)
+        {
+            return VRControllable_Methods.AxisDirection((int)operateAxis, (local ? transform : null));
+        }
+
+        /// <summary>
+        /// Get Value returns the position of the drawer normalized
+        /// 
+        /// </summary>
+        public virtual float GetNormalizedValue()
+        {
+            return VRControllable_Methods.NormalizeValue(GetValue(), originalPosition[(int)operateAxis], MaximumLength()[(int)operateAxis]);
+        }
+
+        /// <summary>
+        /// Gets the maximum length based on the operating axis
+        /// </summary>
+        /// <returns></returns>
+        public virtual Vector3 MaximumLength()
+        {
+            return originalPosition + (AxisDirection() * axisLimit[(int)operateAxis].maximum);
         }
 
         protected virtual void ProcessUpdate()
@@ -107,7 +144,7 @@
         /// </summary>
         protected virtual void ClampPosition()
         {
-            transform.localPosition = new Vector3(ClampAxis(xAxisLimit, transform.localPosition.x), ClampAxis(yAxisLimit, transform.localPosition.y), ClampAxis(zAxisLimit, transform.localPosition.z));
+            transform.localPosition = new Vector3(ClampAxis(axisLimit[0], transform.localPosition.x), ClampAxis(axisLimit[1], transform.localPosition.y), ClampAxis(axisLimit[2], transform.localPosition.z));
         }
 
         /// <summary>
@@ -125,7 +162,14 @@
 
         protected override void UpdateControllable()
         {
-            throw new System.NotImplementedException();
+            bool positionChanged = !VRControllable_Methods.Vector3ShallowCompare(transform.localPosition, previousPosition, positionFidelity);
+            //throw new System.NotImplementedException();
+            if (positionChanged)
+            {
+                float currentPosition = GetNormalizedValue();
+                Debug.Log("current position on operating Axis : " + currentPosition);
+                // TODO: Check for the drawer hitting the limits
+            }
         }
 
         protected override bool CustomGrabBegin(OVRGrabber grabbedBy, Collider grabPoint)
@@ -181,8 +225,6 @@
             {
                 Destroy(grabbedObjectAttachPoint.gameObject);
             }
-
-
 
             if (grabbedObjectRB != null)
             {
