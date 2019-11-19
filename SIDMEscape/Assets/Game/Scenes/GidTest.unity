@@ -897,6 +897,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1265203079505300929, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101713384665618319, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158935282674750413, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266911004316215444, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d1636ed6e25764eb8317643b7b5e50, type: 3}
 --- !u!1 &1362657533 stripped
@@ -928,7 +948,7 @@ MonoBehaviour:
   operateAxis: 0
   ignoreCollisionsWith: []
   positionFidelity: 0.001
-  detachDistance: 5
+  detachDistance: 0.3
   trackingSpeed: 7
   resetSpeed: 0
   forceKinematics: 1

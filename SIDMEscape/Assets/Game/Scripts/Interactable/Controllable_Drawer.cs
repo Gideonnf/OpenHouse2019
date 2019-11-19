@@ -42,6 +42,7 @@
 
         private Vector3 previousPosition;
         private Vector3 movementVelocity;
+        private float distanceOffset = 0.0f;
 
         // Start is called before the first frame update
         protected override void Awake()
@@ -98,23 +99,31 @@
         {
             if (grabbedObjectAttachPoint != null)
             {
+                Vector3 currentPosition = transform.localPosition;
+                Vector3 movePosition = currentPosition + Vector3.Scale((transform.InverseTransformPoint(controllerAttachPoint.transform.position) - transform.InverseTransformPoint(grabbedObjectAttachPoint.position)), transform.localScale);
+
                 float distance = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
-                if (distance > detachDistance)
+                Debug.Log("current distance" + distance);
+                if (distance > (detachDistance + distanceOffset))
                 {
-
+                    Debug.Log("max distance reached");
+                    distance = Vector3.Distance(controllerAttachPoint.transform.position, initialAttachPoint.position);
+                    if (distance > (detachDistance + distanceOffset))
+                    {
+                        movePosition = currentPosition;
+                    }
                 }
-                else
-                {
-                    Vector3 currentPosition = transform.localPosition;
-                    Vector3 movePosition = currentPosition + Vector3.Scale((transform.InverseTransformPoint(controllerAttachPoint.transform.position) - transform.InverseTransformPoint(grabbedObjectAttachPoint.position)), transform.localScale);
-                    Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
+                //else
+                //{
+                   
+                //}
 
-                    previousPosition = transform.localPosition;
-                    // Update to the new position
-                    UpdatePosition(targetPosition, false);
-                    // Set the velocity of movement
-                    movementVelocity = transform.localPosition - previousPosition;
-                }
+                Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
+                previousPosition = transform.localPosition;
+                // Update to the new position
+                UpdatePosition(targetPosition, false);
+                // Set the velocity of movement
+                movementVelocity = transform.localPosition - previousPosition;
             }
         }
 
@@ -190,18 +199,30 @@
             if (initialAttachPoint == null)
             {
                 // Store the initial transform when first grabbed
-                initialAttachPoint = grabbedObject.transform;
+                initialAttachPoint = new GameObject("InitialAttachPoint").transform;
+                initialAttachPoint.SetParent(this.transform.parent);
+                initialAttachPoint.position = this.transform.parent.position;
+                initialAttachPoint.rotation = this.transform.parent.rotation;
+                initialAttachPoint.localScale = Vector3.one;
+                //initialAttachPoint = m_grabPoints[0].gameObject.transform.position;
             }
 
             // Create a game object attached to the interactable
             if(grabbedObjectAttachPoint == null)
             {
                 grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
-                grabbedObjectAttachPoint.name = "Attach Point for Tracking";
+               
                 grabbedObjectAttachPoint.SetParent(m_grabPoints[0].gameObject.transform);
                 grabbedObjectAttachPoint.position = m_grabPoints[0].gameObject.transform.position;
                 grabbedObjectAttachPoint.rotation = m_grabPoints[0].gameObject.transform.rotation;
+
+                //grabbedObjectAttachPoint.SetParent(this.transform);
+               // grabbedObjectAttachPoint.position = this.transform.position;
+                //grabbedObjectAttachPoint.rotation = this.transform.rotation;
+
                 grabbedObjectAttachPoint.localScale = Vector3.one;
+
+                distanceOffset = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
             }
 
             if (controllerAttachPoint == null)
@@ -220,7 +241,11 @@
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
             grabbedObject = null;
             //trackPoint = null;
-            initialAttachPoint = null;
+            if(initialAttachPoint != null)
+            {
+                Destroy(initialAttachPoint.gameObject);
+                initialAttachPoint = null;
+            }
             controllerAttachPoint = null;
             if(grabbedObjectAttachPoint != null)
             {
