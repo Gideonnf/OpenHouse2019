@@ -9,12 +9,13 @@ public class ChestCombiManager : MonoBehaviour
 {
     [SerializeField]
     GameObject go_clock; // Clock GO for time to set combi
+    [SerializeField]
+    GameObject go_drawerObj; //drawer object to affect
 
     int[,] arr_chestCombi;
     int[,] arr_chestBlitzCombi;
 
-    // input buffer to compare code;
-    public List<int> arr_testingCombi;
+    public List<int> arr_testingCombi; // input buffer to compare code
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +31,12 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameManager.GetInstance().b_blitzMode)
+            if (!GameManager.GetInstance().getBlitzMode())
             {
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates - 1)))
                 {
-                    Debug.LogError("Do not panic, it works");
+                    //Debug.LogError("Do not panic, it works");
+                    go_drawerObj.GetComponent<VRControllables.Base.Drawer.Controllable_Drawer>().isLocked = false;
                 }
                 else
                 {
