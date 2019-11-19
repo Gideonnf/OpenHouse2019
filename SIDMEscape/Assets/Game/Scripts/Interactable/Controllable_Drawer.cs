@@ -197,9 +197,10 @@
             if(grabbedObjectAttachPoint == null)
             {
                 grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
-                grabbedObjectAttachPoint.SetParent(this.transform);
-                grabbedObjectAttachPoint.position = transform.position;
-                grabbedObjectAttachPoint.rotation = transform.rotation;
+                grabbedObjectAttachPoint.name = "Attach Point for Tracking";
+                grabbedObjectAttachPoint.SetParent(m_grabPoints[0].gameObject.transform);
+                grabbedObjectAttachPoint.position = m_grabPoints[0].gameObject.transform.position;
+                grabbedObjectAttachPoint.rotation = m_grabPoints[0].gameObject.transform.rotation;
                 grabbedObjectAttachPoint.localScale = Vector3.one;
             }
 
@@ -224,6 +225,7 @@
             if(grabbedObjectAttachPoint != null)
             {
                 Destroy(grabbedObjectAttachPoint.gameObject);
+                grabbedObjectAttachPoint = null;
             }
 
             if (grabbedObjectRB != null)
