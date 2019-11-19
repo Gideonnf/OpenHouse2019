@@ -34,7 +34,7 @@ public class ChestCombiManager : MonoBehaviour
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates - 1)))
                 {
                     //Debug.LogError("Do not panic, it works");
-                    go_drawerObj.GetComponent<VRControllables.Base.Drawer.Controllable_Drawer>().isLocked = false;
+                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false;
                 }
                 else
                 {
