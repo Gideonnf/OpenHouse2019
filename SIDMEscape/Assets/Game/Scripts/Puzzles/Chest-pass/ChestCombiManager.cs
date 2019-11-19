@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System;
-using System.Runtime.InteropServices;
 
 public class ChestCombiManager : MonoBehaviour
 {
     [SerializeField]
     GameObject go_clock; // Clock GO for time to set combi
+    [SerializeField]
+    GameObject go_drawerObj; //drawer object to affect
 
     int[,] arr_chestCombi;
     int[,] arr_chestBlitzCombi;
 
-    // input buffer to compare code;
-    public List<int> arr_testingCombi;
+    public List<int> arr_testingCombi; // input buffer to compare code
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +29,12 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameManager.GetInstance().b_blitzMode)
+            if (!GameManager.GetInstance().getBlitzMode())
             {
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates - 1)))
                 {
-                    Debug.LogError("Do not panic, it works");
+                    //Debug.LogError("Do not panic, it works");
+                    go_drawerObj.GetComponent<VRControllables.Base.Drawer.Controllable_Drawer>().isLocked = false;
                 }
                 else
                 {
@@ -56,32 +56,4 @@ public class ChestCombiManager : MonoBehaviour
         }
     }
 
-}
-
-public static class ArrayExt
-{
-    public static T[] GetRow<T>(this T[,] array, int row)
-    {
-        if (!typeof(T).IsPrimitive)
-            throw new InvalidOperationException("Not supported for managed types.");
-
-        if (array == null)
-            throw new ArgumentNullException("array");
-
-        int cols = array.GetUpperBound(1) + 1;
-        T[] result = new T[cols];
-
-        int size;
-
-        if (typeof(T) == typeof(bool))
-            size = 1;
-        else if (typeof(T) == typeof(char))
-            size = 2;
-        else
-            size = Marshal.SizeOf<T>();
-
-        Buffer.BlockCopy(array, row * cols * size, result, 0, cols * size);
-
-        return result;
-    }
 }

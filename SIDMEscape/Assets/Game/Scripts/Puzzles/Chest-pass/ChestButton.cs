@@ -25,6 +25,14 @@ public class ChestButton : MonoBehaviour
         }
     }
 
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Hands"))
+        {
+            bOnOff = !bOnOff;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,19 +42,24 @@ public class ChestButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!bOnce)
+        if (!bOnOff)
         {
-            if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
-            {
-                this.gameObject.GetComponent<Renderer>().material.color = Color.green;
-                this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex() + 1);
-                bOnce = true;
-            }
-            else
-            {
-                this.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(this.transform.GetSiblingIndex() + 1);
-            }
+            this.gameObject.GetComponent<Renderer>().material.color = Color.red;
         }
+        //if (!bOnce)
+        //{
+        //    if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
+        //    {
+        //        this.gameObject.GetComponent<Renderer>().material.color = Color.green;
+        //        this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex() + 1);
+        //        bOnce = true;
+        //    }
+        //    else
+        //    {
+        //        this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+        //        this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(this.transform.GetSiblingIndex() + 1);
+        //    }
+        //}
     }
 }
+    

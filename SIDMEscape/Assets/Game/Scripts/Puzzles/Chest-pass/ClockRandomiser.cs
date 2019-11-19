@@ -26,15 +26,9 @@ public class ClockRandomiser : MonoBehaviour
     void Start()
     {
         go_Clock = this.gameObject;
-        arr_clockMaterials = GetComponent<Renderer>().materials;
+        //arr_clockMaterials = GetComponent<Renderer>().materials;
 
         n_clockStates = (Clock_States)rnd.Next(0, (int)Clock_States.NUM_OF_STATES);
-
-        // TODO: SET CLOCK MATERIAL OR SHOW THAT CHANGE HAS BEEN DONE
-        if (n_clockStates == 0)
-            go_Clock.SetActive(false);
-        //else
-        //    go_Clock.GetComponent<Renderer>().materials[0] = arr_clockMaterials[(int)n_clockStates];
 
         Debug.Log(n_clockStates);
     }
@@ -42,6 +36,9 @@ public class ClockRandomiser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (n_clockStates == 0)
+            go_Clock.SetActive(false);
+        else
+            go_Clock.GetComponent<Renderer>().materials = new Material[1] { arr_clockMaterials[(int)n_clockStates] }; 
     }
 }
