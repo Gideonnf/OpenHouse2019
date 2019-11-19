@@ -64,9 +64,9 @@
                 //}
 
                 Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
-                //Debug.Log("current Position " + currentPosition);
-                //Debug.Log("move position  "  + movePosition);
-
+                Debug.Log("current Position " + currentPosition);
+                Debug.Log("move position  "  + movePosition);
+                Debug.Log("target position " + targetPosition);
                 previousPosition = transform.localPosition;
                 // Update to the new position
                 UpdatePosition(targetPosition, false);
@@ -84,12 +84,12 @@
         protected virtual void UpdatePosition(Vector3 newPosition, bool additive, bool forceClamp = true)
         {
             transform.localPosition = (additive ? transform.localPosition + newPosition : newPosition);
-            Debug.Log("Local Position before clamp : " + transform.localPosition);
+            //Debug.Log("Local Position before clamp : " + transform.localPosition);
             if (forceClamp)
             {
                 ClampPosition();
             }
-            Debug.Log("Local Position after clamp : " + transform.localPosition);
+           // Debug.Log("Local Position after clamp : " + transform.localPosition);
             // This is for checking against limits
             // Similar to the EmitEvents
             // TODO: Implement this part
