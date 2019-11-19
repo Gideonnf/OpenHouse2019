@@ -397,6 +397,7 @@ MonoBehaviour:
   trackingSpeed: 7
   resetSpeed: 0
   forceKinematics: 1
+  grabPoint: {fileID: 0}
 --- !u!54 &314427233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1284,6 +1285,7 @@ MonoBehaviour:
   trackingSpeed: 7
   resetSpeed: 0
   forceKinematics: 1
+  grabPoint: {fileID: 2002184449}
 --- !u!65 &1362657535 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 1265203078952920040, guid: a5d1636ed6e25764eb8317643b7b5e50,
@@ -1533,6 +1535,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592608394}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2002184449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1265203078952920038, guid: a5d1636ed6e25764eb8317643b7b5e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1362657532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077088426
 GameObject:
   m_ObjectHideFlags: 0

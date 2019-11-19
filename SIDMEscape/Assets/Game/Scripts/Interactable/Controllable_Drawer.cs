@@ -18,6 +18,8 @@
         public bool forceKinematics = true;
         //[Tooltip("The maximum distance that the drawer can go through")]
         //public float maxDistance = 0.1f;
+        [Tooltip("Grab point of the drawer for distance offset")]
+        public Transform grabPoint;
 
         private Vector3 previousPosition;
         private Vector3 movementVelocity;
@@ -126,6 +128,9 @@
                 initialAttachPoint.position = this.transform.parent.position;
                 initialAttachPoint.rotation = this.transform.parent.rotation;
                 initialAttachPoint.localScale = Vector3.one;
+
+                distanceOffset = Vector3.Distance(this.grabPoint.position, initialAttachPoint.position);
+
                 //initialAttachPoint = m_grabPoints[0].gameObject.transform.position;
             }
 
@@ -134,9 +139,9 @@
             {
                 grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
 
-                grabbedObjectAttachPoint.SetParent(m_grabPoints[0].gameObject.transform);
-                grabbedObjectAttachPoint.position = m_grabPoints[0].gameObject.transform.position;
-                grabbedObjectAttachPoint.rotation = m_grabPoints[0].gameObject.transform.rotation;
+                grabbedObjectAttachPoint.SetParent(this.grabPoint);
+                grabbedObjectAttachPoint.position = this.grabPoint.position;
+                grabbedObjectAttachPoint.rotation =this.grabPoint.rotation;
 
                 //grabbedObjectAttachPoint.SetParent(this.transform);
                 // grabbedObjectAttachPoint.position = this.transform.position;
@@ -144,7 +149,6 @@
 
                 grabbedObjectAttachPoint.localScale = Vector3.one;
 
-                distanceOffset = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
             }
 
             if (controllerAttachPoint == null)
@@ -163,11 +167,11 @@
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
             grabbedObject = null;
             //trackPoint = null;
-            if (initialAttachPoint != null)
-            {
-                Destroy(initialAttachPoint.gameObject);
-                initialAttachPoint = null;
-            }
+            //if (initialAttachPoint != null)
+            //{
+            //    Destroy(initialAttachPoint.gameObject);
+            //    initialAttachPoint = null;
+            //}
             controllerAttachPoint = null;
             if (grabbedObjectAttachPoint != null)
             {
