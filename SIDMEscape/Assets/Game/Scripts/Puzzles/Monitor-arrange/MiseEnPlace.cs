@@ -20,17 +20,17 @@ public class MiseEnPlace : MonoBehaviour
                                                                {new Vector3(1.652f, -0.156f, -2.526f), new Vector3(0.975f, -0.156f, -2.464f), new Vector3(0.545f, -0.156f, -2.392f) },
                                                                {new Vector3(0.545f, -0.156f, -2.358f), new Vector3(0.973f, -0.156f, -2.589f), new Vector3(1.56f, -0.156f, -2.352f) }};
 
-        for (int i = 0; i < go_Places.Length; ++i)
+        for (int j = 0; j < go_Places.Length; ++j)
         {
             if ((int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates == 0)
                 break;
 
-            go_Places[i].transform.position = v3_placePos[(int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates - 1, i];
+            go_Places[j].transform.localPosition = v3_placePos[(int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates - 1, j];
         }
 
         for (int i = 0; i < go_Objects.Length; ++i)
         {
-            go_Objects[i].transform.position = new Vector3(Random.Range(0.24f, 1.8f), go_Objects[i].transform.position.y, Random.Range(-2.707f, -2.3f) + 2);
+            go_Objects[i].transform.localPosition = new Vector3(Random.Range(0.24f, 1.8f), go_Objects[i].transform.position.y, Random.Range(-2.707f, -2.3f));
         }
     }
 

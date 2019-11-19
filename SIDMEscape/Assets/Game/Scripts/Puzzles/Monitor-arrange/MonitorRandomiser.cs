@@ -27,7 +27,7 @@ public class MonitorRandomiser : MonoBehaviour
     int n_citer = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         arr_monitorColourCombi = new int[,] { { 0, 1, 2, 1}, { 1, 2, 0, 3}, {2, 0, 2, 1 } };
 
