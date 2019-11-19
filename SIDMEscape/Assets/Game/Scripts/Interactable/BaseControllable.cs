@@ -25,7 +25,8 @@ namespace VRControllables.Base
         public GameObject[] ignoreCollisionsWith = new GameObject[0];
         [Tooltip("The amount of fidelity when comparing positions")]
         public float positionFidelity = 0.001f;
-        
+        [Tooltip("If the object is locked from being grabbed initially")]
+        public bool isLocked = false;
 
         protected Vector3 originalPosition;
         protected Quaternion originalRotation;
