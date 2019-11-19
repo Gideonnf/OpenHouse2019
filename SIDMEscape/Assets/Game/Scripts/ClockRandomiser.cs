@@ -30,6 +30,7 @@ public class ClockRandomiser : MonoBehaviour
 
         n_clockStates = (Clock_States)rnd.Next(0, (int)Clock_States.NUM_OF_STATES);
 
+        // TODO: SET CLOCK MATERIAL OR SHOW THAT CHANGE HAS BEEN DONE
         if (n_clockStates == 0)
             go_Clock.SetActive(false);
         //else
