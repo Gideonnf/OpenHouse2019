@@ -31,7 +31,20 @@
 
         protected virtual void ProcessUpdate() {}
 
+        protected override void Awake()
+        {
+            base.Awake();
 
+            axisLimit[(int)OperatingAxis.xAxis].maximum += transform.localPosition.x;
+            axisLimit[(int)OperatingAxis.xAxis].minimum = transform.localPosition.x - axisLimit[(int)OperatingAxis.xAxis].minimum;
+
+            axisLimit[(int)OperatingAxis.yAxis].maximum += transform.localPosition.y;
+            axisLimit[(int)OperatingAxis.yAxis].minimum = transform.localPosition.y - axisLimit[(int)OperatingAxis.yAxis].minimum;
+
+            axisLimit[(int)OperatingAxis.zAxis].maximum += transform.localPosition.z;
+            axisLimit[(int)OperatingAxis.zAxis].minimum = transform.localPosition.z - axisLimit[(int)OperatingAxis.zAxis].minimum;
+
+        }
 
         /// <summary>
         /// 
