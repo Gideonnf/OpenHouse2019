@@ -1,10 +1,10 @@
-﻿namespace VRControllables.Base.Drawer
+﻿namespace VRControllables.Base.Slider
 {
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Controllable_Drawer : Controllable_Movables
+    public class Controllable_Slider : Controllable_Movables
     {
         [Tooltip("The max distance that the object can move before being detached")]
         public float detachDistance = 1f;
