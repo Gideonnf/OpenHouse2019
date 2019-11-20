@@ -8,9 +8,11 @@ public class MonitorRandomiser : MonoBehaviour
 
     [Header("Monitor Settings")]
     [Tooltip("Store the materials to change the monitor color ")]
-    public Material[] arr_monitorMaterials;
+    [SerializeField]
+    Material[] arr_monitorMaterials;
 
-
+    [SerializeField]
+    Material _default;
 
     GameObject go_Monitor;
 
@@ -52,10 +54,15 @@ public class MonitorRandomiser : MonoBehaviour
 
             if (f_ctimer > 1)
             {
-                if (n_citer >= 4)
+                if (n_citer >= 5)
                     n_citer = 0;
-
-                go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates - 1)[n_citer]] };
+                
+                if (n_citer == 0)
+                {
+                    go_Monitor.GetComponent<Renderer>().materials = new Material[1] { _default };
+                }
+                else
+                    go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates - 1)[n_citer - 1]] };
 
                 f_ctimer = 0;
                 ++n_citer;
