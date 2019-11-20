@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Game/Scenes/Alwin-merge.unity
+    guid: 4b0042c2639371b4bbcd7601d48cdd28
   m_configObjects: {}
