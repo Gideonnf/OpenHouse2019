@@ -1,10 +1,10 @@
-﻿namespace VRControllables.Base.Drawer
+﻿namespace VRControllables.Base.Slider
 {
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Controllable_Drawer : Controllable_Movables
+    public class Controllable_Slider : Controllable_Movables
     {
         [Tooltip("The max distance that the object can move before being detached")]
         public float detachDistance = 1f;
@@ -48,7 +48,7 @@
                 Vector3 movePosition = currentPosition + Vector3.Scale((transform.InverseTransformPoint(controllerAttachPoint.transform.position) - transform.InverseTransformPoint(grabbedObjectAttachPoint.position)), transform.localScale);
 
                 float distance = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
-                Debug.Log("current distance" + distance);
+                //Debug.Log("current distance" + distance);
                 if (distance > (detachDistance + distanceOffset))
                 {
                     Debug.Log("max distance reached");
@@ -64,6 +64,9 @@
                 //}
 
                 Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
+                Debug.Log("current Position " + currentPosition);
+                Debug.Log("move position  "  + movePosition);
+                Debug.Log("target position " + targetPosition);
                 previousPosition = transform.localPosition;
                 // Update to the new position
                 UpdatePosition(targetPosition, false);
@@ -81,11 +84,12 @@
         protected virtual void UpdatePosition(Vector3 newPosition, bool additive, bool forceClamp = true)
         {
             transform.localPosition = (additive ? transform.localPosition + newPosition : newPosition);
+            //Debug.Log("Local Position before clamp : " + transform.localPosition);
             if (forceClamp)
             {
                 ClampPosition();
             }
-
+           // Debug.Log("Local Position after clamp : " + transform.localPosition);
             // This is for checking against limits
             // Similar to the EmitEvents
             // TODO: Implement this part

@@ -6,8 +6,12 @@ public class MonitorRandomiser : MonoBehaviour
 {
     System.Random rnd = new System.Random();
 
-    [SerializeField]
-    Material[] arr_monitorMaterials;
+    [Header("Monitor Settings")]
+    [Tooltip("Store the materials to change the monitor color ")]
+    public Material[] arr_monitorMaterials;
+
+
+
     GameObject go_Monitor;
 
     public enum monitor_states

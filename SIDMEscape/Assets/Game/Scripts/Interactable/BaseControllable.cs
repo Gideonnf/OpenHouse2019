@@ -68,6 +68,23 @@ namespace VRControllables.Base
             UpdateControllable();
             processAtEndFrame = null;
         }
+        
+        /// <summary>
+        /// Returns the original position oif the object
+        /// </summary>
+        public Vector3 getOriginalPos()
+        {
+            return originalPosition;
+        }
+
+        /// <summary>
+        /// Returns the original rotation of the object
+        /// </summary>
+        /// <returns></returns>
+        public Quaternion getOriginalRot()
+        {
+            return originalRotation;
+        }
 
         // Due to Oculus frame work
         // I have to override their grab and call my own custom function that can be inherited
