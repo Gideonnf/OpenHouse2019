@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hands
   - TablePuzzle
+  - Interactables
   layers:
   - Default
   - TransparentFX

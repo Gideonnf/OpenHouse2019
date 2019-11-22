@@ -1,8 +1,9 @@
-﻿namespace VRControllables.Base.Slider
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace VRControllables.Base.Slider
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
 
     public class Controllable_Slider : Controllable_Movables
     {
@@ -34,6 +35,9 @@
         // Update is called once per frame
         protected virtual void Update()
         {
+            Debug.Log("current Position " + transform.position);
+            Debug.Log("current local Position " + transform.localPosition);
+
             if (grabbedObjectAttachPoint != null)
             {
                 ProcessUpdate();
@@ -42,6 +46,7 @@
 
         protected override void ProcessUpdate()
         {
+
             if (grabbedObjectAttachPoint != null)
             {
                 Vector3 currentPosition = transform.localPosition;
@@ -58,18 +63,11 @@
                         movePosition = currentPosition;
                     }
                 }
-                //else
-                //{
 
-                //}
-
-                Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
-                Debug.Log("current Position " + currentPosition);
-                Debug.Log("move position  "  + movePosition);
-                Debug.Log("target position " + targetPosition);
+                //Vector3 targetPosition = Vector3.Lerp(currentPosition, movePosition, trackingSpeed * Time.deltaTime);
                 previousPosition = transform.localPosition;
                 // Update to the new position
-                UpdatePosition(targetPosition, false);
+                UpdatePosition(movePosition, false);
                 // Set the velocity of movement
                 movementVelocity = transform.localPosition - previousPosition;
             }

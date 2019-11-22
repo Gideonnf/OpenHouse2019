@@ -19,6 +19,7 @@ public class ChestCombiManager : MonoBehaviour
     void Start()
     {
         arr_chestBlitzCombi = new int[,] { { 0, 3, 2, 5 }, { 1, 1, 1, 2 }, { 2, 0, 0, 8 } };
+        //go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false;
 
         arr_chestCombi = new int[, ] { { 5, 6, 5, 3 }, { 2, 6, 3, 6 }, { 1, 7, 4, 8 } };
         arr_testingCombi = new List<int>();

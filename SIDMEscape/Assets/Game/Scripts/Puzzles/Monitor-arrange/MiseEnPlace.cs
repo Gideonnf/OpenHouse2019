@@ -52,8 +52,8 @@ public class MiseEnPlace : MonoBehaviour
         GameObject tempObject = null;
         for(int i = 0; i < go_Objects.Length; ++i)
         {
-            if (go_Objects[i] == GrabbableObject.gameObject) ;
-            tempObject = go_Objects[i];
+            if (go_Objects[i] == GrabbableObject.gameObject)
+                tempObject = go_Objects[i];
         }
 
         // End the grabbing forcefully
@@ -61,9 +61,9 @@ public class MiseEnPlace : MonoBehaviour
 
         // New position of the object based on the coaster's x and z
         Vector3 newPosition = new Vector3(CoasterObject.transform.position.x,
-                                                                monitorObjectScript.getOriginalPos().y,
+                                                                monitorObjectScript.getOriginalPos(false).y,
                                                                 CoasterObject.transform.position.z);
-        Quaternion newRot = monitorObjectScript.getOriginalRot();
+        Quaternion newRot = monitorObjectScript.getOriginalRot(false);
 
         if (tempObject != null)
         {

@@ -3,13 +3,16 @@ using System.Collections;
 
 public class MonitorObject : OVRGrabbable
 {
-    protected Vector3 originalPosition;
-    protected Quaternion originalRotation;
+    protected Vector3 originalLocPosition;
+    protected Vector3 originalWorldPosition;
+    protected Quaternion originalWorldRot;
+    protected Quaternion originalLocRotation;
 
     private void Awake()
     {
-        originalPosition = transform.localPosition;
-        originalRotation = transform.localRotation;
+        originalLocPosition = transform.localPosition;
+        originalLocRotation = transform.localRotation;
+        originalWorldPosition = transform.position;
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -31,18 +34,32 @@ public class MonitorObject : OVRGrabbable
     /// <summary>
     /// Returns the original position oif the object
     /// </summary>
-    public Vector3 getOriginalPos()
+    public Vector3 getOriginalPos(bool local)
     {
-        return originalPosition;
+        if(local)
+        {
+            return originalLocPosition;
+        }
+        else
+        {
+            return originalWorldPosition;
+        }
     }
 
     /// <summary>
     /// Returns the original rotation of the object
     /// </summary>
     /// <returns></returns>
-    public Quaternion getOriginalRot()
+    public Quaternion getOriginalRot(bool local)
     {
-        return originalRotation;
+        if (local)
+        {
+            return originalLocRotation;
+        }
+        else
+        {
+            return originalWorldRot;
+        }
     }
 
 

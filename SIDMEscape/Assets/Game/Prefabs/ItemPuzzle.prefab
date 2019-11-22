@@ -214,7 +214,7 @@ MonoBehaviour:
   go_Objects:
   - {fileID: 6671316309658622376}
   - {fileID: 6671316308507371768}
-  - {fileID: 6671316309936333193}
+  - {fileID: 0}
   go_Places:
   - {fileID: 6671316309498796612}
   - {fileID: 6671316309653463590}
