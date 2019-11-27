@@ -7,6 +7,7 @@ namespace VRControllables.Base.Slider
 
     public class Controllable_Slider : Controllable_Movables
     {
+        [Header("Drawer Settings")]
         [Tooltip("The max distance that the object can move before being detached")]
         public float detachDistance = 1f;
 
@@ -21,6 +22,8 @@ namespace VRControllables.Base.Slider
         //public float maxDistance = 0.1f;
         [Tooltip("Grab point of the drawer for distance offset")]
         public Transform grabPoint;
+        [Tooltip("The minimum and maximum limit that the object can move along the x-axis, y-axis and z-axis")]
+        public Limit2D[] axisLimit = new Limit2D[3];
 
         private Vector3 previousPosition;
         private Vector3 movementVelocity;
@@ -30,6 +33,56 @@ namespace VRControllables.Base.Slider
         protected override void Awake()
         {
             base.Awake();
+
+            axisLimit[(int)OperatingAxis.xAxis].maximum += transform.localPosition.x;
+            axisLimit[(int)OperatingAxis.xAxis].minimum = transform.localPosition.x - axisLimit[(int)OperatingAxis.xAxis].minimum;
+
+            axisLimit[(int)OperatingAxis.yAxis].maximum += transform.localPosition.y;
+            axisLimit[(int)OperatingAxis.yAxis].minimum = transform.localPosition.y - axisLimit[(int)OperatingAxis.yAxis].minimum;
+
+            axisLimit[(int)OperatingAxis.zAxis].maximum += transform.localPosition.z;
+            axisLimit[(int)OperatingAxis.zAxis].minimum = transform.localPosition.z - axisLimit[(int)OperatingAxis.zAxis].minimum;
+
+        }
+
+        /// <summary>
+        /// Clamps the position of the drawer so that it won't go out of the limits
+        /// </summary>
+        protected virtual void ClampPosition()
+        {
+            transform.localPosition = new Vector3(ClampAxis(axisLimit[0], transform.localPosition.x), ClampAxis(axisLimit[1], transform.localPosition.y), ClampAxis(axisLimit[2], transform.localPosition.z));
+        }
+
+        /// <summary>
+        /// Clamps the value of the x position to the limits of the axis
+        /// </summary>
+        /// <param name="limits"> The minimum and maximum limits set for the axis </param>
+        /// <param name="axisValue"> THe local position/The value to clamp between the axis limits </param>
+        /// <returns></returns>
+        protected virtual float ClampAxis(Limit2D limits, float axisValue)
+        {
+            axisValue = (axisValue < limits.minimum + minMaxThreshold ? limits.minimum : axisValue);
+            axisValue = (axisValue > limits.maximum - minMaxThreshold ? limits.maximum : axisValue);
+            return Mathf.Clamp(axisValue, limits.minimum, limits.maximum);
+        }
+
+        /// <summary>
+        /// Get Value returns the position of the drawer normalized
+        /// 
+        /// </summary>
+        public virtual float GetNormalizedValue()
+        {
+            return VRControllable_Methods.NormalizeValue(GetValue(), originalPosition[(int)operateAxis], MaximumLength()[(int)operateAxis]);
+        }
+
+
+        /// <summary>
+        /// Gets the maximum length based on the operating axis
+        /// </summary>
+        /// <returns></returns>
+        public virtual Vector3 MaximumLength()
+        {
+            return originalPosition + (AxisDirection() * axisLimit[(int)operateAxis].maximum);
         }
 
         // Update is called once per frame
@@ -44,7 +97,7 @@ namespace VRControllables.Base.Slider
             }
         }
 
-        protected override void ProcessUpdate()
+        protected void ProcessUpdate()
         {
 
             if (grabbedObjectAttachPoint != null)
@@ -95,7 +148,7 @@ namespace VRControllables.Base.Slider
             UpdateControllable();
         }
 
-        protected override void UpdateControllable()
+        protected void UpdateControllable()
         {
             bool positionChanged = !VRControllable_Methods.Vector3ShallowCompare(transform.localPosition, previousPosition, positionFidelity);
             //throw new System.NotImplementedException();

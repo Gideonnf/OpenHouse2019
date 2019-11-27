@@ -38,8 +38,6 @@ namespace VRControllables.Base
 
         protected Coroutine processAtEndFrame;
 
-        protected abstract void UpdateControllable();
-
         protected virtual void Awake()
         {
             originalPosition = transform.localPosition;
@@ -65,7 +63,7 @@ namespace VRControllables.Base
         protected virtual IEnumerator EndFrameProcess()
         {
             yield return new WaitForEndOfFrame();
-            UpdateControllable();
+            //UpdateControllable();
             processAtEndFrame = null;
         }
         
