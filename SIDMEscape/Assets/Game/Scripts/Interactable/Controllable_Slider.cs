@@ -16,8 +16,7 @@ namespace VRControllables.Base.Slider
         public float trackingSpeed = 10.0f;
         [Tooltip("The speed that the object will return to original position")]
         public float resetSpeed = 0.0f;
-        [Tooltip("If true, the grabbedObject will have it's rigidbody kinematic set to true")]
-        public bool forceKinematics = true;
+
         //[Tooltip("The maximum distance that the drawer can go through")]
         //public float maxDistance = 0.1f;
         [Tooltip("Grab point of the drawer for distance offset")]
@@ -165,15 +164,7 @@ namespace VRControllables.Base.Slider
             if (grabbedBy == null)
                 return false;
 
-            if (grabbedObject == null)
-            {
-                grabbedObject = this.gameObject;
-                grabbedObjectRB = this.gameObject.GetComponent<Rigidbody>();
-                previousKinematicState = grabbedObjectRB.isKinematic;
 
-                // Checks if
-                grabbedObjectRB.isKinematic = (forceKinematics ? true : previousKinematicState);
-            }
             // Sets the starting attach point
             if (initialAttachPoint == null)
             {
@@ -206,11 +197,6 @@ namespace VRControllables.Base.Slider
 
             }
 
-            if (controllerAttachPoint == null)
-            {
-                // Store the rigid bodyof the controller as reference
-                controllerAttachPoint = grabbedBy.GetComponent<Rigidbody>();
-            }
 
             bool grabResult = base.CustomGrabBegin(grabbedBy, grabPoint);
 
@@ -220,23 +206,11 @@ namespace VRControllables.Base.Slider
         protected override bool CustomGrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
         {
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
-            grabbedObject = null;
-            //trackPoint = null;
-            //if (initialAttachPoint != null)
-            //{
-            //    Destroy(initialAttachPoint.gameObject);
-            //    initialAttachPoint = null;
-            //}
-            controllerAttachPoint = null;
+
             if (grabbedObjectAttachPoint != null)
             {
                 Destroy(grabbedObjectAttachPoint.gameObject);
                 grabbedObjectAttachPoint = null;
-            }
-
-            if (grabbedObjectRB != null)
-            {
-                grabbedObjectRB.isKinematic = previousKinematicState;
             }
 
             // If it is more than 0.0f, reset it to the position set

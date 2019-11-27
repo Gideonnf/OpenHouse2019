@@ -858,6 +858,13 @@ MonoBehaviour:
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
+  minMaxThreshold: 0.01
+  minMaxNormalizedThreshold: 0.01
+  detachDistance: 0.3
+  trackingSpeed: 7
+  resetSpeed: 0
+  forceKinematics: 1
+  grabPoint: {fileID: 1489534556}
   axisLimit:
   - name: x-Axis Limit
     maximum: 2
@@ -868,13 +875,6 @@ MonoBehaviour:
   - name: z-Axis Limit
     maximum: 0
     minimum: 0
-  minMaxThreshold: 0.01
-  minMaxNormalizedThreshold: 0.01
-  detachDistance: 0.3
-  trackingSpeed: 7
-  resetSpeed: 0
-  forceKinematics: 1
-  grabPoint: {fileID: 1489534556}
 --- !u!54 &314427233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1076,6 +1076,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345760507}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &395282530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 658503746}
+    m_Modifications:
+    - target: {fileID: 8760197020395781845, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_Name
+      value: Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.561
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.816
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99232906
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.12362501
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 194.20299
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f, type: 3}
+--- !u!4 &395282531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 395282530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &414185235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1502,7 @@ Transform:
   - {fileID: 314427229}
   - {fileID: 1043251451}
   - {fileID: 95826446}
+  - {fileID: 395282531}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1854,6 +1930,13 @@ MonoBehaviour:
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
+  minMaxThreshold: 0.01
+  minMaxNormalizedThreshold: 0.01
+  detachDistance: 0.3
+  trackingSpeed: 7
+  resetSpeed: 0
+  forceKinematics: 1
+  grabPoint: {fileID: 2002184449}
   axisLimit:
   - name: x-Axis Limit
     maximum: 2
@@ -1864,13 +1947,6 @@ MonoBehaviour:
   - name: z-Axis Limit
     maximum: 0
     minimum: 0
-  minMaxThreshold: 0.01
-  minMaxNormalizedThreshold: 0.01
-  detachDistance: 0.3
-  trackingSpeed: 7
-  resetSpeed: 0
-  forceKinematics: 1
-  grabPoint: {fileID: 2002184449}
 --- !u!65 &1362657535 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 1265203078952920040, guid: a5d1636ed6e25764eb8317643b7b5e50,

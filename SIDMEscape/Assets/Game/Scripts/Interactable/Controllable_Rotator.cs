@@ -66,6 +66,21 @@ namespace VRControllables.Base.Rotator
         {
 
         }
+
+        protected override bool CustomGrabBegin(OVRGrabber hand, Collider grabPoint)
+        {
+
+            bool result =  base.CustomGrabBegin(hand, grabPoint);
+
+            return result;
+        }
+
+        protected override bool CustomGrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
+        {
+            bool result = base.CustomGrabEnd(linearVelocity, angularVelocity);
+
+            return result;
+        }
     }
 }
 

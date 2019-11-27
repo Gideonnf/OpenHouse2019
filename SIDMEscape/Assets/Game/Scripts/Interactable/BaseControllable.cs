@@ -84,34 +84,8 @@ namespace VRControllables.Base
             return originalRotation;
         }
 
-        // Due to Oculus frame work
-        // I have to override their grab and call my own custom function that can be inherited
-        // can't virtual an override function already
-        public override void GrabBegin(OVRGrabber grabbedBy, Collider grabPoint)
-        {
-            // Base GrabBegin
-            // Sets the grabbedBy
-            // Stores the collider
-            // Set the rigidbody to kinematic
-            base.GrabBegin(grabbedBy, grabPoint);
-            CustomGrabBegin(grabbedBy, grabPoint);
-        }
 
-        public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
-        {
-            base.GrabEnd(Vector3.zero, Vector3.zero);
-            CustomGrabEnd(linearVelocity, angularVelocity);
-        }
 
-        protected virtual bool CustomGrabBegin(OVRGrabber hand, Collider grabPoint)
-        {
-            return true;
-        }
-
-        protected virtual bool CustomGrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
-        {
-            return true;
-        }
 
         #region COLLISION_CHECKING
 
