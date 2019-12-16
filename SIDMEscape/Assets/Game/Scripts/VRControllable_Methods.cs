@@ -32,6 +32,29 @@ namespace VRControllables
         }
 
         /// <summary>
+        /// The VectorDirection method calculates the direction the target position is in relation to the origin position.
+        /// </summary>
+        /// <param name="originPosition">The point to use as the originating position for the direction calculation.</param>
+        /// <param name="targetPosition">The point to use as the target position for the direction calculation.</param>
+        /// <returns>A Vector3 containing the direction of the target position in relation to the origin position.</returns>
+        public static Vector3 VectorDirection(Vector3 originPosition, Vector3 targetPosition)
+        {
+            Vector3 heading = VectorHeading(originPosition, targetPosition);
+            return heading * DividerToMultiplier(heading.magnitude);
+        }
+
+        /// <summary>
+        /// The VectorHeading method calculates the current heading of the target position in relation to the origin position.
+        /// </summary>
+        /// <param name="originPosition">The point to use as the originating position for the heading calculation.</param>
+        /// <param name="targetPosition">The point to use as the target position for the heading calculation.</param>
+        /// <returns>A Vector3 containing the heading changes of the target position in relation to the origin position.</returns>
+        public static Vector3 VectorHeading(Vector3 originPosition, Vector3 targetPosition)
+        {
+            return targetPosition - originPosition;
+        }
+
+        /// <summary>
         /// The NormalizeValue method takes a given value between a specified range and returns the normalized value between 0f and 1f.
         /// </summary>
         /// <param name="value">The actual value to normalize.</param>

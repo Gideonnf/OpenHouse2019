@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace VRControllables.Base.Rotator
 {
+    // Note edited and based off VRTK
+    // Can't use VRTK because it doesnt work that well with the quest
+    // But am adjusting and modifying parts of it while removing alot of the complicated parenting calls and event calls
+
     public class Controllable_Rotator : Controllable_Movables
     {
         /// <summary>
@@ -44,15 +48,18 @@ namespace VRControllables.Base.Rotator
         [Tooltip("The speed of the object when rotating back to its origin rotation when released. If set to 0, the rotation will not reset")]
         public float resetToOriginSpeed = 0f;
 
+
         [Header("Rotation Limits")]
         [Tooltip("The limits for the rotation allowed on the operating axis")]
         public Limit2D angleLimits = new Limit2D(-180, 180);
 
+        protected OVRGrabber handReference;
         protected Vector3 previousAttachPointPosition;
         protected Vector3 currentRotation;
         protected Vector3 currentRotationSpeed;
         protected Coroutine updateRotationRoutine; // Handles the rotation of the interacted Object
         protected Coroutine decelerateRotationRoutine; // Handles the deceleration(Slow Down) of the interacted object upon release
+        protected bool[] limitsReached = new bool[2];
 
         // Start is called before the first frame update
         protected override void Start()
@@ -64,13 +71,41 @@ namespace VRControllables.Base.Rotator
         // Update is called once per frame
         void Update()
         {
-
+            // Check if theres a point to follow
+            if (grabbedObjectAttachPoint != null)
+            {
+                float distance = Vector3.Distance(transform.position, controllerAttachPoint.transform.position);
+                if (StillTouching() && distance >= originDeadzone)
+                {
+                    Vector3 newRotation = GetNewRotation();
+                    previousAttachPointPosition = controllerAttachPoint.transform.position;
+                    currentRotationSpeed = newRotation;
+                    UpdateRotation(newRotation, true, true);
+                }
+                //else if (grabbedo)
+            }
         }
 
         protected override bool CustomGrabBegin(OVRGrabber hand, Collider grabPoint)
         {
-
+            CancelUpdateRotation();
+            CancelDecelerateRotation();
             bool result =  base.CustomGrabBegin(hand, grabPoint);
+            previousAttachPointPosition = controllerAttachPoint.transform.position;
+            limitsReached = new bool[2];
+            CheckAngleLimits();
+            handReference = hand;
+
+            if (grabbedObjectAttachPoint == null)
+            {
+                grabbedObjectAttachPoint = new GameObject("AttachPointForObjects").transform;
+
+                grabbedObjectAttachPoint.SetParent(this.grabPoint);
+                grabbedObjectAttachPoint.position = this.grabPoint.position;
+                grabbedObjectAttachPoint.rotation = this.grabPoint.rotation;
+
+                grabbedObjectAttachPoint.localScale = Vector3.one;
+            }
 
             return result;
         }
@@ -79,8 +114,226 @@ namespace VRControllables.Base.Rotator
         {
             bool result = base.CustomGrabEnd(linearVelocity, angularVelocity);
 
+            if(resetToOriginSpeed > 0f)
+            {
+                ResetRotation();
+            }
+            else if (DecelarationDamper > 0f)
+            {
+                CancelDecelerateRotation();
+                decelerateRotationRoutine = StartCoroutine(DecelerateRotation());
+            }
+
+            if (grabbedObjectAttachPoint != null)
+            {
+                Destroy(grabbedObjectAttachPoint);
+                grabbedObjectAttachPoint = null;
+            }
+
             return result;
         }
+
+        public void SetRotation(float newAngle, float transitionTime = 0f)
+        {
+            newAngle = Mathf.Clamp(newAngle, angleLimits.minimum, angleLimits.maximum);
+            Vector3 newCurrentRotation = currentRotation;
+            switch (operateAxis)
+            {
+                case OperatingAxis.xAxis:
+                    {
+                        newCurrentRotation = new Vector3(newAngle, currentRotation.y, currentRotation.z);
+                    }
+                    break;
+                case OperatingAxis.yAxis:
+                    {
+                        newCurrentRotation = new Vector3(currentRotation.x, newAngle, currentRotation.z);
+                    }
+                    break;
+                case OperatingAxis.zAxis:
+                    {
+                        newCurrentRotation = new Vector3(currentRotation.x, currentRotation.y, newAngle);
+                    }
+                    break;
+            }
+
+            if (transitionTime > 0f)
+            {
+                CancelUpdateRotation();
+                updateRotationRoutine = StartCoroutine(RotateToAngle(newCurrentRotation, VRControllable_Methods.DividerToMultiplier(transitionTime)));
+            }
+            else
+            {
+                UpdateRotation(newCurrentRotation, false, false);
+                currentRotation = newCurrentRotation;
+            }
+
+        }
+
+        /*
+         * IEnumerator function calls are here
+         * 
+         */
+        #region ENUMERATOR FUNCTIONS
+
+        protected IEnumerator RotateToAngle(Vector3 targetAngle, float rotationSpeed)
+        {
+            Vector3 previousRotation = currentRotation;
+            currentRotationSpeed = Vector3.zero;
+            while (currentRotation != targetAngle)
+            {
+                currentRotation = Vector3.Lerp(currentRotation, targetAngle, rotationSpeed * Time.deltaTime);
+                //UpdateRotation(currentRotation - previousRotation, true, false);
+                previousRotation = currentRotation;
+                yield return null;
+            }
+
+            UpdateRotation(targetAngle, false, false);
+            currentRotation = targetAngle;
+
+        }
+
+        protected IEnumerator DecelerateRotation()
+        {
+            while (currentRotationSpeed != Vector3.zero)
+            {
+                currentRotationSpeed = Vector3.Slerp(currentRotationSpeed, Vector3.zero, DecelarationDamper * Time.deltaTime);
+                UpdateRotation(currentRotationSpeed, true, true);
+                yield return null;
+            }
+        }
+
+        #endregion
+
+        /* 
+        SIMPLE FUNCTIONS TO GET OR SET VALUES 
+        SIMPLE FUNCTIONS TO STOP ACTIONS SUCH AS COROUTINES
+        */
+        #region RotationCalculations
+
+        protected void UpdateRotation(Vector3 newRotation, bool additive, bool updateCurrentRotation)
+        {
+            if (WithinRotationLimit(currentRotation + newRotation))
+            {
+                if(updateCurrentRotation)
+                {
+                    currentRotation += newRotation;
+                }
+            }
+            transform.localRotation = (additive ? transform.localRotation * Quaternion.Euler(newRotation) : Quaternion.Euler(newRotation));
+            // Emit events? idk if we gonna use that in our version
+        }
+
+        protected void ResetRotation(bool ignoreTransition = false)
+        {
+            CancelDecelerateRotation();
+            if (resetToOriginSpeed > 0f && !ignoreTransition)
+            {
+                CancelUpdateRotation();
+                updateRotationRoutine = StartCoroutine(RotateToAngle(Vector3.zero, resetToOriginSpeed));
+            }
+            else
+            {
+                UpdateRotation(originalRotation.eulerAngles, false, false);
+                currentRotation = Vector3.zero;
+                currentRotationSpeed = Vector3.zero;
+            }
+        }
+
+        protected Vector3 GetNewRotation()
+        {
+            Vector3 grabbingObjectAngularVelocity = Vector3.zero;
+            grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
+
+            switch(rotatingAction)
+            {
+                case RotatingType.AttachPointRotation:
+                    return CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+                case RotatingType.RollAxisRotation:
+                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.x);
+                case RotatingType.YawAxisRotation:
+                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.y);
+                case RotatingType.PitchAxisRotation:
+                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.z);
+            }
+
+            return Vector3.zero;
+        }
+
+        protected Vector3 BuildFollowAxisVector(float givenAngle)
+        {
+            float xAngle = (operateAxis == OperatingAxis.xAxis ? givenAngle : 0f);
+            float yAngle = (operateAxis == OperatingAxis.yAxis ? givenAngle : 0f);
+            float zAngle = (operateAxis == OperatingAxis.zAxis ? givenAngle : 0f);
+
+            return new Vector3(xAngle, yAngle, zAngle);
+        }
+
+        protected Vector3 CalculateAngle(Vector3 originPoint, Vector3 originalGrabPoint, Vector3 currentGrabPoint)
+        {
+            float xRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.right) : 0f);
+            float yRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.up) : 0f);
+            float zRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.forward) : 0f);
+
+            float frictionMultiplier = VRControllable_Methods.DividerToMultiplier(rotationFriction);
+            return new Vector3(xRotated * frictionMultiplier, yRotated * frictionMultiplier, zRotated * frictionMultiplier);
+        }
+
+        protected float CalculateAngle(Vector3 originPoint, Vector3 previousPoint, Vector3 currentPoint, Vector3 direction)
+        {
+            Vector3 sideA = previousPoint - originPoint;
+            Vector3 sideB = VRControllable_Methods.VectorDirection(originPoint, currentPoint);
+            return AngleSigned(sideA, sideB, direction);
+        }
+
+        protected float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n)
+        {
+            return Mathf.Atan2(Vector3.Dot(n, Vector3.Cross(v1, v2)), Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;
+        }
+
+        #endregion
+        protected bool WithinRotationLimit(Vector3 rotationCheck)
+        {
+            switch(operateAxis)
+            {
+                case OperatingAxis.xAxis:
+                    return angleLimits.WithinLimits(rotationCheck.x);
+                case OperatingAxis.yAxis:
+                    return angleLimits.WithinLimits(rotationCheck.y);
+                case OperatingAxis.zAxis:
+                    return angleLimits.WithinLimits(rotationCheck.z);
+            }
+
+            return false;
+        }
+
+        protected void CancelUpdateRotation()
+        {
+            if (updateRotationRoutine != null)
+            {
+                StopCoroutine(updateRotationRoutine);
+            }
+        }
+
+        public void CancelDecelerateRotation()
+        {
+            if (decelerateRotationRoutine != null)
+            {
+                StopCoroutine(decelerateRotationRoutine);
+            }
+        }
+
+        public void CheckAngleLimits()
+        {
+            angleLimits.minimum = (angleLimits.minimum > 0f ? angleLimits.minimum * -1f : angleLimits.minimum);
+            angleLimits.maximum = (angleLimits.maximum < 0f ? angleLimits.maximum * -1f : angleLimits.maximum);
+        }
+
+        protected bool StillTouching()
+        {
+            float distance = Vector3.Distance(controllerAttachPoint.transform.position, initialAttachPoint.position);
+            return (distance <= detachDistance);
+        }
+
     }
 }
 

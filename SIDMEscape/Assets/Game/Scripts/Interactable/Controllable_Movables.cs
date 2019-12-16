@@ -12,8 +12,10 @@
         public float minMaxThreshold = 0.01f;
         [Tooltip("The threshold the normalized position value needs to be within to register a min or max normalized position value.")]
         [Range(0f, 0.99f)]
-        [Tooltip("If true, the grabbedObject will have it's rigidbody kinematic set to true")]
+      //  [Tooltip("If true, the grabbedObject will have it's rigidbody kinematic set to true")]
         public bool forceKinematics = true;
+        [Tooltip("Grab point of the interactable for distance offset between origin and handle")]
+        public Transform grabPoint;
 
         public float minMaxNormalizedThreshold = 0.01f;
         protected GameObject grabbedObject;
@@ -68,6 +70,38 @@
                 controllerAttachPoint = grabbedBy.GetComponent<Rigidbody>();
             }
 
+            // Should only be ran once and not deleted 
+            // Sets the starting attach point
+            if (initialAttachPoint == null)
+            {
+                // Store the initial transform when first grabbed
+                initialAttachPoint = new GameObject("InitialAttachPoint").transform;
+                initialAttachPoint.SetParent(this.transform.parent);
+                initialAttachPoint.position = this.transform.parent.position;
+                initialAttachPoint.rotation = this.transform.parent.rotation;
+                initialAttachPoint.localScale = Vector3.one;
+                //initialAttachPoint = m_grabPoints[0].gameObject.transform.position;
+
+
+            }
+
+            // Create a game object attached to the interactable
+            if (grabbedObjectAttachPoint == null)
+            {
+                grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
+
+                grabbedObjectAttachPoint.SetParent(this.grabPoint);
+                grabbedObjectAttachPoint.position = this.grabPoint.position;
+                grabbedObjectAttachPoint.rotation = this.grabPoint.rotation;
+
+                //grabbedObjectAttachPoint.SetParent(this.transform);
+                // grabbedObjectAttachPoint.position = this.transform.position;
+                //grabbedObjectAttachPoint.rotation = this.transform.rotation;
+
+                grabbedObjectAttachPoint.localScale = Vector3.one;
+
+            }
+
             CustomGrabBegin(grabbedBy, grabPoint);
         }
 
@@ -81,6 +115,14 @@
             {
                 grabbedObjectRB.isKinematic = previousKinematicState;
             }
+
+            if (grabbedObjectAttachPoint != null)
+            {
+                Destroy(grabbedObjectAttachPoint.gameObject);
+                grabbedObjectAttachPoint = null;
+            }
+
+            
 
             CustomGrabEnd(linearVelocity, angularVelocity);
         }

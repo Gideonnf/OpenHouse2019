@@ -19,8 +19,6 @@ namespace VRControllables.Base.Slider
 
         //[Tooltip("The maximum distance that the drawer can go through")]
         //public float maxDistance = 0.1f;
-        [Tooltip("Grab point of the drawer for distance offset")]
-        public Transform grabPoint;
         [Tooltip("The minimum and maximum limit that the object can move along the x-axis, y-axis and z-axis")]
         public Limit2D[] axisLimit = new Limit2D[3];
 
@@ -164,37 +162,9 @@ namespace VRControllables.Base.Slider
             if (grabbedBy == null)
                 return false;
 
-
-            // Sets the starting attach point
-            if (initialAttachPoint == null)
+            if (initialAttachPoint != null)
             {
-                // Store the initial transform when first grabbed
-                initialAttachPoint = new GameObject("InitialAttachPoint").transform;
-                initialAttachPoint.SetParent(this.transform.parent);
-                initialAttachPoint.position = this.transform.parent.position;
-                initialAttachPoint.rotation = this.transform.parent.rotation;
-                initialAttachPoint.localScale = Vector3.one;
-
                 distanceOffset = Vector3.Distance(this.grabPoint.position, initialAttachPoint.position);
-
-                //initialAttachPoint = m_grabPoints[0].gameObject.transform.position;
-            }
-
-            // Create a game object attached to the interactable
-            if (grabbedObjectAttachPoint == null)
-            {
-                grabbedObjectAttachPoint = new GameObject("AttachPointForGrabbedObject").transform;
-
-                grabbedObjectAttachPoint.SetParent(this.grabPoint);
-                grabbedObjectAttachPoint.position = this.grabPoint.position;
-                grabbedObjectAttachPoint.rotation =this.grabPoint.rotation;
-
-                //grabbedObjectAttachPoint.SetParent(this.transform);
-                // grabbedObjectAttachPoint.position = this.transform.position;
-                //grabbedObjectAttachPoint.rotation = this.transform.rotation;
-
-                grabbedObjectAttachPoint.localScale = Vector3.one;
-
             }
 
 
@@ -206,12 +176,6 @@ namespace VRControllables.Base.Slider
         protected override bool CustomGrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
         {
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
-
-            if (grabbedObjectAttachPoint != null)
-            {
-                Destroy(grabbedObjectAttachPoint.gameObject);
-                grabbedObjectAttachPoint = null;
-            }
 
             // If it is more than 0.0f, reset it to the position set
             if (resetSpeed > 0.0f)

@@ -28,6 +28,11 @@
             maximum = limit.x;
             minimum = limit.y;
         }
+
+        public bool WithinLimits(float value)
+        {
+            return(value >= minimum && value <= maximum);
+        }
     }
 }
 
