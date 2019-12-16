@@ -859,12 +859,12 @@ MonoBehaviour:
   positionFidelity: 0.001
   isLocked: 0
   minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 1489534556}
   minMaxNormalizedThreshold: 0.01
   detachDistance: 0.3
   trackingSpeed: 7
   resetSpeed: 0
-  forceKinematics: 1
-  grabPoint: {fileID: 1489534556}
   axisLimit:
   - name: x-Axis Limit
     maximum: 2
@@ -1151,6 +1151,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 395282530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &395282532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8760197020689946017, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 395282530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &395282533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395282532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0397ef5e039d8489db61d9704c4e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+  isIndependent: 0
+  isGrabbable: 0
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  isLocked: 0
+  minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 0}
+  minMaxNormalizedThreshold: 0.01
+  detachDistance: 1
+  originDeadzone: 0
+  rotatingAction: 0
+  rotationFriction: 1
+  DecelarationDamper: 1
+  resetToOriginSpeed: 0
+  angleLimits:
+    name: 
+    maximum: -180
+    minimum: 180
 --- !u!1 &414185235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,12 +1974,12 @@ MonoBehaviour:
   positionFidelity: 0.001
   isLocked: 0
   minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 2002184449}
   minMaxNormalizedThreshold: 0.01
   detachDistance: 0.3
   trackingSpeed: 7
   resetSpeed: 0
-  forceKinematics: 1
-  grabPoint: {fileID: 2002184449}
   axisLimit:
   - name: x-Axis Limit
     maximum: 2
@@ -2143,7 +2186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 395282531}
-  m_RootOrder: 9
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2075410316
 PrefabInstance:
