@@ -204,10 +204,6 @@ namespace VRControllables.Base.Rotator
 
         #endregion
 
-        /* 
-        SIMPLE FUNCTIONS TO GET OR SET VALUES 
-        SIMPLE FUNCTIONS TO STOP ACTIONS SUCH AS COROUTINES
-        */
         #region RotationCalculations
 
         protected void UpdateRotation(Vector3 newRotation, bool additive, bool updateCurrentRotation)
@@ -285,12 +281,10 @@ namespace VRControllables.Base.Rotator
             return AngleSigned(sideA, sideB, direction);
         }
 
-        protected float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n)
-        {
-            return Mathf.Atan2(Vector3.Dot(n, Vector3.Cross(v1, v2)), Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;
-        }
-
         #endregion
+
+        #region ComplimentaryFunctions
+
         protected bool WithinRotationLimit(Vector3 rotationCheck)
         {
             switch(operateAxis)
@@ -304,6 +298,11 @@ namespace VRControllables.Base.Rotator
             }
 
             return false;
+        }
+
+        protected float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n)
+        {
+            return Mathf.Atan2(Vector3.Dot(n, Vector3.Cross(v1, v2)), Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;
         }
 
         protected void CancelUpdateRotation()
@@ -334,6 +333,7 @@ namespace VRControllables.Base.Rotator
             return (distance <= detachDistance);
         }
 
+        #endregion
     }
 }
 
