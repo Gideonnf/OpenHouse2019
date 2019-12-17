@@ -85,8 +85,8 @@ namespace VRControllables.Base.Slider
         // Update is called once per frame
         protected virtual void Update()
         {
-            Debug.Log("current Position " + transform.position);
-            Debug.Log("current local Position " + transform.localPosition);
+          //  Debug.Log("current Position " + transform.position);
+          //  Debug.Log("current local Position " + transform.localPosition);
 
             if (grabbedObjectAttachPoint != null)
             {
@@ -106,7 +106,7 @@ namespace VRControllables.Base.Slider
                 //Debug.Log("current distance" + distance);
                 if (distance > (detachDistance + distanceOffset))
                 {
-                    Debug.Log("max distance reached");
+                    //Debug.Log("max distance reached");
                     distance = Vector3.Distance(controllerAttachPoint.transform.position, initialAttachPoint.position);
                     if (distance > (detachDistance + distanceOffset))
                     {
@@ -152,7 +152,7 @@ namespace VRControllables.Base.Slider
             if (positionChanged)
             {
                 float currentPosition = GetNormalizedValue();
-                Debug.Log("current position on operating Axis : " + currentPosition);
+               // Debug.Log("current position on operating Axis : " + currentPosition);
                 // TODO: Check for the drawer hitting the limits
             }
         }

@@ -11,8 +11,7 @@
         [Tooltip("the threshold the position needs to be in to register a min or max position")]
         public float minMaxThreshold = 0.01f;
         [Tooltip("The threshold the normalized position value needs to be within to register a min or max normalized position value.")]
-        [Range(0f, 0.99f)]
-      //  [Tooltip("If true, the grabbedObject will have it's rigidbody kinematic set to true")]
+        //[Range(0f, 0.99f)]
         public bool forceKinematics = true;
         [Tooltip("Grab point of the interactable for distance offset between origin and handle")]
         public Transform grabPoint;

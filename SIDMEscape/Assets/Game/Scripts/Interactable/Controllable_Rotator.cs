@@ -239,8 +239,8 @@ namespace VRControllables.Base.Rotator
         {
             Vector3 grabbingObjectAngularVelocity = Vector3.zero;
             grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
-
-            switch(rotatingAction)
+            Vector3 newAngle = CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+            switch (rotatingAction)
             {
                 case RotatingType.AttachPointRotation:
                     return CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
