@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.578
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.156
+      value: 0.807
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 551373664}
   - component: {fileID: 551373663}
   - component: {fileID: 551373667}
+  - component: {fileID: 551373668}
   m_Layer: 0
   m_Name: Full
   m_TagString: Untagged
@@ -590,7 +591,7 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
   operateAxis: 0
   ignoreCollisionsWith: []
   positionFidelity: 0.001
@@ -599,6 +600,22 @@ MonoBehaviour:
   forceKinematics: 1
   grabPoint: {fileID: 0}
   minMaxNormalizedThreshold: 0.01
+--- !u!54 &551373668
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551373662}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &615621754
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,8 +899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   b_blitzMode: 0
-  go_blitz: {fileID: 0}
-  go_full: {fileID: 0}
+  go_blitz: {fileID: 1732091679}
+  go_full: {fileID: 551373662}
 --- !u!114 &1108866591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1175,7 @@ GameObject:
   - component: {fileID: 1732091681}
   - component: {fileID: 1732091680}
   - component: {fileID: 1732091684}
+  - component: {fileID: 1732091685}
   m_Layer: 0
   m_Name: Blitz
   m_TagString: Untagged
@@ -1254,17 +1272,34 @@ MonoBehaviour:
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
-  m_grabPoints: []
+  m_grabPoints:
+  - {fileID: 1732091680}
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
   operateAxis: 0
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
   minMaxThreshold: 0.01
   forceKinematics: 1
-  grabPoint: {fileID: 0}
+  grabPoint: {fileID: 1732091683}
   minMaxNormalizedThreshold: 0.01
+--- !u!54 &1732091685
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732091679}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2077088426
 GameObject:
   m_ObjectHideFlags: 0
