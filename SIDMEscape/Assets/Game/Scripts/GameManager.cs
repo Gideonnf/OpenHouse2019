@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     bool b_blitzMode;
+    [SerializeField]
+    GameObject go_blitz;
+    [SerializeField]
+    GameObject go_full;
 
     public bool getBlitzMode()
     {
@@ -37,7 +41,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (go_blitz == null || go_full == null)
+        {
+            return;
+        }
 
+        if (go_blitz.GetComponent<VRControllables.Base.Controllable_Movables>().isGrabbed)
+        {
+            b_blitzMode = true;
+            SceneChanger.GetInstance().SceneBlitz();
+        }
+        else if (go_full.GetComponent<VRControllables.Base.Controllable_Movables>().isGrabbed)
+        {
+            SceneChanger.GetInstance().SceneFull();
+        }
     }
 }
 

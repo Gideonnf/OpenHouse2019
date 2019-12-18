@@ -32,7 +32,7 @@ public class MonitorObject : OVRGrabbable
     }
 
     /// <summary>
-    /// Returns the original position oif the object
+    /// Returns the original position of the object
     /// </summary>
     public Vector3 getOriginalPos(bool local)
     {

@@ -1719,6 +1719,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1108866592}
   - component: {fileID: 1108866591}
+  - component: {fileID: 1108866593}
+  - component: {fileID: 1108866590}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1726,6 +1728,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &1108866590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108866589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0653a89000d15408f71698beab3517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  b_blitzMode: 0
+  go_blitz: {fileID: 0}
+  go_full: {fileID: 0}
 --- !u!114 &1108866591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,6 +1777,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1108866593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108866589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce5ee5506a59b249b8242742b7dff9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1166760744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8760197020577517537, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
