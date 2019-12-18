@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField]
     bool b_blitzMode;
 
     public bool getBlitzMode()
