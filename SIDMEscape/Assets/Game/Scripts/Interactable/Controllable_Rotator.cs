@@ -240,16 +240,17 @@ namespace VRControllables.Base.Rotator
             Vector3 grabbingObjectAngularVelocity = Vector3.zero;
             grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
             Vector3 newAngle = CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+            Debug.Log(newAngle);
             switch (rotatingAction)
             {
                 case RotatingType.AttachPointRotation:
-                    return CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+                    return newAngle;
                 case RotatingType.RollAxisRotation:
-                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.x);
+                    return BuildFollowAxisVector(newAngle.x);
                 case RotatingType.YawAxisRotation:
-                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.y);
+                    return BuildFollowAxisVector(newAngle.y);
                 case RotatingType.PitchAxisRotation:
-                    return BuildFollowAxisVector(grabbingObjectAngularVelocity.z);
+                    return BuildFollowAxisVector(newAngle.z);
             }
 
             return Vector3.zero;

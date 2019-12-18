@@ -1083,6 +1083,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 658503746}
     m_Modifications:
+    - target: {fileID: 8760197020395781845, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_Name
+      value: Lever
+      objectReference: {fileID: 0}
     - target: {fileID: 6453606043745760144, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_IsKinematic
@@ -1092,11 +1097,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseGravity
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8760197020395781845, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
-        type: 3}
-      propertyPath: m_Name
-      value: Lever
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020395781844, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
@@ -1153,6 +1153,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000008034054
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000004940704
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6763648
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.73656684
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 85.12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f, type: 3}
 --- !u!4 &395282531 stripped
@@ -1187,7 +1212,7 @@ MonoBehaviour:
   - {fileID: 1166760745}
   isIndependent: 1
   isGrabbable: 0
-  operateAxis: 0
+  operateAxis: 2
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
@@ -1197,14 +1222,14 @@ MonoBehaviour:
   minMaxNormalizedThreshold: 0.01
   detachDistance: 1
   originDeadzone: 0
-  rotatingAction: 0
+  rotatingAction: 2
   rotationFriction: 1
   DecelarationDamper: 0
   resetToOriginSpeed: 0
   angleLimits:
     name: 
-    maximum: -180
-    minimum: 180
+    maximum: 85
+    minimum: 0
 --- !u!1 &414185235
 GameObject:
   m_ObjectHideFlags: 0
