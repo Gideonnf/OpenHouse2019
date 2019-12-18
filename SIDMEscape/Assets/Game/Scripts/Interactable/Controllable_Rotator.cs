@@ -10,6 +10,7 @@ namespace VRControllables.Base.Rotator
 
     public class Controllable_Rotator : Controllable_Movables
     {
+
         /// <summary>
         /// The type of rotation that is affecting the object
         /// </summary>
@@ -265,6 +266,8 @@ namespace VRControllables.Base.Rotator
             return new Vector3(xAngle, yAngle, zAngle);
         }
 
+//TODO: I Think this breaks the angle rotation when its anything but X Axis !!!!
+// Fix it later
         protected Vector3 CalculateAngle(Vector3 originPoint, Vector3 originalGrabPoint, Vector3 currentGrabPoint)
         {
             float xRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.right) : 0f);
@@ -297,7 +300,7 @@ namespace VRControllables.Base.Rotator
                 case OperatingAxis.zAxis:
                     return angleLimits.WithinLimits(rotationCheck.z);
             }
-
+            Debug.Log("Out of limits");
             return false;
         }
 

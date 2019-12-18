@@ -1156,27 +1156,27 @@ PrefabInstance:
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000008034054
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000004940704
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6763648
+      value: 0.63432586
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73656684
+      value: 0.77306587
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 85.12
+      value: 78.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f, type: 3}
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   - {fileID: 1166760745}
   isIndependent: 1
   isGrabbable: 0
-  operateAxis: 2
+  operateAxis: 0
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   minMaxNormalizedThreshold: 0.01
   detachDistance: 1
   originDeadzone: 0
-  rotatingAction: 2
+  rotatingAction: 0
   rotationFriction: 1
   DecelarationDamper: 0
   resetToOriginSpeed: 0
