@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         b_blitzMode = false;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame

@@ -25,7 +25,7 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneFull()
     {
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        SceneManager.LoadScene("Alwin-test", LoadSceneMode.Single);
     }
 
     public void SceneBlitz()
