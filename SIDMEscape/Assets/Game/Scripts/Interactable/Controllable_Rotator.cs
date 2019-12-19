@@ -49,10 +49,19 @@ namespace VRControllables.Base.Rotator
         [Tooltip("The speed of the object when rotating back to its origin rotation when released. If set to 0, the rotation will not reset")]
         public float resetToOriginSpeed = 0f;
 
-
         [Header("Rotation Limits")]
         [Tooltip("The limits for the rotation allowed on the operating axis")]
         public Limit2D angleLimits = new Limit2D(-180, 180);
+
+        [Header("Event Settings")]
+        [Tooltip("The boolean Trigger for repeated events or one time events")]
+        public bool isRepeatable = false;
+        [Tooltip("Time between each time an event is triggered if it is repeatable")]
+        public float resetTimer = 1.0f;
+        [Tooltip("Event ID")]
+        public int eventID = 0;
+        [Tooltip("Game Manager Reference, Handles the triggered event call")]
+        public GameObject gameManager;
 
         protected OVRGrabber handReference;
         protected Vector3 previousAttachPointPosition;
@@ -221,12 +230,18 @@ namespace VRControllables.Base.Rotator
             }
             else
             {
-                Debug.Log("Out of limit");
-                Debug.Log("Out of limit");
-                Debug.Log("Out of limit");
-                Debug.Log("Out of limit");
-                Debug.Log("Out of limit");
+                // If its not within limit anymore
+                // Check whether it hit the minimum or maximum
+                // Then trigger what ever function it needs to trigger
+                if(CheckMaximumBoundary(currentRotation + newRotation))
+                {
+                   // Debug.LogError("Maximum has been reached");
+                }
+                else if (CheckMinimumBoundary(currentRotation + newRotation))
+                {
+                    //Debug.LogError("Minimum has been reached");
 
+                }
             }
             Debug.Log("Local Rotation : " + transform.localRotation.eulerAngles);
 
@@ -316,6 +331,36 @@ namespace VRControllables.Base.Rotator
                     return angleLimits.WithinLimits(rotationCheck.z);
             }
             Debug.Log("Out of limits");
+            return false;
+        }
+
+        protected bool CheckMinimumBoundary(Vector3 rotationCheck)
+        {
+            switch (operateAxis)
+            {
+                case OperatingAxis.xAxis:
+                    return angleLimits.CheckMinimumLimits(rotationCheck.x);
+                case OperatingAxis.yAxis:
+                    return angleLimits.CheckMinimumLimits(rotationCheck.y);
+                case OperatingAxis.zAxis:
+                    return angleLimits.CheckMinimumLimits(rotationCheck.z);
+            }
+
+            return false;
+        }
+
+        protected bool CheckMaximumBoundary(Vector3 rotationCheck)
+        {
+            switch (operateAxis)
+            {
+                case OperatingAxis.xAxis:
+                    return angleLimits.CheckMaximumLimits(rotationCheck.x);
+                case OperatingAxis.yAxis:
+                    return angleLimits.CheckMaximumLimits(rotationCheck.y);
+                case OperatingAxis.zAxis:
+                    return angleLimits.CheckMaximumLimits(rotationCheck.z);
+            }
+
             return false;
         }
 

@@ -29,6 +29,16 @@
             minimum = limit.y;
         }
 
+        public bool CheckMinimumLimits(float value)
+        {
+            return (value <= minimum);
+        }
+
+        public bool CheckMaximumLimits(float value)
+        {
+            return (value >= maximum);
+        }
+
         public bool WithinLimits(float value)
         {
             Debug.Log("Rotation Value: " + value);
