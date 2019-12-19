@@ -1166,17 +1166,17 @@ PrefabInstance:
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.63432586
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.77306587
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 8760197020689946016, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 78.74
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f, type: 3}
@@ -1222,14 +1222,14 @@ MonoBehaviour:
   minMaxNormalizedThreshold: 0.01
   detachDistance: 1
   originDeadzone: 0
-  rotatingAction: 3
+  rotatingAction: 2
   rotationFriction: 1
   DecelarationDamper: 0
   resetToOriginSpeed: 0
   angleLimits:
     name: 
-    maximum: 85
-    minimum: 0
+    maximum: 40
+    minimum: -40
 --- !u!1 &414185235
 GameObject:
   m_ObjectHideFlags: 0

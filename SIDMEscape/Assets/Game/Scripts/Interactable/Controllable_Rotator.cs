@@ -209,14 +209,28 @@ namespace VRControllables.Base.Rotator
 
         protected void UpdateRotation(Vector3 newRotation, bool additive, bool updateCurrentRotation)
         {
+            Debug.Log("Current Rotation : " + currentRotation);
             if (WithinRotationLimit(currentRotation + newRotation))
             {
                 if(updateCurrentRotation)
                 {
                     currentRotation += newRotation;
+
+                    transform.localRotation = (additive ? transform.localRotation * Quaternion.Euler(newRotation) : Quaternion.Euler(newRotation));
                 }
             }
-            transform.localRotation = (additive ? transform.localRotation * Quaternion.Euler(newRotation) : Quaternion.Euler(newRotation));
+            else
+            {
+                Debug.Log("Out of limit");
+                Debug.Log("Out of limit");
+                Debug.Log("Out of limit");
+                Debug.Log("Out of limit");
+                Debug.Log("Out of limit");
+
+            }
+            Debug.Log("Local Rotation : " + transform.localRotation.eulerAngles);
+
+            //
             // Emit events? idk if we gonna use that in our version
         }
 
@@ -272,7 +286,7 @@ namespace VRControllables.Base.Rotator
             float xRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.right) : 0f);
             float yRotated = (operateAxis == OperatingAxis.yAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.up) : 0f);
             float zRotated = (operateAxis == OperatingAxis.zAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.forward) : 0f);
-            Debug.Log("Rotated : " + xRotated + ", " + yRotated + ", " + zRotated);
+            //Debug.Log("Rotated : " + xRotated + ", " + yRotated + ", " + zRotated);
 
 
             float frictionMultiplier = VRControllable_Methods.DividerToMultiplier(rotationFriction);

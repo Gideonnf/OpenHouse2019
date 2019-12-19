@@ -31,6 +31,9 @@
 
         public bool WithinLimits(float value)
         {
+            Debug.Log("Rotation Value: " + value);
+            Debug.Log("Minimum Value: " + minimum);
+            Debug.Log("Maximum Value : " + maximum);
             return(value >= minimum && value <= maximum);
         }
     }
