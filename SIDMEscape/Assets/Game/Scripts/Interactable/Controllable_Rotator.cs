@@ -241,7 +241,6 @@ namespace VRControllables.Base.Rotator
             Vector3 grabbingObjectAngularVelocity = Vector3.zero;
             grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
             Vector3 newAngle = CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
-            Debug.Log(newAngle);
             switch (rotatingAction)
             {
                 case RotatingType.AttachPointRotation:
@@ -271,8 +270,10 @@ namespace VRControllables.Base.Rotator
         protected Vector3 CalculateAngle(Vector3 originPoint, Vector3 originalGrabPoint, Vector3 currentGrabPoint)
         {
             float xRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.right) : 0f);
-            float yRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.up) : 0f);
-            float zRotated = (operateAxis == OperatingAxis.xAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.forward) : 0f);
+            float yRotated = (operateAxis == OperatingAxis.yAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.up) : 0f);
+            float zRotated = (operateAxis == OperatingAxis.zAxis ? CalculateAngle(originPoint, originalGrabPoint, currentGrabPoint, transform.forward) : 0f);
+            Debug.Log("Rotated : " + xRotated + ", " + yRotated + ", " + zRotated);
+
 
             float frictionMultiplier = VRControllable_Methods.DividerToMultiplier(rotationFriction);
             return new Vector3(xRotated * frictionMultiplier, yRotated * frictionMultiplier, zRotated * frictionMultiplier);
