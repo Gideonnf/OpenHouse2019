@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 438468467}
   - component: {fileID: 438468465}
   - component: {fileID: 2028796881687723495}
+  - component: {fileID: 301948727568587929}
   m_Layer: 0
   m_Name: LeftHandAnchor
   m_TagString: Hands
@@ -447,11 +448,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109308}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &301948727568587929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a98ed518e58b3449b64e4bd94c56c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: {fileID: 2028796881687723495}
 --- !u!1 &113768
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +479,7 @@ GameObject:
   - component: {fileID: 438468462}
   - component: {fileID: 438468460}
   - component: {fileID: 5497600578192308186}
+  - component: {fileID: 3940462499391946643}
   m_Layer: 0
   m_Name: RightHandAnchor
   m_TagString: Hands
@@ -545,11 +560,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113768}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3940462499391946643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a98ed518e58b3449b64e4bd94c56c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: {fileID: 5497600578192308186}
 --- !u!1 &159718
 GameObject:
   m_ObjectHideFlags: 0
