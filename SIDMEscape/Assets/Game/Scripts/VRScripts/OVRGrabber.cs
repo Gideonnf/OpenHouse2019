@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class OVRGrabber : MonoBehaviour
 {
+    public SphereCollider grabbingRange;
     // Grip trigger thresholds for picking up objects, with some hysteresis.
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
@@ -146,36 +147,43 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
-        // Get the grab trigger
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
-        if (grabbable == null) return;
+       // if (otherCollider == grabbingRange)
+        {
+            // Get the grab trigger
+            OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+            if (grabbable == null) return;
 
-        // Add the grabbable
-        int refCount = 0;
-        m_grabCandidates.TryGetValue(grabbable, out refCount);
-        m_grabCandidates[grabbable] = refCount + 1;
+            // Add the grabbable
+            int refCount = 0;
+            m_grabCandidates.TryGetValue(grabbable, out refCount);
+            m_grabCandidates[grabbable] = refCount + 1;
+        }
     }
 
     void OnTriggerExit(Collider otherCollider)
     {
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
-        if (grabbable == null) return;
+       // if(otherCollider == grabbingRange)
+        {
+            OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+            if (grabbable == null) return;
 
-        // Remove the grabbable
-        int refCount = 0;
-        bool found = m_grabCandidates.TryGetValue(grabbable, out refCount);
-        if (!found)
-        {
-            return;
-        }
+            // Remove the grabbable
+            int refCount = 0;
+            bool found = m_grabCandidates.TryGetValue(grabbable, out refCount);
+            if (!found)
+            {
+                return;
+            }
 
-        if (refCount > 1)
-        {
-            m_grabCandidates[grabbable] = refCount - 1;
-        }
-        else
-        {
-            m_grabCandidates.Remove(grabbable);
+            if (refCount > 1)
+            {
+                m_grabCandidates[grabbable] = refCount - 1;
+            }
+            else
+            {
+                m_grabCandidates.Remove(grabbable);
+            }
+
         }
     }
 
