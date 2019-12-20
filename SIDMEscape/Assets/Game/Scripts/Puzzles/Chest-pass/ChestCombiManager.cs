@@ -57,4 +57,16 @@ public class ChestCombiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Call this function in the lever object
+    /// </summary>
+    /// <param name="triggerID"></param>
+    public void LeverTrigger(int triggerID)
+    {
+        switch (triggerID)
+        {
+
+        }
+    }
+
 }
