@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using VRControllables.Base;
 
-public class MonitorObject : OVRGrabbable
+public class MonitorObject : MonoBehaviour
 {
     protected Vector3 originalLocPosition;
     protected Vector3 originalWorldPosition;

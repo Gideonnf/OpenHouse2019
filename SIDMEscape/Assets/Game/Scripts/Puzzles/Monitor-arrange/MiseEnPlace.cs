@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRControllables.Base;
 
 public class MiseEnPlace : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class MiseEnPlace : MonoBehaviour
         // Store the grabbable object
         //OVRGrabbable grabbableObject = collidedObject.gameObject.GetComponent<OVRGrabbable>();
         MonitorObject monitorObjectScript = GrabbableObject.gameObject.GetComponent<MonitorObject>();
+        Controllable_Movables monitorMovableScript = GrabbableObject.gameObject.GetComponent<Controllable_Movables>();
         // Find which object it is
         GameObject tempObject = null;
         for(int i = 0; i < go_Objects.Length; ++i)
@@ -57,7 +59,7 @@ public class MiseEnPlace : MonoBehaviour
         }
 
         // End the grabbing forcefully
-        monitorObjectScript.grabbedBy.GrabEnd();
+        monitorMovableScript.grabbedBy.GrabEnd();
 
         // New position of the object based on the coaster's x and z
         Vector3 newPosition = new Vector3(CoasterObject.transform.position.x,

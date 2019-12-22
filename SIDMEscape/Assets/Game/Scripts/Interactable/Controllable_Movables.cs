@@ -112,7 +112,7 @@
 
             if (grabbedObjectRB != null)
             {
-                grabbedObjectRB.isKinematic = previousKinematicState;
+               // grabbedObjectRB.isKinematic = previousKinematicState;
             }
 
             if (grabbedObjectAttachPoint != null)

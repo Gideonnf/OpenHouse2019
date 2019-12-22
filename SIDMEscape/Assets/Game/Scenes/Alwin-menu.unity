@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbingRange: {fileID: 0}
   grabBegin: 0.55
   grabEnd: 0.35
   m_parentHeldObject: 0
@@ -436,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabbingRange: {fileID: 0}
   grabBegin: 0.55
   grabEnd: 0.35
   m_parentHeldObject: 0
@@ -893,7 +895,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108866589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da0653a89000d15408f71698beab3517, type: 3}
   m_Name: 

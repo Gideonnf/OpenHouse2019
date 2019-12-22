@@ -35,11 +35,18 @@ public class VRPlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OVRInput.Update();
+
         if(toolTipCanvasReference != null)
         {
             Vector3 TargetLocation = mainCameraReference.transform.position + (mainCameraReference.transform.forward * toolTipOffset);
             toolTipCanvasReference.transform.position = Vector3.Slerp(toolTipCanvasReference.transform.position, TargetLocation, Time.deltaTime);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        OVRInput.FixedUpdate();
     }
 
     /// <summary>

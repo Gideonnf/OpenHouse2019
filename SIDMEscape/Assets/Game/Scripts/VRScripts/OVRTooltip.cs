@@ -19,6 +19,8 @@ public class OVRTooltip : MonoBehaviour
     float objectModeScale = 0.004f;
     [Tooltip("Scale of canvas in camera mode")]
     float cameraModeScale = 0.0006f;
+    [Tooltip("To track if the canvas was closed by the player")]
+    bool isClosed = false;
 
     [Header("Tooltip Configuration")]
     [Tooltip("If it is attached to the object or player camera")]
@@ -26,7 +28,7 @@ public class OVRTooltip : MonoBehaviour
     [Tooltip("World space Canvas tool tip prefab")]
     public GameObject tooltipCanvas;
     [Tooltip("Tooltip Text to be displayed")]
-    [TextArea(15, 20)]
+    [TextArea(6, 8)]
     public string toolTip = "";
 
     private GameObject localTooltipReference;
@@ -50,22 +52,70 @@ public class OVRTooltip : MonoBehaviour
             // If there isnt a tool tip created yet
         if (localTooltipReference == null)
         {
-            if (VRMovableReference.isGrabbed)
+            if (VRMovableReference.isGrabbed && !isClosed)
             {
                 CreateCanvasTooltip();
             }
         }
         else
         {
+          
             // If it is in object tool tip mode, the canvas has to rotate towards the camera
             if (isObjectTooltip)
             {
                 // Only need the X and Z positions
-                Vector3 targetPosition = OVRPlayerReference.transform.position;
+                Vector3 targetPosition = OVRPlayerReference.mainCameraReference.transform.position;
                 targetPosition.y = localTooltipReference.transform.position.y;
 
                 //Turn to the target position
                 localTooltipReference.transform.LookAt(targetPosition, localTooltipReference.transform.up);
+
+                // If it is no longer being grabbed
+                if (!VRMovableReference.isGrabbed)
+                {
+                    Destroy(localTooltipReference);
+                    localTooltipReference = null;
+                }
+                else if (OVRInput.Get(OVRInput.Button.One))
+                {
+                    Destroy(localTooltipReference);
+                    localTooltipReference = null;
+                    isClosed = true;
+                }
+            }
+            // If it is camera mode
+            else
+            {
+                // If it is no longer being grabbed
+                if (!VRMovableReference.isGrabbed)
+                {
+                    // Check if it is the same first
+                    // Just for safety
+                    if (localTooltipReference == OVRPlayerReference.GetWorldTipCanvas())
+                    {
+                        // Destroy it
+                        if (OVRPlayerReference.DeleteWorldTipCanvas())
+                        {
+                            // Set this back to null
+                            localTooltipReference = null;
+                        }
+                    }
+                }
+                else if (OVRInput.Get(OVRInput.Button.One))
+                {
+                    // Check if it is the same first
+                    // Just for safety
+                    if (localTooltipReference == OVRPlayerReference.GetWorldTipCanvas())
+                    {
+                        // Destroy it
+                        if (OVRPlayerReference.DeleteWorldTipCanvas())
+                        {
+                            // Set this back to null
+                            localTooltipReference = null;
+                        }
+                    }
+                }
+
             }
         }
         
@@ -83,8 +133,8 @@ public class OVRTooltip : MonoBehaviour
 
         if (isObjectTooltip)
         {
+            toolTipCanvas.transform.position = this.transform.position + new Vector3(0, 0.25f, 0);
             toolTipCanvas.transform.SetParent(this.transform);
-            toolTipCanvas.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
             toolTipCanvas.transform.localScale = new Vector3(objectModeScale, objectModeScale, objectModeScale);
             localTooltipReference = toolTipCanvas;
             return false;

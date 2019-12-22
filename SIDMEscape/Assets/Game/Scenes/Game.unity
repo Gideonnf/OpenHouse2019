@@ -292,6 +292,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 658503746}
     m_Modifications:
+    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_grabPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: grabPoint
+      value: 
+      objectReference: {fileID: 95826453}
+    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: isGrabbable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_grabPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 682989276}
+    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: forceKinematics
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6671316308162078677, guid: 604f44665dcd96c4783fb2ef932231f4,
         type: 3}
       propertyPath: m_Name
@@ -485,6 +510,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 95826445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &95826447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6671316308507371768, guid: 604f44665dcd96c4783fb2ef932231f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 95826445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &95826448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95826447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isObjectTooltip: 0
+  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
+    type: 3}
+  toolTip: Just some filler test text to see if object tool tips are gonna work on
+    objects. This should be informational text on the object that the player is picking
+    up. Example, like what a controller represents in SIDM (GDT/DGAD)
+--- !u!4 &95826453 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6671316308507371775, guid: 604f44665dcd96c4783fb2ef932231f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 95826445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &208893194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,29 +724,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c, type: 3}
---- !u!1 &208893195 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8632445865276271842, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-    type: 3}
-  m_PrefabInstance: {fileID: 208893194}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &208893196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208893195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
-    type: 3}
-  toolTip: Another Text TO test if i can change the canvas text when the tool tip
-    is created. Filling up somemore text just for the sake of testing the length LMAO
-    get nae ned.
 --- !u!1001 &314427228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1262,15 +1294,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.874
+      value: 0.721
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.924
+      value: 1.598
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.858
+      value: 0.203
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
