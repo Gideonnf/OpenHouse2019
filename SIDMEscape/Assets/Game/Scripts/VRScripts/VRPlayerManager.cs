@@ -39,8 +39,8 @@ public class VRPlayerManager : MonoBehaviour
 
         if(toolTipCanvasReference != null)
         {
-            Vector3 TargetLocation = mainCameraReference.transform.position + (mainCameraReference.transform.forward * toolTipOffset);
-            toolTipCanvasReference.transform.position = Vector3.Slerp(toolTipCanvasReference.transform.position, TargetLocation, Time.deltaTime);
+           // Vector3 TargetLocation = mainCameraReference.transform.position + (mainCameraReference.transform.forward * toolTipOffset);
+           // toolTipCanvasReference.transform.position = Vector3.Slerp(toolTipCanvasReference.transform.position, TargetLocation, Time.deltaTime);
         }
     }
 
@@ -96,6 +96,12 @@ public class VRPlayerManager : MonoBehaviour
 
         // Store the tooltipCanvasReference to the player class
         toolTipCanvasReference = toolTipCanvas;
+        // Set the position
+        toolTipCanvasReference.transform.position = mainCameraReference.transform.position + new Vector3(0, 0, 0.25f);
+        // Rotate it to the camera
+        toolTipCanvasReference.transform.LookAt(mainCameraReference.transform.position, toolTipCanvasReference.transform.up);
+        // Set the parent
+        toolTipCanvasReference.transform.SetParent(mainCameraReference.transform);
 
         return true;
     }
