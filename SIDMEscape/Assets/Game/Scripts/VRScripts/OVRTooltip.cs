@@ -63,13 +63,23 @@ public class OVRTooltip : MonoBehaviour
             // If it is in object tool tip mode, the canvas has to rotate towards the camera
             if (isObjectTooltip)
             {
-                // Only need the X and Z positions
-                Vector3 targetPosition = OVRPlayerReference.mainCameraReference.transform.position;
-                targetPosition.y = localTooltipReference.transform.position.y;
+                // Looking Function
+                {
+                    // Only need the X and Z positions
+                    Vector3 targetPosition = OVRPlayerReference.mainCameraReference.transform.position;
+                    targetPosition.y = localTooltipReference.transform.position.y;
 
-                //Turn to the target position
-                localTooltipReference.transform.LookAt(targetPosition, localTooltipReference.transform.up);
+                    //Turn to the target position
+                    localTooltipReference.transform.LookAt(targetPosition, localTooltipReference.transform.up);
+                }
 
+                // Moving Function
+                {
+                    Vector3 targetPosition = this.transform.position;
+                    targetPosition += Vector3.up * 0.25f;
+
+                    localTooltipReference.transform.position = Vector3.Slerp(localTooltipReference.transform.position, targetPosition, 1.0f);
+                }
                 // If it is no longer being grabbed
                 if (!VRMovableReference.isGrabbed)
                 {
@@ -134,8 +144,8 @@ public class OVRTooltip : MonoBehaviour
         if (isObjectTooltip)
         {
             toolTipCanvas.transform.position = this.transform.position + new Vector3(0, 0.25f, 0);
-            toolTipCanvas.transform.SetParent(this.transform);
-            toolTipCanvas.transform.localScale = new Vector3(objectModeScale, objectModeScale, objectModeScale);
+           // toolTipCanvas.transform.SetParent(this.transform);
+            //toolTipCanvas.transform.localScale = new Vector3(objectModeScale, objectModeScale, objectModeScale);
             localTooltipReference = toolTipCanvas;
             return false;
         }
