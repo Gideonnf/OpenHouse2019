@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Game/Scenes/Alwin-merge.unity
-    guid: 4b0042c2639371b4bbcd7601d48cdd28
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Game/Scenes/Alwin-blitz.unity
     guid: 4e937c008c9913e4194df3631b58d070
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Scenes/Alwin-test.unity
     guid: 0533f3daf1407894ca4bf5a21e6ec2bf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Game/Scenes/Game.unity
     guid: 002b0e7b2279dbd45b682875b45b9891
   m_configObjects: {}

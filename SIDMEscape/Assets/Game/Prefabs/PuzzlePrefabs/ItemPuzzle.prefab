@@ -173,16 +173,17 @@ MonoBehaviour:
   m_snapPosition: 0
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
-  m_grabPoints: []
+  m_grabPoints:
+  - {fileID: 6671316308507371774}
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
   operateAxis: 0
   ignoreCollisionsWith: []
   positionFidelity: 0.001
   isLocked: 0
   minMaxThreshold: 0.01
-  forceKinematics: 1
-  grabPoint: {fileID: 0}
+  forceKinematics: 0
+  grabPoint: {fileID: 6671316308507371775}
   minMaxNormalizedThreshold: 0.01
 --- !u!1 &6671316308616648825
 GameObject:

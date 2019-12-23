@@ -218,7 +218,7 @@ namespace VRControllables.Base.Rotator
 
         protected void UpdateRotation(Vector3 newRotation, bool additive, bool updateCurrentRotation)
         {
-            Debug.Log("Current Rotation : " + currentRotation);
+            //Debug.Log("Current Rotation : " + currentRotation);
             if (WithinRotationLimit(currentRotation + newRotation))
             {
                 if(updateCurrentRotation)
@@ -243,7 +243,7 @@ namespace VRControllables.Base.Rotator
 
                 }
             }
-            Debug.Log("Local Rotation : " + transform.localRotation.eulerAngles);
+           // Debug.Log("Local Rotation : " + transform.localRotation.eulerAngles);
 
             //
             // Emit events? idk if we gonna use that in our version

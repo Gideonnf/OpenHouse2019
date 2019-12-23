@@ -319,7 +319,7 @@ public class OVRGrabber : MonoBehaviour
         else
         {
             grabbedRigidbody.MovePosition(grabbablePosition);
-            ;
+            grabbedRigidbody.MoveRotation(grabbableRotation);
         }
     }
 

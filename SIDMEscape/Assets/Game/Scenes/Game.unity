@@ -292,31 +292,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 658503746}
     m_Modifications:
-    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
-        type: 3}
-      propertyPath: m_grabPoints.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
-        type: 3}
-      propertyPath: grabPoint
-      value: 
-      objectReference: {fileID: 95826453}
-    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
-        type: 3}
-      propertyPath: isGrabbable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
-        type: 3}
-      propertyPath: m_grabPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 682989276}
-    - target: {fileID: 7983770323393864173, guid: 604f44665dcd96c4783fb2ef932231f4,
-        type: 3}
-      propertyPath: forceKinematics
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6671316308162078677, guid: 604f44665dcd96c4783fb2ef932231f4,
         type: 3}
       propertyPath: m_Name
@@ -528,18 +503,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObjectTooltip: 0
+  isObjectTooltip: 1
   tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
     type: 3}
   toolTip: Just some filler test text to see if object tool tips are gonna work on
     objects. This should be informational text on the object that the player is picking
     up. Example, like what a controller represents in SIDM (GDT/DGAD)
---- !u!4 &95826453 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6671316308507371775, guid: 604f44665dcd96c4783fb2ef932231f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 95826445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &208893194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -799,18 +768,48 @@ PrefabInstance:
     - target: {fileID: 4101713384665618319, guid: a5d1636ed6e25764eb8317643b7b5e50,
         type: 3}
       propertyPath: m_grabPoints.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4101713384665618319, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: isGrabbable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101713384665618319, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 314427236}
     - target: {fileID: 6158935282674750413, guid: a5d1636ed6e25764eb8317643b7b5e50,
         type: 3}
       propertyPath: m_grabPoints.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6158935282674750413, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: isGrabbable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158935282674750413, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 314427234}
     - target: {fileID: 4266911004316215444, guid: a5d1636ed6e25764eb8317643b7b5e50,
         type: 3}
       propertyPath: m_grabPoints.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4266911004316215444, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: isGrabbable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266911004316215444, guid: a5d1636ed6e25764eb8317643b7b5e50,
+        type: 3}
+      propertyPath: m_grabPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 314427235}
     - target: {fileID: 1265203078952920037, guid: a5d1636ed6e25764eb8317643b7b5e50,
         type: 3}
       propertyPath: m_TagString
@@ -893,6 +892,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &314427234 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1265203078292424544, guid: a5d1636ed6e25764eb8317643b7b5e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 314427228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &314427235 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1265203080104361779, guid: a5d1636ed6e25764eb8317643b7b5e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 314427228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &314427236 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1265203080078450828, guid: a5d1636ed6e25764eb8317643b7b5e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 314427228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &319082120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,15 +1311,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.721
+      value: 1.059
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.598
+      value: 1.654
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.203
+      value: 0.729
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1334,6 +1351,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438468466, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438468461, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1760,6 +1785,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2062684282446269005, guid: 55832439e64365740b51844a63091678,
+        type: 3}
+      propertyPath: arr_clockMaterials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062684282446269005, guid: 55832439e64365740b51844a63091678,
+        type: 3}
+      propertyPath: arr_clockMaterials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ce0d74aa3a7bab84fb1afe4dda69d487, type: 2}
+    - target: {fileID: 2062684282446269005, guid: 55832439e64365740b51844a63091678,
+        type: 3}
+      propertyPath: arr_clockMaterials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
+    - target: {fileID: 2062684282446269005, guid: 55832439e64365740b51844a63091678,
+        type: 3}
+      propertyPath: arr_clockMaterials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 282088435009bde4aa5d21d5ab0fce24, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55832439e64365740b51844a63091678, type: 3}
 --- !u!1 &1280216365
@@ -1794,6 +1839,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1315945172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6671316309658622376, guid: 604f44665dcd96c4783fb2ef932231f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 95826445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315945173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315945172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ed8003296a8bd4db9946ce33e856fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints:
+  - {fileID: 37655588}
+  isIndependent: 0
+  isGrabbable: 1
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  isLocked: 0
+  minMaxThreshold: 0.01
+  forceKinematics: 0
+  grabPoint: {fileID: 1315945177}
+  minMaxNormalizedThreshold: 0.01
+--- !u!114 &1315945174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315945172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isObjectTooltip: 0
+  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
+    type: 3}
+  toolTip: This is a tool tip example for camera tool tips. Could be used in any situation
+    that needs it. IDK when I'll use this but lmao atleast its here. More filler text
+    so that the text box is longer than normal xD.
+--- !u!4 &1315945177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6671316309658622383, guid: 604f44665dcd96c4783fb2ef932231f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 95826445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1362657532
 PrefabInstance:
   m_ObjectHideFlags: 0

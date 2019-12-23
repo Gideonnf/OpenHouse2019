@@ -97,7 +97,7 @@ public class VRPlayerManager : MonoBehaviour
         // Store the tooltipCanvasReference to the player class
         toolTipCanvasReference = toolTipCanvas;
         // Set the position
-        toolTipCanvasReference.transform.position = mainCameraReference.transform.position + new Vector3(0, 0, 0.25f);
+        toolTipCanvasReference.transform.position = mainCameraReference.transform.position + (mainCameraReference.transform.forward * 0.4f);
         // Rotate it to the camera
         toolTipCanvasReference.transform.LookAt(mainCameraReference.transform.position, toolTipCanvasReference.transform.up);
         // Set the parent
