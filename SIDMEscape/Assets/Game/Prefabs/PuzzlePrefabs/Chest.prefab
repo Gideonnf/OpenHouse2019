@@ -177,8 +177,8 @@ MonoBehaviour:
   resetToOriginSpeed: 0
   angleLimits:
     name: 
-    maximum: -180
-    minimum: 180
+    maximum: 90
+    minimum: 0
   isRepeatable: 0
   resetTimer: 1
   eventID: 0
@@ -795,7 +795,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2705340445058736598}
-  m_LocalRotation: {x: -0, y: 0.12564968, z: -0, w: 0.99207467}
+  m_LocalRotation: {x: 0, y: 0.1256536, z: 0, w: 0.9920742}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -497,7 +497,7 @@ MonoBehaviour:
   m_grabPoints:
   - {fileID: 1265203078292424544}
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
 --- !u!1 &1265203078306905173
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1265203078952920039}
   m_Layer: 0
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -871,8 +871,7 @@ MeshRenderer:
 --- !u!1 &1265203079070917494
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1714644195768338, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -890,8 +889,7 @@ GameObject:
 --- !u!224 &1265203079070917497
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224175581045623504, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079070917494}
@@ -910,8 +908,7 @@ RectTransform:
 --- !u!222 &1265203079070917496
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 222955832048533178, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079070917494}
@@ -919,8 +916,7 @@ CanvasRenderer:
 --- !u!114 &1265203079070917495
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114642603537886326, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079070917494}
@@ -1044,8 +1040,7 @@ MeshRenderer:
 --- !u!1 &1265203079137334367
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1678482369823558, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -1063,8 +1058,7 @@ GameObject:
 --- !u!224 &1265203079137334336
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 224861586572071280, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079137334367}
@@ -1084,8 +1078,7 @@ RectTransform:
 --- !u!223 &1265203079137334338
 Canvas:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 223426564196141252, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079137334367}
@@ -1106,8 +1099,7 @@ Canvas:
 --- !u!114 &1265203079137334337
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114234513052271272, guid: 55bcebf0300be464cb5f7ef8d78bb36d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265203079137334367}
@@ -1379,6 +1371,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265203079505300929}
+  - component: {fileID: 314427233}
+  - component: {fileID: 314427232}
   m_Layer: 0
   m_Name: DrawerObject
   m_TagString: Untagged
@@ -1407,6 +1401,63 @@ Transform:
   m_Father: {fileID: 1265203078744133465}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &314427233
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265203079505300928}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &314427232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265203079505300928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d1c034038d3bf44a384e509ba755bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints:
+  - {fileID: 1265203078952920040}
+  isIndependent: 1
+  isGrabbable: 0
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  isLocked: 0
+  minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 1265203078952920038}
+  minMaxNormalizedThreshold: 0.01
+  detachDistance: 0.3
+  trackingSpeed: 7
+  resetSpeed: 0
+  axisLimit:
+  - name: x-Axis Limit
+    maximum: 0.2
+    minimum: 0
+  - name: y-Axis Limit
+    maximum: 0
+    minimum: 0
+  - name: z-Axis Limit
+    maximum: 0
+    minimum: 0
 --- !u!1 &1265203079568216412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,9 +1744,9 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints:
-  - {fileID: 1265203078292424544}
+  - {fileID: 1265203080078450828}
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
 --- !u!1 &1265203080104361740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,6 +1874,6 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints:
-  - {fileID: 1265203078292424544}
+  - {fileID: 1265203080104361779}
   isIndependent: 0
-  isGrabbable: 0
+  isGrabbable: 1
