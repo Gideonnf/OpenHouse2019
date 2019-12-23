@@ -78,7 +78,12 @@ public class OVRTooltip : MonoBehaviour
                     Vector3 targetPosition = this.transform.position;
                     targetPosition += Vector3.up * 0.25f;
 
-                    localTooltipReference.transform.position = Vector3.Slerp(localTooltipReference.transform.position, targetPosition, 1.0f);
+                    //Vector3 distance = targetPosition - localTooltipReference.transform.position;
+
+                    if (Vector3.Distance(localTooltipReference.transform.position, targetPosition) > 1.0f)
+                    {
+                        localTooltipReference.transform.position = Vector3.Slerp(localTooltipReference.transform.position, targetPosition, 1.0f);
+                    }
                 }
                 // If it is no longer being grabbed
                 if (!VRMovableReference.isGrabbed)
