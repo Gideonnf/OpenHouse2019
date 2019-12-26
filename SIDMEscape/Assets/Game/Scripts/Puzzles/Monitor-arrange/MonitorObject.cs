@@ -4,6 +4,8 @@ using VRControllables.Base;
 
 public class MonitorObject : MonoBehaviour
 {
+    public bool correctCoaster = false;
+
     protected Vector3 originalLocPosition;
     protected Vector3 originalWorldPosition;
     protected Quaternion originalWorldRot;
@@ -21,15 +23,18 @@ public class MonitorObject : MonoBehaviour
         if (other.tag == "TablePuzzle")
         {
             MiseEnPlace refMiseEnPlace = other.GetComponentInParent<MiseEnPlace>();
+            
             if (refMiseEnPlace != null)
+            {
                 refMiseEnPlace.SnapObject(this.gameObject, other);
 
+                if (other.gameObject.name.StartsWith(this.gameObject.name) && other.gameObject.name.Contains("place"))
+                {
+                    correctCoaster = true;
+                }
+            }
+
         }
-        //if (other.gameObject.name.StartsWith(this.gameObject.name) && other.gameObject.name.Contains("place"))
-        //{
-        //    this.gameObject.GetComponent<OVRGrabbable>().GrabEnd(Vector3.zero, Vector3.zero);
-        //    this.transform.position = new Vector3(other.transform.position.x, this.transform.position.y, other.transform.position.z);
-        //}
     }
 
     /// <summary>

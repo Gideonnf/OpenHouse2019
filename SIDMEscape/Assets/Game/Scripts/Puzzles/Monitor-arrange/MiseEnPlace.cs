@@ -36,6 +36,11 @@ public class MiseEnPlace : MonoBehaviour
         //}
     }
 
+    void Update()
+    {
+        
+    }
+
     /// <summary>
     /// Trigger checking for all 3 coasters in parent doesnt work
     /// instead, they'll call this function in their own trigger check

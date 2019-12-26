@@ -16,6 +16,9 @@ public class MonitorRandomiser : MonoBehaviour
 
     GameObject go_Monitor;
 
+    [SerializeField]
+    GameObject go_TablePuzzle;
+
     public enum monitor_states
     {
         MS_NONE,
@@ -67,6 +70,21 @@ public class MonitorRandomiser : MonoBehaviour
                 f_ctimer = 0;
                 ++n_citer;
             }
+        }
+
+        //TODO: SET PUZZLE ACTIVE TO RUN PUZZLE LOOP
+        for (int i = 0; i < go_TablePuzzle.transform.childCount - 1; ++i)
+        {
+            if (go_TablePuzzle.transform.GetChild(i).gameObject.GetComponent<MonitorObject>())
+            {
+                if (go_TablePuzzle.transform.GetChild(i).gameObject.GetComponent<MonitorObject>().correctCoaster)
+                    continue;
+                else
+                    return;
+            }
+
+            //TODO: COMPLETE PUZZLE HERE
+            PuzzleLightManager.GetInstance().nextLight();
         }
     }
 }
