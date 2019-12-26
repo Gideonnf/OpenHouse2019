@@ -36,6 +36,8 @@ public class ChestCombiManager : MonoBehaviour
                 {
                     //Debug.LogError("Do not panic, it works");
                     go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false;
+
+                    PuzzleLightManager.GetInstance().nextLight();
                 }
                 else
                 {
