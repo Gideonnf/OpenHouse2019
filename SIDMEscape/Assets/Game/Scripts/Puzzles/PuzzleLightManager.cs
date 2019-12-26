@@ -22,6 +22,8 @@ public class PuzzleLightManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        arr_Lights = new GameObject[this.transform.childCount];
+
         for (int i = 0; i < this.transform.childCount; ++i)
         {
             arr_Lights[i] = this.transform.GetChild(i).gameObject;
