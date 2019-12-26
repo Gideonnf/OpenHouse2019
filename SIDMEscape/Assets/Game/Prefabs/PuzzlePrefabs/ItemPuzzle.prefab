@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3549390cc13d8e84082740ad4c182724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctCoaster: 0
 --- !u!114 &7983770323393864173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3549390cc13d8e84082740ad4c182724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctCoaster: 0
 --- !u!1 &6671316309669629468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3549390cc13d8e84082740ad4c182724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctCoaster: 0
 --- !u!65 &2139612739
 BoxCollider:
   m_ObjectHideFlags: 0
