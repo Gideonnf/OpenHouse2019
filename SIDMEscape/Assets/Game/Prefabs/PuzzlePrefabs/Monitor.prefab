@@ -111,4 +111,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ce0d74aa3a7bab84fb1afe4dda69d487, type: 2}
   - {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
   _default: {fileID: 2100000, guid: 3c17c691b11071a4cb314cb1b9d5cb14, type: 2}
+  go_TablePuzzle: {fileID: 0}
   n_monitorStates: 2

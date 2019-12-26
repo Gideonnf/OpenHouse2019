@@ -346,6 +346,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 7077255563971728926, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: go_clock
+      value: 
+      objectReference: {fileID: 1538195334}
+    - target: {fileID: 7077255563971728926, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: go_drawerObj
+      value: 
+      objectReference: {fileID: 1362657533}
+    - target: {fileID: 3749908800410093925, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749908800410093925, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632445865276271842, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactables
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558733601902745604, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 7558733601902745607, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
         type: 3}
       propertyPath: axisLimit.Array.data[1].maximum
@@ -411,31 +441,6 @@ PrefabInstance:
       propertyPath: grabPoint
       value: 
       objectReference: {fileID: 730997132}
-    - target: {fileID: 3749908800410093925, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3749908800410093925, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7558733601902745604, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 7077255563971728926, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: go_clock
-      value: 
-      objectReference: {fileID: 1538195334}
-    - target: {fileID: 7077255563971728926, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: go_drawerObj
-      value: 
-      objectReference: {fileID: 1362657533}
     - target: {fileID: 5004513075610385842, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
         type: 3}
       propertyPath: m_Size.z
@@ -455,11 +460,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.05774182
-      objectReference: {fileID: 0}
-    - target: {fileID: 8632445865276271842, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactables
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad9ec6a4fcbfcf4da4a3a00e0e3a73c, type: 3}
@@ -825,6 +825,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 8760197020577517538, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactables
+      objectReference: {fileID: 0}
     - target: {fileID: 8760197020577517536, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
         type: 3}
       propertyPath: m_Size.y
@@ -834,11 +839,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.00087451935
-      objectReference: {fileID: 0}
-    - target: {fileID: 8760197020577517538, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Interactables
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d48d9fe6aec2e643aaa43340b0f0d3f, type: 3}
@@ -943,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &432942055
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,15 +1018,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.419
+      value: 1.515
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.884
+      value: 1.642
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7
+      value: 1.355
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1060,11 +1060,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 438468466, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+    - target: {fileID: 438468461, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 438468461, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+    - target: {fileID: 438468466, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
@@ -2456,6 +2456,11 @@ PrefabInstance:
       propertyPath: _default
       value: 
       objectReference: {fileID: 2100000, guid: 3c17c691b11071a4cb314cb1b9d5cb14, type: 2}
+    - target: {fileID: 6352138425407024528, guid: a5ead6b3490d5d74aa2629ebf460a8bd,
+        type: 3}
+      propertyPath: go_TablePuzzle
+      value: 
+      objectReference: {fileID: 8519624647178955109}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5ead6b3490d5d74aa2629ebf460a8bd, type: 3}
 --- !u!1 &2136411589 stripped
@@ -2619,3 +2624,9 @@ PrefabInstance:
       objectReference: {fileID: 2136411589}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f231b83bc9563d4aaf05050c57f1e6a, type: 3}
+--- !u!1 &8519624647178955109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3075553565565058236, guid: 0f231b83bc9563d4aaf05050c57f1e6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8519624647178955108}
+  m_PrefabAsset: {fileID: 0}
