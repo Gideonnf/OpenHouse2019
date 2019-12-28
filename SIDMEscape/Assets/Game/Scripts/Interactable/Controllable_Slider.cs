@@ -161,7 +161,7 @@ namespace VRControllables.Base.Slider
         {
             if (grabbedBy == null)
                 return false;
-
+            Debug.Log("Grab Started");
             if (initialAttachPoint != null)
             {
                 distanceOffset = Vector3.Distance(this.grabPoint.position, initialAttachPoint.position);
@@ -175,6 +175,8 @@ namespace VRControllables.Base.Slider
 
         protected override bool CustomGrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
         {
+            Debug.Log("Grab Ended");
+
             bool endResult = base.CustomGrabEnd(linearVelocity, angularVelocity);
 
             // If it is more than 0.0f, reset it to the position set

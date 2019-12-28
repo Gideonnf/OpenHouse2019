@@ -49,9 +49,10 @@ GameObject:
   - component: {fileID: 6671316308507371715}
   - component: {fileID: 6671316308507371714}
   - component: {fileID: 7983770323393864173}
+  - component: {fileID: 2132250648}
   m_Layer: 0
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -186,6 +187,22 @@ MonoBehaviour:
   forceKinematics: 0
   grabPoint: {fileID: 6671316308507371775}
   minMaxNormalizedThreshold: 0.01
+--- !u!114 &2132250648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671316308507371768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isObjectTooltip: 1
+  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
+    type: 3}
+  toolTip: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 --- !u!1 &6671316308616648825
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,9 +735,11 @@ GameObject:
   - component: {fileID: 6671316309658622382}
   - component: {fileID: 6671316309658622387}
   - component: {fileID: 6671316309658622386}
+  - component: {fileID: 5808597893884063033}
+  - component: {fileID: 2783530681398014046}
   m_Layer: 0
   m_Name: 1
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -827,6 +846,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctCoaster: 0
+--- !u!114 &5808597893884063033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671316309658622376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ed8003296a8bd4db9946ce33e856fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints:
+  - {fileID: 6671316309658622382}
+  isIndependent: 0
+  isGrabbable: 1
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  isLocked: 0
+  minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 6671316309658622383}
+  minMaxNormalizedThreshold: 0.01
+--- !u!114 &2783530681398014046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671316309658622376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isObjectTooltip: 0
+  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
+    type: 3}
+  toolTip: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 --- !u!1 &6671316309669629468
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,9 +997,10 @@ GameObject:
   - component: {fileID: 6671316309936333196}
   - component: {fileID: 6671316309936333203}
   - component: {fileID: 2139612739}
+  - component: {fileID: 5290647471328415003}
   m_Layer: 0
   m_Name: 3
-  m_TagString: Untagged
+  m_TagString: Interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1057,3 +1121,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0.0000009536743, z: -0.0000005662441}
+--- !u!114 &5290647471328415003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671316309936333193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ed8003296a8bd4db9946ce33e856fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints:
+  - {fileID: 6671316309936333199}
+  isIndependent: 0
+  isGrabbable: 1
+  operateAxis: 0
+  ignoreCollisionsWith: []
+  positionFidelity: 0.001
+  isLocked: 0
+  minMaxThreshold: 0.01
+  forceKinematics: 1
+  grabPoint: {fileID: 6671316309936333192}
+  minMaxNormalizedThreshold: 0.01

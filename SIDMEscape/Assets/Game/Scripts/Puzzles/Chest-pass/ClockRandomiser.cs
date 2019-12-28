@@ -38,7 +38,7 @@ public class ClockRandomiser : MonoBehaviour
     {
         if (n_clockStates == 0)
             go_Clock.SetActive(false);
-        else
-            go_Clock.GetComponent<Renderer>().materials = new Material[1] { arr_clockMaterials[(int)n_clockStates] }; 
+        //else
+        //    go_Clock.GetComponent<Renderer>().materials = new Material[1] { arr_clockMaterials[(int)n_clockStates] }; 
     }
 }
