@@ -80,10 +80,10 @@ public class OVRTooltip : MonoBehaviour
 
                     //Vector3 distance = targetPosition - localTooltipReference.transform.position;
 
-                    if (Vector3.Distance(localTooltipReference.transform.position, targetPosition) > 1.0f)
-                    {
+                   // if (Vector3.Distance(localTooltipReference.transform.position, targetPosition) > 0.1f)
+                  //  {
                         localTooltipReference.transform.position = Vector3.Slerp(localTooltipReference.transform.position, targetPosition, 1.0f);
-                    }
+                    //}
                 }
                 // If it is no longer being grabbed
                 if (!VRMovableReference.isGrabbed)
@@ -127,6 +127,7 @@ public class OVRTooltip : MonoBehaviour
                         {
                             // Set this back to null
                             localTooltipReference = null;
+                            isClosed = true;
                         }
                     }
                 }
