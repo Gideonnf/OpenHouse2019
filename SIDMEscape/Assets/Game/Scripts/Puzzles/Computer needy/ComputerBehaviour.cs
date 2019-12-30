@@ -52,6 +52,8 @@ public class ComputerBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wrench")) //if computer hit by a wrench
         {
+            Debug.LogError("Wrench hit");
+
             //reset timer and particles
             timeTillFire = Random.Range(5, 50);
 
