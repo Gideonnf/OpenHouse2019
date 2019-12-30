@@ -212,8 +212,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7572561435251723343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: -1.09, z: -0.89}
-  m_LocalScale: {x: 1, y: 0.21404, z: 1}
+  m_LocalPosition: {x: 0, y: -0.554, z: 0}
+  m_LocalScale: {x: 1, y: 0.10106754, z: 1}
   m_Children: []
   m_Father: {fileID: 7572561436174500029}
   m_RootOrder: 0
@@ -560,7 +560,6 @@ GameObject:
   - component: {fileID: 7572561436444912937}
   - component: {fileID: 7572561436444912942}
   - component: {fileID: 7572561436444912940}
-  - component: {fileID: 7572561436444912941}
   - component: {fileID: 7572561436444912943}
   m_Layer: 0
   m_Name: 1
@@ -577,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7572561436444912930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.609, y: -0.257, z: -2.334}
+  m_LocalPosition: {x: 1.609, y: -0.259, z: -2.334}
   m_LocalScale: {x: 0.099999994, y: 0.015378199, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 7572561435617806001}
@@ -686,22 +685,6 @@ MonoBehaviour:
   forceKinematics: 1
   grabPoint: {fileID: 7572561436444912938}
   minMaxNormalizedThreshold: 0.01
---- !u!114 &7572561436444912941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572561436444912930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isObjectTooltip: 0
-  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
-    type: 3}
-  toolTip: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 --- !u!114 &7572561436444912943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +972,6 @@ GameObject:
   - component: {fileID: 7572561437063452893}
   - component: {fileID: 7572561437063452882}
   - component: {fileID: 7572561437063452880}
-  - component: {fileID: 7572561437063452881}
   - component: {fileID: 7572561437063452883}
   m_Layer: 0
   m_Name: 2
@@ -1115,22 +1097,6 @@ MonoBehaviour:
   forceKinematics: 0
   grabPoint: {fileID: 7572561437063452894}
   minMaxNormalizedThreshold: 0.01
---- !u!114 &7572561437063452881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7572561437063452886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03155654bdfbf014d96d51cfc4569c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isObjectTooltip: 1
-  tooltipCanvas: {fileID: 8773374723748729764, guid: aad59369b655133459aeae799782199a,
-    type: 3}
-  toolTip: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 --- !u!114 &7572561437063452883
 MonoBehaviour:
   m_ObjectHideFlags: 0
