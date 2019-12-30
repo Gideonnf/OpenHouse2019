@@ -8,6 +8,7 @@ TagManager:
   - TablePuzzle
   - Interactables
   - Wrench
+  - Video Coasters
   layers:
   - Default
   - TransparentFX
