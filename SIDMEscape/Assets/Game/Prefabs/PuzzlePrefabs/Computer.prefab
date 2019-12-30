@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7042645930877511396}
   - component: {fileID: 7042645930877511399}
   - component: {fileID: 7042645930877511395}
+  - component: {fileID: 21511715}
   m_Layer: 0
   m_Name: Computer
   m_TagString: Untagged
@@ -110,6 +111,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps_fire: {fileID: 7168967848251224301}
   ps_smoke: {fileID: 7134653939673757422}
+--- !u!65 &21511715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042645930877511398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7042645931063797438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6,
         type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6,
+        type: 3}
       propertyPath: UVModule.flipU
       value: 0
       objectReference: {fileID: 0}
@@ -190,11 +209,6 @@ PrefabInstance:
         type: 3}
       propertyPath: UVModule.flipV
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 198985416474409296, guid: 61bb62591466c3649bdf4905822d72f6,
         type: 3}

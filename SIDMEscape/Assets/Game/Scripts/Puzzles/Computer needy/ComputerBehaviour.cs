@@ -48,9 +48,9 @@ public class ComputerBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Wrench")) //if computer hit by a wrench
+        if (other.gameObject.CompareTag("Wrench")) //if computer hit by a wrench
         {
             Debug.LogError("Wrench hit");
 
