@@ -65,13 +65,25 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                var falseID = rnd.Next(0, goArr_puzzleManagers.Count);
-                goArr_puzzleManagers[falseID].SetActive(true);
-                goArr_puzzleManagers.RemoveAt(falseID);
+                int prevNum = 0;
+                for (int i = 0; i < 2; ++i)
+                {
+                    int hitlayer;
+                    do
+                    {
+                        hitlayer = rnd.Next(8, 11);
+                    } while (prevNum == hitlayer);
 
-                var falseID2 = rnd.Next(0, goArr_puzzleManagers.Count);
-                goArr_puzzleManagers[falseID2].SetActive(true);
-                goArr_puzzleManagers.RemoveAt(falseID2);
+                    foreach (GameObject temp in goArr_puzzleManagers)
+                    {
+                        if (temp.layer == hitlayer)
+                        {
+                            temp.SetActive(true);
+                            //goArr_puzzleManagers.Remove(temp);
+                        }
+                    }
+                    prevNum = hitlayer;
+                }
 
                 puzzleSetter = true;
             }
