@@ -82,16 +82,20 @@ public class GameManager : MonoBehaviour
                             //goArr_puzzleManagers.Remove(temp);
                         }
                     }
+                        
                     prevNum = hitlayer;
                 }
 
-                foreach (GameObject temp in goArr_puzzleManagers)
-                {
-                    if (!temp.activeSelf)
-                    {
-                        Destroy(temp);
-                    }
-                }
+
+                //for (int i = 0; i < goArr_puzzleManagers.Count; ++i)
+                //{
+                //    if (goArr_puzzleManagers[i].activeSelf == false)
+                //    {
+                //        var go = goArr_puzzleManagers[i];
+                //        goArr_puzzleManagers.RemoveAt(i);
+                //        Destroy(go);
+                //    }
+                //}
 
                 puzzleSetter = true;
             }
