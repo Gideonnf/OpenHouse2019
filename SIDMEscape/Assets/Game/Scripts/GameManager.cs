@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject go_full;
 
+    System.Random rnd = new System.Random();
+    [SerializeField]
+    List<GameObject> goArr_puzzleManagers;
+
+    bool puzzleSetter = false;
+
     public bool getBlitzMode()
     {
         return b_blitzMode;
@@ -35,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        goArr_puzzleManagers = new List<GameObject>();
         b_blitzMode = false;
 
         DontDestroyOnLoad(this.gameObject);
@@ -43,6 +51,39 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!puzzleSetter)
+        {
+            if (SceneManager.GetActiveScene().name == "Game" /*full*/ )
+            {
+                GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
+                foreach (GameObject go in gos)
+                {
+                    if (go.layer >= 8 && go.layer <= 10) //add all layers
+                    {
+                        go.SetActive(false);
+                        goArr_puzzleManagers.Add(go);
+                    }
+                }
+
+                var falseID = rnd.Next(0, goArr_puzzleManagers.Count);
+                goArr_puzzleManagers[falseID].SetActive(true);
+                goArr_puzzleManagers.RemoveAt(falseID);
+
+                var falseID2 = rnd.Next(0, goArr_puzzleManagers.Count);
+                goArr_puzzleManagers[falseID2].SetActive(true);
+                goArr_puzzleManagers.RemoveAt(falseID2);
+
+                puzzleSetter = true;
+            }
+            else if (SceneManager.GetActiveScene().name == "Blitz")
+            {
+
+                puzzleSetter = true;
+            }
+        }
+
+
+        //NOTHING BELOW THIS LINE
         if (go_blitz == null || go_full == null)
         {
             return;

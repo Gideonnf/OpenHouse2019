@@ -27,7 +27,7 @@ public class MiseEnPlace : MonoBehaviour
             if ((int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates == 0)
                 break;
 
-            go_Places[j].transform.localPosition = v3_placePos[(int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates - 1, j];
+            go_Places[j].transform.localPosition = v3_placePos[(int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates, j];
         }
 
         //for (int i = 0; i < go_Objects.Length; ++i)

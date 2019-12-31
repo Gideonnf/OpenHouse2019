@@ -21,7 +21,6 @@ public class MonitorRandomiser : MonoBehaviour
 
     public enum monitor_states
     {
-        MS_NONE,
         MS_0121,
         MS_1203,
         MS_2021,
@@ -48,28 +47,22 @@ public class MonitorRandomiser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (n_monitorStates == 0)
-            go_Monitor.SetActive(false);
-        else
+        f_ctimer += Time.deltaTime * 1;
+
+        if (f_ctimer > 1)
         {
-            f_ctimer += Time.deltaTime * 1;
+            if (n_citer >= 5)
+                n_citer = 0;
 
-            if (f_ctimer > 1)
+            if (n_citer == 0)
             {
-                if (n_citer >= 5)
-                    n_citer = 0;
-                
-                if (n_citer == 0)
-                {
-                    go_Monitor.GetComponent<Renderer>().materials = new Material[1] { _default };
-                }
-                else
-                    go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates - 1)[n_citer - 1]] };
-
-                f_ctimer = 0;
-                ++n_citer;
+                go_Monitor.GetComponent<Renderer>().materials = new Material[1] { _default };
             }
+            else
+                go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates)[n_citer - 1]] };
+
+            f_ctimer = 0;
+            ++n_citer;
         }
 
         //TODO: SET PUZZLE ACTIVE TO RUN PUZZLE LOOP
