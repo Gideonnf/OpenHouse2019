@@ -85,6 +85,14 @@ public class GameManager : MonoBehaviour
                     prevNum = hitlayer;
                 }
 
+                foreach (GameObject temp in goArr_puzzleManagers)
+                {
+                    if (!temp.activeSelf)
+                    {
+                        Destroy(temp);
+                    }
+                }
+
                 puzzleSetter = true;
             }
             else if (SceneManager.GetActiveScene().name == "Blitz")

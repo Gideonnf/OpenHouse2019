@@ -19,17 +19,12 @@ public class PuzzleLightManager : MonoBehaviour
 
     int curLight = 0;
 
+    bool blocker = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        arr_Lights = new GameObject[this.transform.childCount];
-
-        for (int i = 0; i < this.transform.childCount; ++i)
-        {
-            arr_Lights[i] = this.transform.GetChild(i).gameObject;
-        }
-
-        arr_Lights[curLight].SetActive(true);
+        
     }
 
     public void nextLight()
@@ -43,6 +38,16 @@ public class PuzzleLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (blocker)
+        {
+            arr_Lights = new GameObject[this.transform.childCount];
+
+            for (int i = 0; i < this.transform.childCount; ++i)
+            {
+                arr_Lights[i] = this.transform.GetChild(i).gameObject;
+            }
+
+            arr_Lights[curLight].SetActive(true);
+        }
     }
 }
