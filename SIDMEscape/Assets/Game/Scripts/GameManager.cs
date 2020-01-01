@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
 
     bool puzzleSetter = false;
 
+    public bool getPuzzleSetStatus()
+    {
+        return puzzleSetter;
+    }
+
     public bool getBlitzMode()
     {
         return b_blitzMode;
@@ -86,21 +91,40 @@ public class GameManager : MonoBehaviour
                     prevNum = hitlayer;
                 }
 
-
-                //for (int i = 0; i < goArr_puzzleManagers.Count; ++i)
-                //{
-                //    if (goArr_puzzleManagers[i].activeSelf == false)
-                //    {
-                //        var go = goArr_puzzleManagers[i];
-                //        goArr_puzzleManagers.RemoveAt(i);
-                //        Destroy(go);
-                //    }
-                //}
-
                 puzzleSetter = true;
             }
             else if (SceneManager.GetActiveScene().name == "Blitz")
             {
+                GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
+                foreach (GameObject go in gos)
+                {
+                    if (go.layer >= 8 && go.layer <= 10) //add all layers
+                    {
+                        go.SetActive(false);
+                        goArr_puzzleManagers.Add(go);
+                    }
+                }
+
+                int prevNum = 0;
+                for (int i = 0; i < 2; ++i)
+                {
+                    int hitlayer;
+                    do
+                    {
+                        hitlayer = rnd.Next(8, 11);
+                    } while (prevNum == hitlayer);
+
+                    foreach (GameObject temp in goArr_puzzleManagers)
+                    {
+                        if (temp.layer == hitlayer)
+                        {
+                            temp.SetActive(true);
+                            //goArr_puzzleManagers.Remove(temp);
+                        }
+                    }
+
+                    prevNum = hitlayer;
+                }
 
                 puzzleSetter = true;
             }
