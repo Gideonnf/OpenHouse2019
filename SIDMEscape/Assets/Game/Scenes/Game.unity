@@ -1528,7 +1528,7 @@ PrefabInstance:
     - target: {fileID: 6671316308162078677, guid: 604f44665dcd96c4783fb2ef932231f4,
         type: 3}
       propertyPath: m_Name
-      value: ItemPuzzle
+      value: VideoPuzzle
       objectReference: {fileID: 0}
     - target: {fileID: 6671316308162078677, guid: 604f44665dcd96c4783fb2ef932231f4,
         type: 3}
@@ -2916,7 +2916,7 @@ PrefabInstance:
     - target: {fileID: 7572561435617806006, guid: df950e85f6f99d541861fd92b7308db1,
         type: 3}
       propertyPath: m_Name
-      value: VideoPuzzle
+      value: AnimationPuzzle
       objectReference: {fileID: 0}
     - target: {fileID: 7572561435617806001, guid: df950e85f6f99d541861fd92b7308db1,
         type: 3}
