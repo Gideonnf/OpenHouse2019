@@ -30,7 +30,7 @@ public class SceneChanger : MonoBehaviour
 
     public void SceneBlitz()
     {
-        SceneManager.LoadScene("Alwin-blitz", LoadSceneMode.Single);
+        SceneManager.LoadScene("Blitz", LoadSceneMode.Single);
     }
 
     public void QuitGame()
