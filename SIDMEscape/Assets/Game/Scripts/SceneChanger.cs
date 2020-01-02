@@ -16,9 +16,6 @@ public class SceneChanger : MonoBehaviour
     }
     #endregion
 
-    // If u name it public
-    // U can choose waht object to edit
-    public GameObject Buttons;
 
     public void SceneMenu()
     {
