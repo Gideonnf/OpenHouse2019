@@ -15,7 +15,11 @@ public class SceneChanger : MonoBehaviour
         return instance;
     }
     #endregion
-   
+
+    // If u name it public
+    // U can choose waht object to edit
+    public GameObject Buttons;
+
     public void SceneMenu()
     {
         //ON ENTER CODE HERE
