@@ -40,7 +40,7 @@ public class WorldSpacePlayer : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, playerCamera.transform.position);
 
-            Debug.Log("Distance to audio Source : " + distance);
+            //Debug.Log("Distance to audio Source : " + distance);
 
             // Cant go below 1
             if (distance < 1)

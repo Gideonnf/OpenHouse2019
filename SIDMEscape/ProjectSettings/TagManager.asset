@@ -9,6 +9,7 @@ TagManager:
   - Interactables
   - Wrench
   - Video Coasters
+  - NonInteractable
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Video puzzle
   - Animation puzzle
   - Clock puzzle
-  - 
+  - NonInteractable
   - 
   - 
   - 
