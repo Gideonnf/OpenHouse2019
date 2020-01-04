@@ -1600,6 +1600,31 @@ PrefabInstance:
       propertyPath: go_Monitor
       value: 
       objectReference: {fileID: 997227261}
+    - target: {fileID: 2839945272610441050, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281490018353995884, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127532118281767416, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201151732722181017, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468413585204544655, guid: 604f44665dcd96c4783fb2ef932231f4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 604f44665dcd96c4783fb2ef932231f4, type: 3}
 --- !u!4 &1218520873 stripped

@@ -38,9 +38,6 @@ public class ComputerBehaviour : MonoBehaviour
             go.gameObject.SetActive(true);
 
             //TO DO SCREEN SPACE SMOKE/FIRE
-
-            ////reset timer
-            //timeTillFire = Random.Range(5, 50);
         }
         else
         {

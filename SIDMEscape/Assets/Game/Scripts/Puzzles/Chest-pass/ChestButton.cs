@@ -11,17 +11,17 @@ public class ChestButton : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Hands"))
-            bOnOff = !bOnOff;
+            bOnOff = !bOnOff; //change colour of button for visual feedback
 
         if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.green;
-            this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex());
+            this.gameObject.GetComponent<Renderer>().material.color = Color.green; //set colour that shows its pressed
+            this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex()); //add number to list
         }
         else
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.red;
-            this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(this.transform.GetSiblingIndex());
+            this.gameObject.GetComponent<Renderer>().material.color = Color.red; //set colour that shows its cancelled
+            this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(this.transform.GetSiblingIndex()); //remove number from list
         }
     }
 
@@ -29,7 +29,7 @@ public class ChestButton : MonoBehaviour
     {
         if (other.CompareTag("Hands"))
         {
-            bOnOff = !bOnOff;
+            bOnOff = !bOnOff; //change colour of button for visual feedback
         }
     }
 
@@ -44,22 +44,8 @@ public class ChestButton : MonoBehaviour
     {
         if (!bOnOff)
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.red; //change colour of button for visual feedback
         }
-        //if (!bOnce)
-        //{
-        //    if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
-        //    {
-        //        this.gameObject.GetComponent<Renderer>().material.color = Color.green;
-        //        this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(this.transform.GetSiblingIndex() + 1);
-        //        bOnce = true;
-        //    }
-        //    else
-        //    {
-        //        this.gameObject.GetComponent<Renderer>().material.color = Color.red;
-        //        this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(this.transform.GetSiblingIndex() + 1);
-        //    }
-        //}
     }
 }
     

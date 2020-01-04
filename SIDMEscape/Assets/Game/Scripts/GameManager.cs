@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //run this only once
         if (!puzzleSetter)
         {
             if (SceneManager.GetActiveScene().name == "Game" /*full*/ )
@@ -98,28 +99,28 @@ public class GameManager : MonoBehaviour
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
                 {
-                    if (go.layer >= 8 && go.layer <= 10) //add all layers
+                    if (go.layer >= 8 && go.layer <= 10) //add all GO in layers 8-10
                     {
-                        go.SetActive(false);
+                        go.SetActive(false); //set them all false
                         goArr_puzzleManagers.Add(go);
                     }
                 }
 
                 int prevNum = 0;
-                for (int i = 0; i < 2; ++i)
+                for (int i = 0; i < 2; ++i) // set 2 puzzles active
                 {
-                    int hitlayer;
+                    int hitlayer; //current layer
                     do
                     {
                         hitlayer = rnd.Next(8, 11);
-                    } while (prevNum == hitlayer);
+                    } while (prevNum == hitlayer); //make sure current layer not same as previous layer
 
+                    //set the GO of those in the layer, true
                     foreach (GameObject temp in goArr_puzzleManagers)
                     {
                         if (temp.layer == hitlayer)
                         {
                             temp.SetActive(true);
-                            //goArr_puzzleManagers.Remove(temp);
                         }
                     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonitorRandomiser : MonoBehaviour
 {
-    System.Random rnd = new System.Random();
+    System.Random rnd = new System.Random(); //init randomiser C# style
 
     [Header("Monitor Settings")]
     [Tooltip("Store the materials to change the monitor color ")]
@@ -37,7 +37,7 @@ public class MonitorRandomiser : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        arr_monitorColourCombi = new int[,] { { 0, 1, 2, 1}, { 1, 2, 0, 3}, {2, 0, 2, 1 } };
+        arr_monitorColourCombi = new int[,] { { 0, 1, 2, 1}, { 1, 2, 0, 3}, {2, 0, 2, 1 } }; //colour combinations, each int is the array position of arr_monitorMaterials
 
         go_Monitor = this.gameObject;
 
@@ -46,9 +46,10 @@ public class MonitorRandomiser : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        f_ctimer += Time.deltaTime * 1;
+    { 
+        f_ctimer += Time.deltaTime * 1; //timer for per second to change the colour
 
+        //cycling through colours
         if (f_ctimer > 1)
         {
             if (n_citer >= 5)
@@ -58,25 +59,25 @@ public class MonitorRandomiser : MonoBehaviour
             {
                 go_Monitor.GetComponent<Renderer>().materials = new Material[1] { _default };
             }
-            else
-                go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates)[n_citer - 1]] };
+            else //get the monitor material from the colour combi array
+                go_Monitor.GetComponent<Renderer>().materials = new Material[1] { arr_monitorMaterials[arr_monitorColourCombi.GetRow((int)n_monitorStates)[n_citer - 1]] }; //n_citer - 1 cause 0 wil be default
 
             f_ctimer = 0;
             ++n_citer;
         }
 
-        //TODO: SET PUZZLE ACTIVE TO RUN PUZZLE LOOP
+        //checking if correct coaster
         for (int i = 0; i < go_TablePuzzle.transform.childCount - 1; ++i)
         {
             if (go_TablePuzzle.transform.GetChild(i).gameObject.GetComponent<MonitorObject>())
             {
                 if (go_TablePuzzle.transform.GetChild(i).gameObject.GetComponent<MonitorObject>().correctCoaster)
-                    continue;
+                    continue; //if there is a correct coaster, check the rest
                 else
-                    return;
+                    return; //so long there is a false, puzzle is incomplete
             }
 
-            //TODO: COMPLETE PUZZLE HERE
+            //puzzle done, set next puzzle
             PuzzleLightManager.GetInstance().nextLight();
         }
     }

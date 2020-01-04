@@ -28,6 +28,7 @@ public class VideoTiles : MonoBehaviour
             {
                 refCoasterManager.SnapObject(this.gameObject, other);
 
+                //check if video card corresponds with the coaster its on
                 if (other.gameObject.name.StartsWith(this.gameObject.name) && other.gameObject.name.Contains("place"))
                 {
                     correctCoaster = true;
