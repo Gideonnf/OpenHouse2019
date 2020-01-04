@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6161167310883785490}
   - component: {fileID: 2671251397794697440}
+  - component: {fileID: 5312538734647020094}
   m_Layer: 0
   m_Name: FirstSprite
   m_TagString: Untagged
@@ -158,6 +159,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5312538734647020094
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671251397794697444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4958537723069286773
 GameObject:
   m_ObjectHideFlags: 0
