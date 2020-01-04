@@ -12,7 +12,7 @@ public class SpritePiece : MonoBehaviour
     [Tooltip("Sprite ID is a reference to which keyframe this is")]
     public int SpriteID;
     [Tooltip("Animator Refrence")]
-    Animator spriteAnim;
+    public Animator spriteAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,22 @@ public class SpritePiece : MonoBehaviour
     public int GetSlodID()
     {
         return SlotID;
+    }
+
+    public void SetFrameState(int id)
+    {
+        spriteAnim.SetInteger("FrameState", id);
+        spriteAnim.Play(spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0f);
+    }
+
+    public void PauseAnimation()
+    {
+        spriteAnim.enabled = false;
+    }
+
+    public void ResumeAnimation()
+    {
+        spriteAnim.enabled = true;
     }
 
 }

@@ -284,3 +284,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpriteID: 0
+  spriteAnim: {fileID: 5312538734647020094}
