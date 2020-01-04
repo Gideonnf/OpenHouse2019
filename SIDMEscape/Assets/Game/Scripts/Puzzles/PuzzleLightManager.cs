@@ -26,19 +26,27 @@ public class PuzzleLightManager : MonoBehaviour
     {
         arr_Lights = new List<GameObject>();
     }
-
+    
+    /// <summary>
+    /// Destroy light that is not meant to be there
+    /// Add lights that are and switch them off
+    /// </summary>
     public void init()
     {
+        //find the light whose puzzle is inactive
         int skipObj = 0;
         for (int i = 0; i < this.transform.childCount; ++i)
         {
+            //if light false; if set false by gamemanager means not meant to be ran
             if (this.transform.GetChild(i).gameObject.activeInHierarchy == false)
             {
+                //destroy
                 Destroy(this.transform.GetChild(i).gameObject);
                 skipObj = i;
             }
         }
 
+        //add the rest of the lights and set false
         for (int i = 0; i < this.transform.childCount; ++i)
         {
             if (i == skipObj)
@@ -51,6 +59,9 @@ public class PuzzleLightManager : MonoBehaviour
         arr_Lights[curLight].SetActive(true);
     }
 
+    /// <summary>
+    /// Switch lights
+    /// </summary>
     public void nextLight()
     {
         arr_Lights[curLight].SetActive(false);
@@ -62,6 +73,7 @@ public class PuzzleLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //run once
         if (!blocker && FindObjectOfType<GameManager>().getPuzzleSetStatus())
         {
             init();

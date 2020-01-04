@@ -5,35 +5,37 @@ using VRControllables.Base;
 
 public class MiseEnPlace : MonoBehaviour
 {
-    Vector3[,] v3_placePos;
+    //Vector3[,] v3_placePos;
 
     [Header("MiseEnPlace Puzzle Settings")]
     [Tooltip("Reference object for the Monitor Screen required")]
     public GameObject go_Monitor;
     [Tooltip("List of objects that the player can grab and place around")]
-    public GameObject[] go_Objects;
-   [Tooltip("List of the places to place the item on")]
-    public GameObject[] go_Places;
+    public List<GameObject> go_Objects;
+   //[Tooltip("List of the places to place the item on")]
+    List<GameObject> go_Places;
 
     // Start is called before the first frame update
     void Start()
     {
-        v3_placePos = new Vector3[,] { {new Vector3(1.391f, -0.156f, -2.37f), new Vector3(0.436f, -0.156f, -2.464f), new Vector3(0.782f, -0.156f, -2.623f) },
-                                                               {new Vector3(1.652f, -0.156f, -2.526f), new Vector3(0.975f, -0.156f, -2.464f), new Vector3(0.545f, -0.156f, -2.392f) },
-                                                               {new Vector3(0.545f, -0.156f, -2.358f), new Vector3(0.973f, -0.156f, -2.589f), new Vector3(1.56f, -0.156f, -2.352f) }};
+        go_Places = new List<GameObject>();
+        go_Objects = new List<GameObject>();
 
-        for (int j = 0; j < go_Places.Length; ++j)
+        int ranIgnore = Random.Range(0, this.transform.childCount); //randomise a child id to use
+        for (int i = 0; i < this.transform.childCount; ++i)
         {
-            if ((int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates == 0)
-                break;
+            if (i == ranIgnore) //only 1 will be active
+                continue;
 
-            go_Places[j].transform.localPosition = v3_placePos[(int)go_Monitor.GetComponent<MonitorRandomiser>().n_monitorStates, j];
+            //set the rest false
+            this.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        //for (int i = 0; i < go_Objects.Length; ++i)
-        //{
-        //    go_Objects[i].transform.localPosition = new Vector3(Random.Range(0.24f, 1.8f), go_Objects[i].transform.localPosition.y, Random.Range(-2.707f, -2.3f));
-        //}
+        //go through the active set to use those coasters
+        for (int i = 0; i < this.transform.GetChild(ranIgnore).childCount; ++i)
+        {
+            go_Places.Add(this.transform.GetChild(ranIgnore).GetChild(i).gameObject);
+        }
     }
 
     void Update()
@@ -57,7 +59,7 @@ public class MiseEnPlace : MonoBehaviour
         Controllable_Movables monitorMovableScript = GrabbableObject.gameObject.GetComponent<Controllable_Movables>();
         // Find which object it is
         GameObject tempObject = null;
-        for(int i = 0; i < go_Objects.Length; ++i)
+        for(int i = 0; i < go_Objects.Count; ++i)
         {
             if (go_Objects[i] == GrabbableObject.gameObject)
                 tempObject = go_Objects[i];

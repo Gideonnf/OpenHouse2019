@@ -18,10 +18,10 @@ public class ChestCombiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //combination passwords
         arr_chestBlitzCombi = new int[,] { { 0, 3, 2, 5 }, { 1, 1, 1, 2 }, { 2, 0, 0, 8 } };
-        //go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false;
-
         arr_chestCombi = new int[, ] { { 5, 6, 5, 3 }, { 2, 6, 3, 6 }, { 1, 7, 4, 8 } };
+
         arr_testingCombi = new List<int>();
     }
 
@@ -30,29 +30,30 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameManager.GetInstance().getBlitzMode())
+            if (!GameManager.GetInstance().getBlitzMode()) //checking if full game
             {
-                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates)))
+                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
                 {
-                    //Debug.LogError("Do not panic, it works");
-                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false;
+                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
-                    PuzzleLightManager.GetInstance().nextLight();
+                    PuzzleLightManager.GetInstance().nextLight(); //puzzle complete, set next light
                 }
                 else
                 {
-                    arr_testingCombi.Clear();
+                    arr_testingCombi.Clear(); //if wrong, clear combination
                 }
             }
             else
             {
-                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestBlitzCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates - 1)))
+                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestBlitzCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
                 {
-                    Debug.LogError("Do not panic, it works");
+                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
+
+                    PuzzleLightManager.GetInstance().nextLight(); //puzzle complete, set next light
                 }
                 else
                 {
-                    arr_testingCombi.Clear();
+                    arr_testingCombi.Clear(); //if wrong, clear combination
                 }
             }
 
