@@ -67,26 +67,17 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if (animIsPlaying[0] == false)
                 {
-                    if (spritePieceList[0].spriteAnim.enabled == true)
-                    {
-                        // Set the frame state
-                        spritePieceList[0].spriteAnim.Play("FirstFrameAnim", 0, 0);
-                        animIsPlaying[0] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[0].spriteAnim.enabled = true;
-                        animIsPlaying[0] = true;
-                    }
+                    spritePieceList[0].SetFrameState(1);
+                    spritePieceList[0].spriteAnim.speed = 1;
+                    animIsPlaying[0] = true;
                 }
                 Debug.Log("0th time : " + spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
                 // if it reaches near the end
-                if ((spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[0]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[0].spriteAnim.enabled = false;
+                    spritePieceList[0].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[0] = true;
                 }
@@ -95,26 +86,17 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if (animIsPlaying[1] == false)
                 {
-                    if (spritePieceList[1].spriteAnim.enabled == true)
-                    {
-                        spritePieceList[1].spriteAnim.Play("SecondFrameAnim", 0, 0);
-
-                        animIsPlaying[1] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[1].spriteAnim.enabled = true;
-                        animIsPlaying[1] = true;
-                    }
+                    spritePieceList[1].SetFrameState(2);
+                    spritePieceList[1].spriteAnim.speed = 1;
+                    animIsPlaying[1] = true;
                 }
 
                 Debug.Log("first time : " + spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
-                if ((spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[1]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[1].spriteAnim.enabled = false;
+                    spritePieceList[1].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[1] = true;
                 }
@@ -124,30 +106,19 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if (animIsPlaying[2] == false)
                 {
-                    if (spritePieceList[2].spriteAnim.enabled == true)
-                    {
-                        Debug.Log("second time : " + spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                        spritePieceList[2].SetFrameState(3);
-                        spritePieceList[2].spriteAnim.Play("ThirdFrameAnim", 0, 0);
-                        Debug.Log("second time : " + spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
-                        animIsPlaying[2] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[2].spriteAnim.enabled = true;
-                        animIsPlaying[2] = true;
-                    }
+                    
+                    spritePieceList[2].SetFrameState(3);
+                    spritePieceList[2].spriteAnim.speed = 1;
+                    animIsPlaying[2] = true;
                 }
 
                 Debug.Log("second time : " + spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
 
-                if ((spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >=0.98f) &&
                     (spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[2]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[2].spriteAnim.enabled = false;
+                    spritePieceList[2].spriteAnim.speed = 0;
                       // Set the state to complete
                      animStates[2] = true;
                 }
@@ -157,29 +128,17 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if(animIsPlaying[3] == false)
                 {
-                    if(spritePieceList[3].spriteAnim.enabled == true)
-                    {
-                        Debug.Log("third time : " + spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                        spritePieceList[3].SetFrameState(4);
-                        spritePieceList[3].spriteAnim.Play("FourthFrameAnim", 0, 0);
-                        Debug.Log("third time : " + spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
-                        animIsPlaying[3] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[3].enabled = true;
-                        animIsPlaying[3] = true;
-                    }
+                    spritePieceList[3].SetFrameState(4);
+                    spritePieceList[3].spriteAnim.speed = 1;
+                    animIsPlaying[3] = true;
 
                 }
                 Debug.Log("third time : " + spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
-                if ((spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f) &&
                     (spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[3]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[3].spriteAnim.enabled = false;
+                    spritePieceList[3].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[3] = true;
                 }
@@ -189,28 +148,16 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if (animIsPlaying[4] == false)
                 {
-                    if(spritePieceList[4].spriteAnim.enabled == true)
-                    {
-                        Debug.Log("fourth time : " + spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                        spritePieceList[4].SetFrameState(5);
-                        spritePieceList[4].spriteAnim.Play("FifthFrameAnim", 0, 0);
-                        Debug.Log("fourth time : " + spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
-                        animIsPlaying[4] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[4].spriteAnim.enabled = true;
-                        animIsPlaying[4] = true;
-                    }
+                    spritePieceList[4].SetFrameState(5);
+                    spritePieceList[4].spriteAnim.speed = 1;
+                    animIsPlaying[4] = true;
                 }
                 Debug.Log("fourth time : " + spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
-                if ((spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f) &&
                     (spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[4]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[4].spriteAnim.enabled = false;
+                    spritePieceList[4].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[4] = true;
                 }
@@ -220,28 +167,16 @@ public class SpritePuzzle : MonoBehaviour
             {
                 if(animIsPlaying[5] == false)
                 {
-                    if (spritePieceList[5].spriteAnim.enabled == true)
-                    {
-                        Debug.Log("fifth time : " + spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                        spritePieceList[5].SetFrameState(6);
-                        spritePieceList[5].spriteAnim.Play("SixthFrameAnim", 0, 0);
-                        Debug.Log("fifth time : " + spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
-                        animIsPlaying[5] = true;
-                    }
-                    else
-                    {
-                        spritePieceList[5].spriteAnim.enabled = true;
-                        animIsPlaying[5] = true;
-                    }
+                    spritePieceList[5].SetFrameState(6);
+                    spritePieceList[5].spriteAnim.speed = 1;
+                    animIsPlaying[5] = true;
                 }
                 Debug.Log("fifth time : " + spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
-                if ((spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f) &&
+                if ((spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[5]))
                 {
-                    // Set the speed to 0 so it will stop
-                    spritePieceList[5].spriteAnim.enabled = false;
+                    spritePieceList[5].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[5] = true;
                 }
@@ -253,10 +188,6 @@ public class SpritePuzzle : MonoBehaviour
                 {
                     animStates[i] = false;
                     animIsPlaying[i] = false;
-                   // spritePieceList[i].spriteAnim.enabled = true;
-                    //spritePieceList[i].SetFrameState(0);
-                  //  spritePieceList[i].spriteAnim.Play("InitState", 0, 0);
-                    
                 }
             }
         }
