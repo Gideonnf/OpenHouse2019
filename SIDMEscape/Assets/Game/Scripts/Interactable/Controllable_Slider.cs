@@ -103,7 +103,12 @@ namespace VRControllables.Base.Slider
                 Vector3 movePosition = currentPosition + Vector3.Scale((transform.InverseTransformPoint(controllerAttachPoint.transform.position) - transform.InverseTransformPoint(grabbedObjectAttachPoint.position)), transform.localScale);
 
                 float distance = Vector3.Distance(grabbedObjectAttachPoint.position, initialAttachPoint.position);
-                //Debug.Log("current distance" + distance);
+                Vector3 direction = (movePosition - currentPosition) / distance;
+                direction.Normalize();
+
+                //Debug.Log("Direction : " + direction);
+                //Debug.Log("Distance : " + distance);
+
                 if (distance > (detachDistance + distanceOffset))
                 {
                     //Debug.Log("max distance reached");

@@ -15,7 +15,8 @@ public class SceneChanger : MonoBehaviour
         return instance;
     }
     #endregion
-   
+
+
     public void SceneMenu()
     {
         //ON ENTER CODE HERE

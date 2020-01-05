@@ -147,7 +147,7 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
-       // if (otherCollider == grabbingRange)
+        if (otherCollider.tag != "NonInteractable")
         {
             // Get the grab trigger
             OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
@@ -162,7 +162,7 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerExit(Collider otherCollider)
     {
-       // if(otherCollider == grabbingRange)
+        if (otherCollider.tag != "NonInteractable")
         {
             OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
             if (grabbable == null) return;
