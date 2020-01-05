@@ -77,7 +77,8 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[0].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[0]))
                 {
-                    spritePieceList[0].SetFrameState(0);
+                    spritePieceList[0].spriteAnim.SetBool("Completed", true);
+                    //spritePieceList[0].SetFrameState(0);
                     // spritePieceList[0].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[0] = true;
@@ -97,7 +98,8 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[1].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[1]))
                 {
-                    spritePieceList[1].SetFrameState(0);
+                    spritePieceList[1].spriteAnim.SetBool("Completed", true);
+                    //spritePieceList[1].SetFrameState(0);
                     // spritePieceList[1].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[1] = true;
@@ -120,7 +122,8 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >=0.98f) &&
                     (spritePieceList[2].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[2]))
                 {
-                    spritePieceList[2].SetFrameState(0);
+                    spritePieceList[2].spriteAnim.SetBool("Completed", true);
+                    //spritePieceList[2].SetFrameState(0);
                     //  spritePieceList[2].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[2] = true;
@@ -141,7 +144,8 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f) &&
                     (spritePieceList[3].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[3]))
                 {
-                    spritePieceList[3].SetFrameState(0);
+                    spritePieceList[3].spriteAnim.SetBool("Completed", true);
+                    //spritePieceList[3].SetFrameState(0);
                     //spritePieceList[3].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[3] = true;
@@ -161,7 +165,8 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.98f) &&
                     (spritePieceList[4].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[4]))
                 {
-                    spritePieceList[4].SetFrameState(0);
+                    spritePieceList[4].spriteAnim.SetBool("Completed", true);
+                    //spritePieceList[4].SetFrameState(0);
                     //spritePieceList[4].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[4] = true;
@@ -181,7 +186,7 @@ public class SpritePuzzle : MonoBehaviour
                 if ((spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f) &&
                     (spritePieceList[5].spriteAnim.GetCurrentAnimatorStateInfo(0).fullPathHash == animHashID[5]))
                 {
-                    spritePieceList[5].SetFrameState(0);
+                    spritePieceList[5].spriteAnim.SetBool("Completed", true);
                     // spritePieceList[5].spriteAnim.speed = 0;
                     // Set the state to complete
                     animStates[5] = true;
@@ -194,6 +199,8 @@ public class SpritePuzzle : MonoBehaviour
                 {
                     animStates[i] = false;
                     animIsPlaying[i] = false;
+                    spritePieceList[i].spriteAnim.SetBool("Completed", false);
+                    spritePieceList[i].SetFrameState(0);
                 }
             }
         }
