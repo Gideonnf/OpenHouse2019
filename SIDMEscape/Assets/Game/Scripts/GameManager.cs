@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         //run this only once
         if (!puzzleSetter)
         {
-            if (SceneManager.GetActiveScene().name == "Game" /*full*/ )
+            if (b_blitzMode /*full*/ )
             {
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
 
                 puzzleSetter = true;
             }
-            else if (SceneManager.GetActiveScene().name == "Blitz")
+            else /*if (SceneManager.GetActiveScene().name == "Blitz")*/
             {
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
