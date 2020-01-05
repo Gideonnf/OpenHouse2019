@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     List<GameObject> goArr_puzzleManagers;
 
+    public int nextScene;
+    public Animator animator;
+
     bool puzzleSetter = false;
 
     public bool getPuzzleSetStatus()
@@ -141,11 +144,15 @@ public class GameManager : MonoBehaviour
         if (go_blitz.GetComponent<VRControllables.Base.Controllable_Movables>().isGrabbed)
         {
             b_blitzMode = true;
-            SceneChanger.GetInstance().SceneBlitz();
+            animator.SetTrigger("FadeOut");
+
+            nextScene = 2;
         }
         else if (go_full.GetComponent<VRControllables.Base.Controllable_Movables>().isGrabbed)
         {
-            SceneChanger.GetInstance().SceneFull();
+            animator.SetTrigger("FadeOut");
+
+            nextScene = 1;
         }
     }
 }
