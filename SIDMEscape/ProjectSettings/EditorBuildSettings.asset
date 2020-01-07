@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/Merge.unity
     guid: d39d726e475cf72408fe847df2539735
   - enabled: 1
-    path: Assets/Game/Scenes/MainGameScene.unity
+    path: Assets/Game/Scenes/Full.unity
     guid: 582b9fc995ac9b0438901654f3b5db2c
   m_configObjects: {}
