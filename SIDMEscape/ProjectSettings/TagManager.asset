@@ -10,6 +10,7 @@ TagManager:
   - Wrench
   - Video Coasters
   - NonInteractable
+  - GameManager
   layers:
   - Default
   - TransparentFX

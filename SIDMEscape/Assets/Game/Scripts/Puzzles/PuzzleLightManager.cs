@@ -74,7 +74,7 @@ public class PuzzleLightManager : MonoBehaviour
     void Update()
     {
         //run once
-        if (!blocker && FindObjectOfType<GameManager>().getPuzzleSetStatus())
+        if (!blocker && GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getPuzzleSetStatus())
         {
             init();
             blocker = true;

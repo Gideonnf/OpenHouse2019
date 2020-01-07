@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
-    private static GameManager instance = new GameManager();
+    //private static GameManager instance = new GameManager();
 
-    private GameManager() { }
+    //private GameManager() { }
 
-    public static GameManager GetInstance()
-    {
-        return instance;
-    }
+    //public static GameManager GetInstance()
+    //{
+    //    return instance;
+    //}
     #endregion
 
     [SerializeField]
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         goArr_puzzleManagers = new List<GameObject>();
-        b_blitzMode = false;
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -62,7 +61,7 @@ public class GameManager : MonoBehaviour
         //run this only once
         if (!puzzleSetter)
         {
-            if (b_blitzMode /*full*/ )
+            if (!b_blitzMode /*full*/ )
             {
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)

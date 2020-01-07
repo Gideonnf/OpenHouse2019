@@ -30,7 +30,7 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameManager.GetInstance().getBlitzMode()) //checking if full game
+            if (!GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getBlitzMode()) //checking if full game
             {
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
                 {

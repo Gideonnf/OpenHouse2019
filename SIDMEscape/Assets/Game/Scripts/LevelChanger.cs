@@ -14,6 +14,6 @@ public class LevelChanger : MonoBehaviour
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(GameManager.GetInstance().nextScene);
+        SceneManager.LoadScene(GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().nextScene);
     }
 }
