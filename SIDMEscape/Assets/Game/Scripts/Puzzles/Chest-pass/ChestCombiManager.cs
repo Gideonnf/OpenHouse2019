@@ -34,7 +34,7 @@ public class ChestCombiManager : MonoBehaviour
             {
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
                 {
-                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
+                    go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
                     PuzzleLightManager.GetInstance().nextLight(); //puzzle complete, set next light
                 }
