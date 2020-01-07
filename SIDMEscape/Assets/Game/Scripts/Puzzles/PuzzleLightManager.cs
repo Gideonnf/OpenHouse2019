@@ -74,7 +74,14 @@ public class PuzzleLightManager : MonoBehaviour
     {
         arr_Lights[curLight].SetActive(false);
 
-        ++curLight;
+        if (curLight + 1 > this.transform.childCount)
+        {
+            //can end the game here
+            return;
+        }
+        else
+            ++curLight;
+
         arr_Lights[curLight].SetActive(true);
     }
 
