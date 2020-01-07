@@ -6,6 +6,8 @@ public class HousePuzzle : MonoBehaviour
 {
     List<GameObject> goArr_HousePieces;
 
+    bool Completed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +25,27 @@ public class HousePuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(CheckPuzzle())
+        {
+            if (Completed == false)
+            {
+                // PuzzleLightManager.Instance.nextLight();
+                Debug.Log("Puzzle completed");
+                Completed = true;
+            }
+        }
+
+    }
+
+    bool CheckPuzzle()
+    {
         foreach (var go in goArr_HousePieces)
         {
-            if (go.transform.localPosition != Vector3.zero)
-                break;
+            if (go.GetComponent<HousePiece>().correctObject == false)
+                return false;
 
-            PuzzleLightManager.Instance.nextLight();
         }
+
+        return true;
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - Video Coasters
   - NonInteractable
   - GameManager
+  - HousePuzzle
   layers:
   - Default
   - TransparentFX

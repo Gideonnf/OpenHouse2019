@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRControllables.Base;
 
 public class HousePiece : MonoBehaviour
 {
+    [Header("Building Piece Settings")]
+    [Tooltip("Linked Game Object")]
+    public GameObject linkedObject;
+    [Tooltip("Boolean to keep track if it is correct")]
+    public bool correctObject = false;
+    [Tooltip("Materal to Change to")]
+    public Material changeableMaterial;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,15 +23,45 @@ public class HousePiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((this.transform.localPosition.x < 1 && this.transform.localPosition.y < 1 && this.transform.localPosition.z < 1) &&
-            (this.transform.localPosition.x > -1 && this.transform.localPosition.y > -1 && this.transform.localPosition.z > -1))
+        //if ((this.transform.localPosition.x < 1 && this.transform.localPosition.y < 1 && this.transform.localPosition.z < 1) &&
+        //    (this.transform.localPosition.x > -1 && this.transform.localPosition.y > -1 && this.transform.localPosition.z > -1))
+        //{
+        //    if ((this.transform.localEulerAngles.x < 5 && this.transform.localPosition.y < 5 && this.transform.localPosition.z < 5) &&
+        //    (this.transform.localPosition.x > 355 && this.transform.localPosition.y > 355 && this.transform.localPosition.z > 355))
+        //    {
+        //        this.transform.localPosition = Vector3.zero;
+        //        this.transform.localEulerAngles = Vector3.zero;
+        //    }
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (other == null)
+        //    return;
+        //if (other.gameObject == null)
+        //    return;
+        if (other.tag != "HousePuzzle")
+            return;
+
+        if (other.transform.parent.gameObject == linkedObject)
         {
-            if ((this.transform.localEulerAngles.x < 5 && this.transform.localPosition.y < 5 && this.transform.localPosition.z < 5) &&
-            (this.transform.localPosition.x > 355 && this.transform.localPosition.y > 355 && this.transform.localPosition.z > 355))
+            GameObject refObject = other.transform.parent.gameObject;
+            // Set the flag to true
+            correctObject = true;
+
+            // Change the material
+            this.gameObject.GetComponentInChildren<MeshRenderer>().material = changeableMaterial;
+
+            // If its being grabbed
+            if(refObject.GetComponent<VRControllables.Base.Controllable_Movables>().grabbedBy)
             {
-                this.transform.localPosition = Vector3.zero;
-                this.transform.localEulerAngles = Vector3.zero;
+                //Release it first
+                refObject.GetComponent<VRControllables.Base.Controllable_Movables>().grabbedBy.GrabEnd();
             }
+            // Then Destroy
+            //Destroy the grabbable one
+            Destroy(refObject);
         }
     }
 }
