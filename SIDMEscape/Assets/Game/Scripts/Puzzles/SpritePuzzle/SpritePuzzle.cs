@@ -31,6 +31,8 @@ public class SpritePuzzle : MonoBehaviour
     List<AnimatorStateInfo> spriteAnimStateInfo = new List<AnimatorStateInfo>();
     bool Completed = false;
 
+    bool nextLight = false;
+
     bool[] slotArray = new bool[6];
     bool[] animStates = new bool[6];
     bool[] animIsPlaying = new bool[6];
@@ -202,8 +204,11 @@ public class SpritePuzzle : MonoBehaviour
                     spritePieceList[i].spriteAnim.SetBool("Completed", false);
                     spritePieceList[i].SetFrameState(0);
                 }
-
-                PuzzleLightManager.Instance.nextLight();
+                if (nextLight == false)
+                {
+                    PuzzleLightManager.Instance.nextLight();
+                    nextLight = true;
+                }
             }
         }
     }

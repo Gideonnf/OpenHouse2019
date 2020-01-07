@@ -74,7 +74,7 @@ public class PuzzleLightManager : MonoBehaviour
     {
         arr_Lights[curLight].SetActive(false);
 
-        if (curLight + 1 > this.transform.childCount)
+        if (curLight + 1 >= this.transform.childCount)
         {
             //can end the game here
             return;

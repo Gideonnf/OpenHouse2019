@@ -18,6 +18,8 @@ public class MonitorRandomiser : MonoBehaviour
     [SerializeField]
     GameObject go_TablePuzzle;
 
+    bool Completed = false;
+
     public enum monitor_states
     {
         MS_0121,
@@ -77,8 +79,14 @@ public class MonitorRandomiser : MonoBehaviour
                     return; //so long there is a false, puzzle is incomplete
             }
 
+        }
+
+        if (Completed == false)
+        {
             //puzzle done, set next puzzle
             PuzzleLightManager.Instance.nextLight();
+            Completed = true;
         }
+
     }
 }
