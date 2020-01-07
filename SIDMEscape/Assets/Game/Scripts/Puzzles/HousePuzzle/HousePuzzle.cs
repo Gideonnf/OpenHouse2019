@@ -28,7 +28,7 @@ public class HousePuzzle : MonoBehaviour
             if (go.transform.localPosition != Vector3.zero)
                 break;
 
-            PuzzleLightManager.GetInstance().nextLight();
+            PuzzleLightManager.Instance.nextLight();
         }
     }
 }

@@ -78,7 +78,7 @@ public class MonitorRandomiser : MonoBehaviour
             }
 
             //puzzle done, set next puzzle
-            PuzzleLightManager.GetInstance().nextLight();
+            PuzzleLightManager.Instance.nextLight();
         }
     }
 }

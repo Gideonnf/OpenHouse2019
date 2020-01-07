@@ -5,13 +5,21 @@ using UnityEngine;
 public class PuzzleLightManager : MonoBehaviour
 {
     #region Singleton
-    private static PuzzleLightManager instance = new PuzzleLightManager();
+    private static PuzzleLightManager _instance;
 
-    private PuzzleLightManager() { }
+    public static PuzzleLightManager Instance { get { return _instance; } }
 
-    public static PuzzleLightManager GetInstance()
+
+    private void Awake()
     {
-        return instance;
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
     #endregion
 
@@ -74,7 +82,7 @@ public class PuzzleLightManager : MonoBehaviour
     void Update()
     {
         //run once
-        if (!blocker && GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getPuzzleSetStatus())
+        if (!blocker && GameManager.Instance.getPuzzleSetStatus())
         {
             init();
             blocker = true;

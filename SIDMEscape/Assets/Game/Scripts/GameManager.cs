@@ -7,14 +7,22 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
-    //private static GameManager instance = new GameManager();
+    private static GameManager _instance;
 
-    //private GameManager() { }
+    public static GameManager Instance { get { return _instance; } }
 
-    //public static GameManager GetInstance()
-    //{
-    //    return instance;
-    //}
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     #endregion
 
     [SerializeField]

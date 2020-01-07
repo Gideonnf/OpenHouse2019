@@ -30,13 +30,13 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getBlitzMode()) //checking if full game
+            if (!GameManager.Instance.getBlitzMode()) //checking if full game
             {
                 if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
                 {
                     go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
-                    PuzzleLightManager.GetInstance().nextLight(); //puzzle complete, set next light
+                    PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
                 }
                 else
                 {
@@ -49,7 +49,7 @@ public class ChestCombiManager : MonoBehaviour
                 {
                     go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
-                    PuzzleLightManager.GetInstance().nextLight(); //puzzle complete, set next light
+                    PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
                 }
                 else
                 {
