@@ -20,7 +20,7 @@ public class ChestCombiManager : MonoBehaviour
     {
         //combination passwords
         arr_chestBlitzCombi = new int[,] { { 0, 3, 2, 5 }, { 1, 1, 1, 2 }, { 2, 0, 0, 8 } };
-        arr_chestCombi = new int[, ] { { 5, 6, 5, 3 }, { 2, 6, 3, 6 }, { 1, 7, 4, 8 } };
+        arr_chestCombi = new int[, ] { { 3, 2, 1, 2 }, { 0, 3, 4, 2 }, { 4, 1, 2, 3 } };
 
         arr_testingCombi = new List<int>();
     }
