@@ -202,6 +202,8 @@ public class SpritePuzzle : MonoBehaviour
                     spritePieceList[i].spriteAnim.SetBool("Completed", false);
                     spritePieceList[i].SetFrameState(0);
                 }
+
+                PuzzleLightManager.Instance.nextLight();
             }
         }
     }
