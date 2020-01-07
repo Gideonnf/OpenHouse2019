@@ -221,8 +221,8 @@ namespace VRControllables.Base.Rotator
         {
            
 
-            if (currentRotation.x > -1 && currentRotation.x < 1 &&
-                currentRotation.z > -1 && currentRotation.z < 1)
+            if (currentRotation.x > -2.5 && currentRotation.x < 2.5 &&
+                currentRotation.z > -2.5 && currentRotation.z < 2.5)
             {
                 Vector3 grabbingObjectAngularVelocity = Vector3.zero;
                 grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
@@ -260,11 +260,21 @@ namespace VRControllables.Base.Rotator
                 // Then trigger what ever function it needs to trigger
                 if(CheckMaximumBoundary(currentRotation + newRotation))
                 {
-                   // Debug.LogError("Maximum has been reached");
+                    // Debug.LogError("Maximum has been reached");
+                    if (m_grabbedBy)
+                    {
+                        m_grabbedBy.GrabEnd();
+                       // CustomGrabEnd(Vector3.zero, Vector3.zero);
+                    }
                 }
                 else if (CheckMinimumBoundary(currentRotation + newRotation))
                 {
                     //Debug.LogError("Minimum has been reached");
+                    if (m_grabbedBy)
+                    {
+                        m_grabbedBy.GrabEnd();
+                        //  CustomGrabEnd(Vector3.zero, Vector3.zero);
+                    }
 
                 }
             }
