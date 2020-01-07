@@ -9835,6 +9835,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NumpadObject
       objectReference: {fileID: 0}
+    - target: {fileID: 3828853522775416034, guid: 2394246ac6901064e800599da088968d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7229057520419020772, guid: 2394246ac6901064e800599da088968d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10050,22 +10055,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
+      objectReference: {fileID: 2100000, guid: a9671053ad5f10b48a69058b73c8183b, type: 2}
     - target: {fileID: 5455927209229325779, guid: a9e5a036b5dd413498a294da0dc44254,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
+      objectReference: {fileID: 2100000, guid: a9671053ad5f10b48a69058b73c8183b, type: 2}
     - target: {fileID: 993269078927815760, guid: a9e5a036b5dd413498a294da0dc44254,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
+      objectReference: {fileID: 2100000, guid: a9671053ad5f10b48a69058b73c8183b, type: 2}
     - target: {fileID: 3429082842980552524, guid: a9e5a036b5dd413498a294da0dc44254,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ec5f903c6fe01a740933c5c913a8ff90, type: 2}
+      objectReference: {fileID: 2100000, guid: a9671053ad5f10b48a69058b73c8183b, type: 2}
     - target: {fileID: 1562024564, guid: a9e5a036b5dd413498a294da0dc44254, type: 3}
       propertyPath: m_Enabled
       value: 0
