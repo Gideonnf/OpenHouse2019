@@ -2040,16 +2040,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235940, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235940, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: m_TagString
-      value: GameManager
-      objectReference: {fileID: 0}
     - target: {fileID: 715485677816235929, guid: 607f642ca48780b4cad2104288241c49,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2104,26 +2094,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235929, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235929, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235929, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 715485677816235943, guid: 607f642ca48780b4cad2104288241c49,
-        type: 3}
-      propertyPath: b_blitzMode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607f642ca48780b4cad2104288241c49, type: 3}
@@ -3620,6 +3590,26 @@ PrefabInstance:
     - target: {fileID: 5402847734978466443, guid: 38766fae1e02b864c95b6a8eeaaffa16,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402847734978466446, guid: 38766fae1e02b864c95b6a8eeaaffa16,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402847734978466446, guid: 38766fae1e02b864c95b6a8eeaaffa16,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1644527609}
+    - target: {fileID: 5402847734978466446, guid: 38766fae1e02b864c95b6a8eeaaffa16,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402847734978466446, guid: 38766fae1e02b864c95b6a8eeaaffa16,
+        type: 3}
+      propertyPath: m_PixelPerfect
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6067,6 +6057,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec50b2ad210320d48bc988d40fccb657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1644527609 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3329332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1650953128
 GameObject:
   m_ObjectHideFlags: 0
