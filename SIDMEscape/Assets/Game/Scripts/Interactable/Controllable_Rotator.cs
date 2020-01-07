@@ -87,6 +87,7 @@ namespace VRControllables.Base.Rotator
                 float distance = Vector3.Distance(transform.position, controllerAttachPoint.transform.position);
                 if (StillTouching() && distance >= originDeadzone)
                 {
+                    UpdateOperatingAxis();
                     Vector3 newRotation = GetNewRotation();
                     previousAttachPointPosition = controllerAttachPoint.transform.position;
                     currentRotationSpeed = newRotation;
@@ -191,8 +192,9 @@ namespace VRControllables.Base.Rotator
             currentRotationSpeed = Vector3.zero;
             while (currentRotation != targetAngle)
             {
+                Debug.Log("current rotation : " + currentRotation);
                 currentRotation = Vector3.Lerp(currentRotation, targetAngle, rotationSpeed * Time.deltaTime);
-                //UpdateRotation(currentRotation - previousRotation, true, false);
+                UpdateRotation(currentRotation - previousRotation, true, false);
                 previousRotation = currentRotation;
                 yield return null;
             }
@@ -215,6 +217,29 @@ namespace VRControllables.Base.Rotator
         #endregion
 
         #region RotationCalculations
+        protected void UpdateOperatingAxis()
+        {
+           
+
+            if (currentRotation.x > -1 && currentRotation.x < 1 &&
+                currentRotation.z > -1 && currentRotation.z < 1)
+            {
+                Vector3 grabbingObjectAngularVelocity = Vector3.zero;
+                grabbingObjectAngularVelocity = controllerAttachPoint.angularVelocity * VRControllable_Methods.DividerToMultiplier(rotationFriction);
+
+                OperatingAxis tempAxis = operateAxis;
+
+                operateAxis = OperatingAxis.xAxis;
+                Vector3 xAxisAngle = CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+                operateAxis = OperatingAxis.zAxis;
+                Vector3 zAxisAngle = CalculateAngle(transform.position, previousAttachPointPosition, controllerAttachPoint.transform.position);
+
+                if (xAxisAngle.magnitude > zAxisAngle.magnitude)
+                    operateAxis = OperatingAxis.xAxis;
+                else
+                    operateAxis = OperatingAxis.zAxis;
+            }
+        }
 
         protected void UpdateRotation(Vector3 newRotation, bool additive, bool updateCurrentRotation)
         {
@@ -224,9 +249,9 @@ namespace VRControllables.Base.Rotator
                 if(updateCurrentRotation)
                 {
                     currentRotation += newRotation;
-
-                    transform.localRotation = (additive ? transform.localRotation * Quaternion.Euler(newRotation) : Quaternion.Euler(newRotation));
                 }
+
+                transform.localRotation = (additive ? transform.localRotation * Quaternion.Euler(newRotation) : Quaternion.Euler(newRotation));
             }
             else
             {
