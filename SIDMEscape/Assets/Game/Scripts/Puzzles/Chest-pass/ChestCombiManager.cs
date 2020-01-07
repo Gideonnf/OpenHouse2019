@@ -13,14 +13,16 @@ public class ChestCombiManager : MonoBehaviour
     int[,] arr_chestCombi;
     int[,] arr_chestBlitzCombi;
 
+    bool Completed = false;
+
     public List<int> arr_testingCombi; // input buffer to compare code
 
     // Start is called before the first frame update
     void Start()
     {
         //combination passwords
-        arr_chestBlitzCombi = new int[,] { { 0, 3, 2, 5 }, { 1, 1, 1, 2 }, { 2, 0, 0, 8 } };
-        arr_chestCombi = new int[, ] { { 3, 2, 1, 2 }, { 0, 3, 4, 2 }, { 4, 1, 2, 3 } };
+        arr_chestBlitzCombi = new int[,] { { 1, 4, 3, 6 }, { 2, 2, 2, 3 }, { 3, 1, 1, 9 } };
+        arr_chestCombi = new int[, ] { { 4, 3, 2, 3 }, { 1, 4, 5, 3 }, { 5, 2, 3, 4 } };
 
         arr_testingCombi = new List<int>();
     }
@@ -28,6 +30,9 @@ public class ChestCombiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Completed)
+            return;
+
         if (arr_testingCombi.Count == 4)
         {
             if (!GameManager.Instance.getBlitzMode()) //checking if full game
@@ -37,6 +42,10 @@ public class ChestCombiManager : MonoBehaviour
                     go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
                     PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
+
+                    Completed = true;
+
+                    arr_testingCombi.Clear();
                 }
                 else
                 {
