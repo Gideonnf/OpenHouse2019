@@ -19,9 +19,10 @@ public class MiseEnPlace : MonoBehaviour
     void Start()
     {
         go_Places = new List<GameObject>();
-        go_Objects = new List<GameObject>();
+        // go_Objects = new List<GameObject>();
 
-        int ranIgnore = Random.Range(0, this.transform.childCount); //randomise a child id to use
+        // int ranIgnore = Random.Range(0, this.transform.childCount); //randomise a child id to use
+        int ranIgnore = 0; //randomise a child id to use
         for (int i = 0; i < this.transform.childCount; ++i)
         {
             if (i == ranIgnore) //only 1 will be active
@@ -66,11 +67,14 @@ public class MiseEnPlace : MonoBehaviour
         }
 
         // End the grabbing forcefully
-        monitorMovableScript.grabbedBy.GrabEnd();
+        if (monitorMovableScript.grabbedBy)
+            monitorMovableScript.grabbedBy.GrabEnd();
+
+        float yOffset = GrabbableObject.transform.position.y - CoasterObject.transform.position.y;
 
         // New position of the object based on the coaster's x and z
         Vector3 newPosition = new Vector3(CoasterObject.transform.position.x,
-                                                                monitorObjectScript.getOriginalPos(false).y,
+                                                                CoasterObject.transform.position.y + yOffset,
                                                                 CoasterObject.transform.position.z);
         Quaternion newRot = monitorObjectScript.getOriginalRot(false);
 
