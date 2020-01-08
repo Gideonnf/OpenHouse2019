@@ -3622,6 +3622,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 348577645}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &348577647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 715485677816235940, guid: 607f642ca48780b4cad2104288241c49,
+    type: 3}
+  m_PrefabInstance: {fileID: 348577645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &348577648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348577647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d4cfc545e92e44c85851f2d8a6dd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListOfAudioObjects:
+  - name: PuzzleComplete
+    audioFile: {fileID: 8300000, guid: a889c37dd023b634da2666e686a431b5, type: 3}
+    isLooping: 0
+  - name: ComputerFire
+    audioFile: {fileID: 8300000, guid: d5804e58805482b47bdda2ad4b35b546, type: 3}
+    isLooping: 0
+  - name: KeypadPress
+    audioFile: {fileID: 8300000, guid: 797dfb3966e5f3f43ad84f08b5de6a21, type: 3}
+    isLooping: 0
+  - name: Correct
+    audioFile: {fileID: 8300000, guid: 88dcd9e9ad799b64492971f6e43bda07, type: 3}
+    isLooping: 0
 --- !u!1001 &354656189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11773,6 +11804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861128102520161136, guid: fb8adc09056e47d4bbee62f494229c3b,
+        type: 3}
+      propertyPath: roundTime
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8adc09056e47d4bbee62f494229c3b, type: 3}
