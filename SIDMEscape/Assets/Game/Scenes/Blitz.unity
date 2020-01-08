@@ -7996,6 +7996,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 7403992431474125512, guid: ca9b18050d731bf47bc56dbe159261fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8831051580908344145, guid: ca9b18050d731bf47bc56dbe159261fc,
         type: 3}
       propertyPath: m_TagString
@@ -8081,11 +8086,6 @@ PrefabInstance:
       propertyPath: m_grabPoints.Array.data[0]
       value: 
       objectReference: {fileID: 790209243}
-    - target: {fileID: 7403992431474125512, guid: ca9b18050d731bf47bc56dbe159261fc,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9b18050d731bf47bc56dbe159261fc, type: 3}
 --- !u!4 &1701254050 stripped
@@ -10463,7 +10463,7 @@ PrefabInstance:
         type: 3}
       propertyPath: videoClips.Array.data[3]
       value: 
-      objectReference: {fileID: 32900000, guid: d74363084601f18438d8dd8876734ae9,
+      objectReference: {fileID: 32900000, guid: c70e932e02fe52e4caf2e82ec2ead5e2,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70c93c8cee016184d88d703774bc0a3d, type: 3}
