@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class ChestCombiManager : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class ChestCombiManager : MonoBehaviour
     GameObject go_clock; // Clock GO for time to set combi
     [SerializeField]
     GameObject go_drawerObj; //drawer object to affect
+    [SerializeField]
+    GameObject go_Text; // Reference to the text screen in the numpad
+    //[SerializeField]
+    //float inputTimer;
 
     int[,] arr_chestCombi;
     int[,] arr_chestBlitzCombi;
 
     bool Completed = false;
+    //float elapsedTime = 0;
 
     public List<int> arr_testingCombi; // input buffer to compare code
 
@@ -21,10 +27,12 @@ public class ChestCombiManager : MonoBehaviour
     void Start()
     {
         //combination passwords
-        arr_chestBlitzCombi = new int[,] { { 1, 5, 2, 5 }, { 2, 2, 2, 3 }, { 3, 1, 1, 9 } };
-        arr_chestCombi = new int[, ] { { 4, 3, 2, 3 }, { 1, 4, 5, 3 }, { 5, 2, 3, 4 } };
+        arr_chestBlitzCombi = new int[,] { { 1, 5, 2, 5 }, { 2, 2, 2, 3 }, { 2, 1, 3, 8 } };
+        arr_chestCombi = new int[, ] { { 1, 5, 2, 5 }, { 2, 2, 2, 3 }, { 2, 1, 3, 8 } };
 
         arr_testingCombi = new List<int>();
+
+        UpdateScreen();
     }
 
     // Update is called once per frame
@@ -32,6 +40,9 @@ public class ChestCombiManager : MonoBehaviour
     {
         if (Completed)
             return;
+
+       // elapsedTime += Time.deltaTime;
+
 
         if (arr_testingCombi.Count == 4)
         {
@@ -67,6 +78,26 @@ public class ChestCombiManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void UpdateScreen()
+    {
+        //int count = 0;
+        string numPad = "";
+
+        for (int i = 0; i < 4; ++i)
+        {
+            // If the count is less than the number of number sin the arr_testing
+            if (i < arr_testingCombi.Count)
+            {
+                numPad += arr_testingCombi[i].ToString();
+            }
+            else
+            {
+                numPad += "_";
+            }
+        }
+        go_Text.GetComponent<TextMeshProUGUI>().text = numPad;
     }
 
     /// <summary>

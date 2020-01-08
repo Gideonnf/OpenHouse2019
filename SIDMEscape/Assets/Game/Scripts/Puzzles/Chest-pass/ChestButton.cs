@@ -11,26 +11,29 @@ public class ChestButton : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Hands"))
+        if (collision.gameObject.CompareTag("Finger"))
             bOnOff = !bOnOff; //change colour of button for visual feedback
 
         if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
         {
             Debug.Log("Num Pressed :" + buttonNum);
-            this.gameObject.GetComponent<Renderer>().material.color = Color.green; //set colour that shows its pressed
+          //  this.gameObject.GetComponent<Renderer>().material.color = Color.green; //set colour that shows its pressed
             this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(buttonNum); //add number to list
+            this.transform.parent.GetComponent<ChestCombiManager>().UpdateScreen();
         }
         else
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.red; //set colour that shows its cancelled
+         //   this.gameObject.GetComponent<Renderer>().material.color = Color.red; //set colour that shows its cancelled
             this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Remove(buttonNum); //remove number from list
+            this.transform.parent.GetComponent<ChestCombiManager>().UpdateScreen();
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Hands"))
+        if (other.CompareTag("Finger"))
         {
+            this.transform.parent.GetComponent<ChestCombiManager>().UpdateScreen();
             bOnOff = !bOnOff; //change colour of button for visual feedback
         }
     }
@@ -46,7 +49,7 @@ public class ChestButton : MonoBehaviour
     {
         if (!bOnOff)
         {
-            this.gameObject.GetComponent<Renderer>().material.color = Color.red; //change colour of button for visual feedback
+           // this.gameObject.GetComponent<Renderer>().material.color = Color.red; //change colour of button for visual feedback
         }
     }
 }

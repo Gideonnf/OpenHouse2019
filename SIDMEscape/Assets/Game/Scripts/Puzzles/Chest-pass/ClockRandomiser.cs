@@ -14,9 +14,9 @@ public class ClockRandomiser : MonoBehaviour
 
     public enum Clock_States
     {
-        CS_0325,
+        CS_1525,
         CS_1112,
-        CS_2008,
+        CS_2138,
         NUM_OF_STATES
     };
     public Clock_States n_clockStates;

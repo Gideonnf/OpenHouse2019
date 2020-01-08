@@ -12,6 +12,7 @@ TagManager:
   - NonInteractable
   - GameManager
   - HousePuzzle
+  - Finger
   layers:
   - Default
   - TransparentFX
