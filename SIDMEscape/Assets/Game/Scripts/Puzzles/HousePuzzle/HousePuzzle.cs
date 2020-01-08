@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HousePuzzle : MonoBehaviour
 {
+    public GameObject puzzleLight;
+
     List<GameObject> goArr_HousePieces;
 
     bool Completed = false;

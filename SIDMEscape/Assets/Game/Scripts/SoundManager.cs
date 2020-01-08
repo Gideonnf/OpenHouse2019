@@ -78,4 +78,35 @@ public class SoundManager : MonoBehaviour
 
         return false;
     }
+
+    /// <summary>
+    /// Pauses the audio
+    /// </summary>
+    /// <returns></returns>
+    public bool PauseAudio()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Controlling external audio sources
+    /// </summary>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public bool PauseAudio(AudioSource source)
+    {
+        if (source.isPlaying)
+        {
+            audioSource.Pause();
+            return true;
+        }
+
+        return false;
+    }
 }

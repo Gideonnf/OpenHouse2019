@@ -47,8 +47,10 @@ public class HousePiece : MonoBehaviour
         if (other.transform.parent.gameObject == linkedObject)
         {
             GameObject refObject = other.transform.parent.gameObject;
-            // Set the flag to true
-            correctObject = true;
+
+            // If the light isnt active, means the puzzle isnt working yet
+            if (refObject.GetComponent<HousePuzzle>().puzzleLight.activeInHierarchy == false)
+                return;
 
             // Change the material
             this.gameObject.GetComponentInChildren<MeshRenderer>().material = changeableMaterial;
@@ -59,6 +61,9 @@ public class HousePiece : MonoBehaviour
                 //Release it first
                 refObject.GetComponent<VRControllables.Base.Controllable_Movables>().grabbedBy.GrabEnd();
             }
+
+            // Set the flag to true
+            correctObject = true;
 
             // Play Audio
             SoundManager.instance.playAudio("Correct");

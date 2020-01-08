@@ -18,7 +18,7 @@ public class ComputerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeTillFire = Random.Range(5, 50);
+        timeTillFire = Random.Range(30, 70);
 
         ps_fire.gameObject.SetActive(false);
         ps_smoke.gameObject.SetActive(false);
@@ -32,13 +32,13 @@ public class ComputerBehaviour : MonoBehaviour
             needyEnabled = false;
 
             //stop all particles
-            ps_fire.gameObject.SetActive(false);
-            ps_smoke.gameObject.SetActive(false);
+           // ps_fire.gameObject.SetActive(false);
+            //ps_smoke.gameObject.SetActive(false);
 
             //randomly pick one of the 2 to render
-            ParticleSystem go = Random.Range(0, 2) != 0 ? ps_fire : ps_smoke;
-            go.gameObject.SetActive(true);
-
+            //ParticleSystem go = Random.Range(0, 2) != 0 ? ps_fire : ps_smoke;
+            ps_smoke.gameObject.SetActive(true);
+            SoundManager.instance.playAudio("ComputerFire", audioSource);
             //TO DO SCREEN SPACE SMOKE/FIRE
         }
         else
@@ -55,6 +55,8 @@ public class ComputerBehaviour : MonoBehaviour
 
             //reset timer and particles
             timeTillFire = Random.Range(5, 50);
+
+            SoundManager.instance.PauseAudio(audioSource);
 
             //stop all particles
             ps_fire.gameObject.SetActive(false);
