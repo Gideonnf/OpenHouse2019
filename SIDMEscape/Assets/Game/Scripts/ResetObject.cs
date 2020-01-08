@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorReset : MonoBehaviour
+public class ResetObject : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,5 @@ public class FloorReset : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<ResetObject>())
-        {
-            ResetObject objectReset = other.GetComponent<ResetObject>();
-        }
     }
 }

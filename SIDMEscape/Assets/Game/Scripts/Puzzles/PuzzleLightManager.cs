@@ -78,7 +78,7 @@ public class PuzzleLightManager : MonoBehaviour
     public void nextLight()
     {
         arr_Lights[curLight].SetActive(false);
-
+        SoundManager.instance.playAudio("PuzzleComplete");
         if (curLight + 1 >= this.transform.childCount)
         {
             //can end the game here
