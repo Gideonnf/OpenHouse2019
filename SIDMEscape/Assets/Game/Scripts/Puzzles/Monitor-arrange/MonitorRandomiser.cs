@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class MonitorRandomiser : MonoBehaviour
 {
+    #region Singleton
+    private static MonitorRandomiser _instance;
+
+    public static MonitorRandomiser Instance { get { return _instance; } }
+
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
+        go_Monitor = this.gameObject;
+
+        n_monitorStates = (monitor_states)rnd.Next(0, (int)monitor_states.NUM_OF_STATES);
+    }
+    #endregion
+
     System.Random rnd = new System.Random(); //init randomiser C# style
 
     [Header("Monitor Settings")]
@@ -34,16 +57,6 @@ public class MonitorRandomiser : MonoBehaviour
 
     //float f_ctimer = 0;
     //int n_citer = 0;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        //arr_monitorColourCombi = new int[,] { { 0, 1, 2, 1}, { 1, 2, 0, 3}, {2, 0, 2, 1 } }; //colour combinations, each int is the array position of arr_monitorMaterials
-
-        go_Monitor = this.gameObject;
-
-        n_monitorStates = (monitor_states)rnd.Next(0, (int)monitor_states.NUM_OF_STATES);
-    }
 
     // Update is called once per frame
     void Update()

@@ -50,19 +50,24 @@ public class PuzzleLightManager : MonoBehaviour
             {
                 //destroy
                 Destroy(this.transform.GetChild(i).gameObject);
-                skipObj = i;
+                //skipObj = i;
+            }
+            else
+            {
+                arr_Lights.Add(this.transform.GetChild(i).gameObject);
+                this.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
 
         //add the rest of the lights and set false
-        for (int i = 0; i < this.transform.childCount; ++i)
-        {
-            if (i == skipObj)
-                continue;
+        //for (int i = 0; i < this.transform.childCount; ++i)
+        //{
+        //    if (i == skipObj)
+        //        continue;
 
-            arr_Lights.Add(this.transform.GetChild(i).gameObject);
-            this.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        //    arr_Lights.Add(this.transform.GetChild(i).gameObject);
+        //    this.transform.GetChild(i).gameObject.SetActive(false);
+        //}
 
         arr_Lights[curLight].SetActive(true);
     }

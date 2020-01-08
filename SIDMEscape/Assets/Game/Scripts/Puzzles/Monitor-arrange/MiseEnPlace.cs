@@ -22,21 +22,25 @@ public class MiseEnPlace : MonoBehaviour
         // go_Objects = new List<GameObject>();
 
         // int ranIgnore = Random.Range(0, this.transform.childCount); //randomise a child id to use
-        int ranIgnore = 0; //randomise a child id to use
-        for (int i = 0; i < this.transform.childCount; ++i)
+        if(GameManager.Instance.getBlitzMode())
         {
-            if (i == ranIgnore) //only 1 will be active
-                continue;
+            int ranIgnore = 0; //randomise a child id to use
+            for (int i = 0; i < this.transform.childCount; ++i)
+            {
+                if (i == ranIgnore) //only 1 will be active
+                    continue;
 
-            //set the rest false
-            this.transform.GetChild(i).gameObject.SetActive(false);
+                //set the rest false
+                this.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            //go through the active set to use those coasters
+            for (int i = 0; i < this.transform.GetChild(ranIgnore).childCount; ++i)
+            {
+                go_Places.Add(this.transform.GetChild(ranIgnore).GetChild(i).gameObject);
+            }
         }
 
-        //go through the active set to use those coasters
-        for (int i = 0; i < this.transform.GetChild(ranIgnore).childCount; ++i)
-        {
-            go_Places.Add(this.transform.GetChild(ranIgnore).GetChild(i).gameObject);
-        }
     }
 
     void Update()

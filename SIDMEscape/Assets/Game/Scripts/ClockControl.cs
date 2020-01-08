@@ -20,7 +20,7 @@ public class ClockControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        roundTime -= Time.deltaTime * 2;
+        roundTime -= Time.deltaTime;
         string minutes = "";
         string seconds = "";
         if (roundTime > 0)

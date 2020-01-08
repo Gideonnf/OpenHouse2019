@@ -26,6 +26,11 @@ public class WorldSpacePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        videoClipIndex = (int)MonitorRandomiser.Instance.n_monitorStates;
+
+        if (GameManager.Instance.getBlitzMode())
+            videoClipIndex = 3;
+
         videoPlayer.targetTexture.Release();
         videoPlayer.clip = videoClips[videoClipIndex];
         playerCamera = VRPlayerManager.Instance.mainCameraReference;
