@@ -16,6 +16,9 @@ public class ChestButton : MonoBehaviour
 
         if (bOnOff && this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Count < 4)
         {
+            // Sound
+            SoundManager.instance.playAudio("KeypadPress");
+
             Debug.Log("Num Pressed :" + buttonNum);
           //  this.gameObject.GetComponent<Renderer>().material.color = Color.green; //set colour that shows its pressed
             this.transform.parent.GetComponent<ChestCombiManager>().arr_testingCombi.Add(buttonNum); //add number to list

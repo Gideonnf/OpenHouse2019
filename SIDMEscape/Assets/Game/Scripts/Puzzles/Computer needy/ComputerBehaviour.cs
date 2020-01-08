@@ -10,6 +10,8 @@ public class ComputerBehaviour : MonoBehaviour
     ParticleSystem ps_fire;
     [SerializeField]
     ParticleSystem ps_smoke;
+    [SerializeField]
+    AudioSource audioSource;
 
     bool needyEnabled = true;
 

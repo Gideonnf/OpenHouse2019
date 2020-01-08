@@ -59,6 +59,10 @@ public class HousePiece : MonoBehaviour
                 //Release it first
                 refObject.GetComponent<VRControllables.Base.Controllable_Movables>().grabbedBy.GrabEnd();
             }
+
+            // Play Audio
+            SoundManager.instance.playAudio("Correct");
+
             // Then Destroy
             //Destroy the grabbable one
             Destroy(refObject);

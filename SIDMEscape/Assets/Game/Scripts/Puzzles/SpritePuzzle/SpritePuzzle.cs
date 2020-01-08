@@ -262,7 +262,13 @@ public class SpritePuzzle : MonoBehaviour
                 spritePieceList[i].SetFrameState(0);
             }
         }
+    }
 
+    bool CheckNewPiece(int id)
+    {
+        if (spritePieceList[id].SpriteID == FinalArrangement[id])
+            return true;
+        return false;
     }
 
     /// <summary>
@@ -354,6 +360,12 @@ public class SpritePuzzle : MonoBehaviour
             spritePiece.PlacedInSlot(i);
 
             slotArray[i] = true;
+
+            // If the piece is correct on placement
+            if (CheckNewPiece(i))
+            {
+                SoundManager.instance.playAudio("Correct");
+            }
 
             // If the puzzle isn't completed yet
             // Check each piece
