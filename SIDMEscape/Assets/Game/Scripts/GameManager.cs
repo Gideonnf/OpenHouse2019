@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
                 {
-                    if (go.layer >= 8 && go.layer <= 10) //add all layers
+                    if (go.layer >= 8 && go.layer <= 11) //add all layers
                     {
                         go.SetActive(false);
                         goArr_puzzleManagers.Add(go);
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
                     int hitlayer;
                     do
                     {
-                        hitlayer = rnd.Next(8, 11);
+                        hitlayer = rnd.Next(8, 12);
                     } while (prevNum == hitlayer);
 
                     foreach (GameObject temp in goArr_puzzleManagers)
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
                 {
-                    if (go.layer >= 8 && go.layer <= 10) //add all GO in layers 8-10
+                    if (go.layer >= 8 && go.layer <= 11) //add all GO in layers 8-10
                     {
                         go.SetActive(false); //set them all false
                         goArr_puzzleManagers.Add(go);
