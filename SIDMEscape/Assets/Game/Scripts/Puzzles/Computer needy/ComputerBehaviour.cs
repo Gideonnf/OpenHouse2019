@@ -34,7 +34,7 @@ public class ComputerBehaviour : MonoBehaviour
             ps_smoke.gameObject.SetActive(false);
 
             //randomly pick one of the 2 to render
-            ParticleSystem go = Random.Range(0, 1) != 0 ? ps_fire : ps_smoke;
+            ParticleSystem go = Random.Range(0, 2) != 0 ? ps_fire : ps_smoke;
             go.gameObject.SetActive(true);
 
             //TO DO SCREEN SPACE SMOKE/FIRE
