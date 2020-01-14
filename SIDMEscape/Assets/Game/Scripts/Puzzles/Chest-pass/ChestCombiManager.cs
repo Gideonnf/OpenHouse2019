@@ -4,6 +4,12 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 
+[System.Serializable]
+public class ChestAnswers
+{
+    public int[] AnswerArrays = new int[4];
+}
+
 public class ChestCombiManager : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +26,7 @@ public class ChestCombiManager : MonoBehaviour
 
     bool Completed = false;
     //float elapsedTime = 0;
+    public List<ChestAnswers> chestAnswerList = new List<ChestAnswers>();
 
     public List<int> arr_testingCombi; // input buffer to compare code
 
@@ -27,8 +34,10 @@ public class ChestCombiManager : MonoBehaviour
     void Start()
     {
         //combination passwords
-        arr_chestBlitzCombi = new int[,] { { 1, 5, 2, 5 }, { 2, 2, 2, 3 }, { 2, 1, 3, 8 } };
-        arr_chestCombi = new int[, ] { { 1, 5, 2, 5 }, { 2, 2, 2, 3 }, { 2, 1, 3, 8 } };
+        arr_chestBlitzCombi = new int[,] { { 1, 5, 2, 5 }, { 1,1, 1, 2 }, { 2, 1, 3, 8 } };
+        arr_chestCombi = new int[,] { { 1, 5, 2, 5 }, { 1, 1, 1, 2 }, { 2, 1, 3, 8 } };
+
+        
 
         arr_testingCombi = new List<int>();
 
@@ -46,38 +55,74 @@ public class ChestCombiManager : MonoBehaviour
 
         if (arr_testingCombi.Count == 4)
         {
-            if (!GameManager.Instance.getBlitzMode()) //checking if full game
+            if(CompareVariables())
             {
-                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
-                {
-                    go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
+                go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
-                    PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
+                PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
+                SoundManager.instance.playAudio("PuzzleComplete");
+                Completed = true;
 
-                    Completed = true;
-
-                    arr_testingCombi.Clear();
-                }
-                else
-                {
-                    arr_testingCombi.Clear(); //if wrong, clear combination
-                }
+                arr_testingCombi.Clear();
             }
             else
             {
-                if (arr_testingCombi.ToArray().SequenceEqual(arr_chestBlitzCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
-                {
-                    go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
+                arr_testingCombi.Clear(); //if wrong, clear combination
+            }
+            //if (!GameManager.Instance.getBlitzMode()) //checking if full game
+            //{
+            //    if (arr_testingCombi.ToArray().SequenceEqual(arr_chestCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
+            //    { 
+            //        go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
-                    PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
-                }
-                else
+            //        PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
+
+            //        Completed = true;
+
+            //        arr_testingCombi.Clear();
+            //    }
+            //    else
+            //    {
+            //        arr_testingCombi.Clear(); //if wrong, clear combination
+            //    }
+            //}
+            //else
+            //{
+            //    if (arr_testingCombi.ToArray().SequenceEqual(arr_chestBlitzCombi.GetRow((int)go_clock.GetComponent<ClockRandomiser>().n_clockStates))) //check if arrays are equal
+            //    {
+            //        go_drawerObj.GetComponent<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
+
+            //        PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
+            //    }
+            //    else
+            //    {
+            //        arr_testingCombi.Clear(); //if wrong, clear combination
+            //    }
+            //}
+        }
+    }
+
+    public bool CompareVariables()
+    {
+        for(int x = 0; x < chestAnswerList.Count; x++)
+        {
+            bool correctAnswer = true;
+
+            for (int i = 0; i < arr_testingCombi.Count; i++)
+            {
+                if (arr_testingCombi[i] != chestAnswerList[x].AnswerArrays[i])
                 {
-                    arr_testingCombi.Clear(); //if wrong, clear combination
+                    correctAnswer = false;
+                    break;
                 }
             }
 
+            if (correctAnswer == true)
+            {
+                return true;
+            }
         }
+        return false;
     }
 
     public void UpdateScreen()

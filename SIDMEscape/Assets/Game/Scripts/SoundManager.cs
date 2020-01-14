@@ -57,6 +57,23 @@ public class SoundManager : MonoBehaviour
         return false;
     }
 
+    //public bool playAudioOnce(string audioName)
+    //{
+    //    foreach (AudioObject audio in ListOfAudioObjects)
+    //    {
+    //        if (audio.name == audioName)
+    //        {
+    //            audioSource.clip = audio.audioFile;
+    //           // audioSource.loop = audio.isLooping;
+    //            audioSource.Playonce
+    //            return true;
+    //        }
+    //    }
+
+    //    return false;
+
+    //}
+
     /// <summary>
     /// ]Plays audio from a source outside of the game manager
     /// </summary>
@@ -103,7 +120,7 @@ public class SoundManager : MonoBehaviour
     {
         if (source.isPlaying)
         {
-            audioSource.Pause();
+            source.Pause();
             return true;
         }
 

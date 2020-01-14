@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
                 {
-                    if (go.layer >= 8 && go.layer <= 11) //add all layers
+                    if (go.layer >= 8 && go.layer <= 11 && go.layer != 9) //add all layers
                     {
                         go.SetActive(false);
                         goArr_puzzleManagers.Add(go);
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
                     do
                     {
                         hitlayer = rnd.Next(8, 12);
-                    } while (prevNum == hitlayer);
+                    } while (prevNum == hitlayer && hitlayer != 9);
 
                     foreach (GameObject temp in goArr_puzzleManagers)
                     {
@@ -109,28 +109,30 @@ public class GameManager : MonoBehaviour
                 GameObject[] gos = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[]; //will return an array of all GameObjects in the scene
                 foreach (GameObject go in gos)
                 {
-                    if (go.layer >= 8 && go.layer <= 11) //add all GO in layers 8-10
+                    if (go.layer >= 8 && go.layer <= 11 && go.layer != 9) //add all layers
                     {
-                        go.SetActive(false); //set them all false
+                        go.SetActive(false);
                         goArr_puzzleManagers.Add(go);
                     }
                 }
 
                 int prevNum = 0;
-                for (int i = 0; i < 2; ++i) // set 2 puzzles active
+                for (int i = 0; i < 2; ++i)
                 {
-                    int hitlayer; //current layer
+                    int hitlayer;
                     do
                     {
-                        hitlayer = rnd.Next(8, 11);
-                    } while (prevNum == hitlayer); //make sure current layer not same as previous layer
+                        hitlayer = rnd.Next(8, 12);
+                        if (hitlayer == 9)
+                            ++hitlayer;
+                    } while (prevNum == hitlayer);
 
-                    //set the GO of those in the layer, true
                     foreach (GameObject temp in goArr_puzzleManagers)
                     {
                         if (temp.layer == hitlayer)
                         {
                             temp.SetActive(true);
+                            //goArr_puzzleManagers.Remove(temp);
                         }
                     }
 

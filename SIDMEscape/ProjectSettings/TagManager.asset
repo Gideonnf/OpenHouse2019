@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - HousePuzzle
   - Finger
+  - SpritePuzzle
   layers:
   - Default
   - TransparentFX

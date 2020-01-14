@@ -19,7 +19,7 @@ public class SpritePuzzle : MonoBehaviour
 
     [Header("Puzzle settings")]
     [Tooltip("Store the 6 slots to put the sprite objects in")]
-    public Transform[] SpritePositions = new Transform[6];
+    public GameObject[] SpritePositions = new GameObject[6];
    // [Tooltip("Slot Rotation")]
     //public Quaternion SpriteRotation;
     [Tooltip("ID Array Order. Stores the correct order of sprite IDs")]
@@ -27,7 +27,8 @@ public class SpritePuzzle : MonoBehaviour
     [Tooltip("Reference to the sprite puzzle animator")]
     public Animator puzzleAnimController;
 
-    List<SpritePiece> spritePieceList = new List<SpritePiece>();
+    [System.NonSerialized]
+    public List<SpritePiece> spritePieceList = new List<SpritePiece>();
     List<AnimatorStateInfo> spriteAnimStateInfo = new List<AnimatorStateInfo>();
     bool Completed = false;
 
@@ -246,21 +247,28 @@ public class SpritePuzzle : MonoBehaviour
         spritePieceList[id - 1].ResumeAnimation();
     }
     
-    void CheckPuzzlePiece()
+    public void CheckPuzzlePiece()
     {
         for (int i = 0; i < spritePieceList.Count; ++i)
         {
+            for(int x = 0; x < FinalArrangement.Length; x++)
+            {
+                if (spritePieceList[i].SpriteID == FinalArrangement[x])
+                {
+                    // Pass in final arrangement value cause it the animation id is the same as the final arrangement ids
+                    spritePieceList[i].SetFrameState(FinalArrangement[x]);
+                    break;
+                }
+                else
+                {
+                    // Else set it to 0 because thats none
+                    spritePieceList[i].SetFrameState(0);
+                }
+            }
+            if (i > FinalArrangement.Length)
+                continue;
             // If the ID's match the correct final arrangement
-            if (spritePieceList[i].SpriteID == FinalArrangement[i])
-            {
-                // Pass in final arrangement value cause it the animation id is the same as the final arrangement ids
-                spritePieceList[i].SetFrameState(FinalArrangement[i]);
-            }
-            else
-            {
-                // Else set it to 0 because thats none
-                spritePieceList[i].SetFrameState(0);
-            }
+           
         }
     }
 
@@ -277,9 +285,9 @@ public class SpritePuzzle : MonoBehaviour
     /// If it isn't, it'll only play the correct animations
     /// </summary>
     /// <returns></returns>
-    bool CheckPuzzleStatus()
+    public bool CheckPuzzleStatus()
     {
-        if (CheckIfFull() == false)
+        if (spritePieceList.Count < 6)
         {
             Completed = false;
             return false;
@@ -319,7 +327,7 @@ public class SpritePuzzle : MonoBehaviour
         return true;
     }
 
-    void CompletedPuzzle()
+    public void CompletedPuzzle()
     {
         // Disable the movable script because it cant be grabbed anymore after completion
         for(int i = 0; i < spritePieceList.Count; ++i)
@@ -350,9 +358,12 @@ public class SpritePuzzle : MonoBehaviour
               spriteControl.grabbedBy.GrabEnd();
 
             //Set the new position and rotation
-            other.gameObject.transform.position = SpritePositions[i].position;
+            other.gameObject.transform.position = SpritePositions[i].transform.position;
            // other.transform.parent = this.gameObject.transform;
-            other.gameObject.transform.rotation = SpritePositions[i].rotation;
+            other.gameObject.transform.rotation = SpritePositions[i].transform.rotation;
+
+            // Turn the object off
+            SpritePositions[i].SetActive(false);
 
             spritePieceList.Add(spritePiece);
 
@@ -383,6 +394,9 @@ public class SpritePuzzle : MonoBehaviour
         SpritePiece spritePiece = other.GetComponent<SpritePiece>();
         if (spritePiece == null)
             return;
+
+        // Turn the object off
+        SpritePositions[spritePiece.GetSlodID()].SetActive(true);
 
         // Set the slot to empty
         slotArray[spritePiece.GetSlodID()] = false;

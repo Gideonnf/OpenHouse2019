@@ -49,8 +49,8 @@ public class HousePiece : MonoBehaviour
             GameObject refObject = other.transform.parent.gameObject;
 
             // If the light isnt active, means the puzzle isnt working yet
-            if (refObject.GetComponent<HousePuzzle>().puzzleLight.activeInHierarchy == false)
-                return;
+            //if (refObject.GetComponent<HousePuzzle>().puzzleLight.activeInHierarchy == false)
+            //    return;
 
             // Change the material
             this.gameObject.GetComponentInChildren<MeshRenderer>().material = changeableMaterial;
