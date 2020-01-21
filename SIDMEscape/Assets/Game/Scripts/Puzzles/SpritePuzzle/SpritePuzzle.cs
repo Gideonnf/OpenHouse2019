@@ -20,6 +20,8 @@ public class SpritePuzzle : MonoBehaviour
     [Header("Puzzle settings")]
     [Tooltip("ID Array Order. Stores the correct order of sprite IDs")]
     public int[] FinalArrangement = new int[6];
+    [Tooltip("Store a reference to the sprite table pieces")]
+    public GameObject[] SpriteTablePieces = new GameObject[6];
 
     [System.NonSerialized]
     public List<SpritePiece> spritePieceList = new List<SpritePiece>();
@@ -287,19 +289,47 @@ public class SpritePuzzle : MonoBehaviour
             return false;
         }
 
-        for (int i = 0; i < spritePieceList.Count; ++i)
+        for(int i = 0; i < SpriteTablePieces.Length; ++i)
         {
-            // If the ID's match the correct final arrangement
-            if (spritePieceList[i].SpriteID != FinalArrangement[i])
+            SpriteTablePiece spriteTableRef = SpriteTablePieces[i].GetComponent<SpriteTablePiece>();
+            if (spriteTableRef != null)
             {
-                // Pass in final arrangement value cause it the animation id is the same as the final arrangement ids
-                Completed = false;
-                return false;
+                if (spriteTableRef.correctPos != true)
+                {
+                    Completed = false;
+                    return false;
+                }
             }
         }
 
+        //for (int i = 0; i < spritePieceList.Count; ++i)
+        //{
+        //    // If the ID's match the correct final arrangement
+        //    if (spritePieceList[i].SpriteID != FinalArrangement[i])
+        //    {
+        //        // Pass in final arrangement value cause it the animation id is the same as the final arrangement ids
+        //        Completed = false;
+        //        return false;
+        //    }
+        //}
+
+        SwapList();
         Completed = true;
         return true;
+    }
+
+    /// <summary>
+    /// its just cause the old list is broken
+    /// i relaly dont want to redo
+    /// so im using this function to fix it 
+    /// </summary>
+    void SwapList()
+    {
+        spritePieceList.Clear();
+        for(int i = 0; i < SpriteTablePieces.Length; ++i)
+        {
+            spritePieceList.Add(SpriteTablePieces[i].GetComponent<SpritePiece>());
+        }
     }
 
     /// <summary>
@@ -329,6 +359,8 @@ public class SpritePuzzle : MonoBehaviour
             // Set all the states back to idle
             spritePieceList[i].SetFrameState(0);
             spritePieceList[i].spriteAnim.Play("InitState", 0, 0);
+            // Disable the component so it cant be grabbed
+            //spritePieceList[i].gameObject.GetComponent<Controllable_Movables>().enabled = false;
         }
     }
 
