@@ -215,12 +215,12 @@ public class OVRGrabber : MonoBehaviour
                 continue;
             }
 
-            BaseControllable grabbaleControllable = grabbable.gameObject.GetComponent<BaseControllable>() ?? null;
-            if (grabbaleControllable != null)
-            {
-                if (grabbaleControllable.isLocked == true)
-                    continue;
-            }
+            //BaseControllable grabbaleControllable = grabbable.gameObject.GetComponent<BaseControllable>() ?? null;
+            //if (grabbaleControllable != null)
+            //{
+            //    if (grabbaleControllable.isLocked == true)
+            //        continue;
+            //}
 
             for (int j = 0; j < grabbable.grabPoints.Length; ++j)
             {
