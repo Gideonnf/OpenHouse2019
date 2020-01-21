@@ -18,14 +18,8 @@ public class SpritePuzzle : MonoBehaviour
     //}
 
     [Header("Puzzle settings")]
-    [Tooltip("Store the 6 slots to put the sprite objects in")]
-    public GameObject[] SpritePositions = new GameObject[6];
-   // [Tooltip("Slot Rotation")]
-    //public Quaternion SpriteRotation;
     [Tooltip("ID Array Order. Stores the correct order of sprite IDs")]
     public int[] FinalArrangement = new int[6];
-    [Tooltip("Reference to the sprite puzzle animator")]
-    public Animator puzzleAnimController;
 
     [System.NonSerialized]
     public List<SpritePiece> spritePieceList = new List<SpritePiece>();
@@ -335,71 +329,69 @@ public class SpritePuzzle : MonoBehaviour
             // Set all the states back to idle
             spritePieceList[i].SetFrameState(0);
             spritePieceList[i].spriteAnim.Play("InitState", 0, 0);
-            // Disable the component so it cant be grabbed
-            spritePieceList[i].gameObject.GetComponent<Controllable_Movables>().enabled = false;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<SpritePiece>() == null)
-            return;
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if (other.gameObject.GetComponent<SpritePiece>() == null)
+//            return;
 
-        Controllable_Movables spriteControl = other.gameObject.GetComponent<Controllable_Movables>();
-        SpritePiece spritePiece = other.gameObject.GetComponent<SpritePiece>();
-        // Loop through the bool array
-        // Check for empty slots
-        for(int i = 0; i < slotArray.Length; ++i)
-        {
-            if (slotArray[i] == true)
-                continue;
-            //End the grab forcefully
-            if(spriteControl.grabbedBy)
-              spriteControl.grabbedBy.GrabEnd();
+//        Controllable_Movables spriteControl = other.gameObject.GetComponent<Controllable_Movables>();
+//        SpritePiece spritePiece = other.gameObject.GetComponent<SpritePiece>();
+//        // Loop through the bool array
+//        // Check for empty slots
+//        for(int i = 0; i < slotArray.Length; ++i)
+//        {
+//            if (slotArray[i] == true)
+//                continue;
+//            //End the grab forcefully
+//            if(spriteControl.grabbedBy)
+//              spriteControl.grabbedBy.GrabEnd();
 
-            //Set the new position and rotation
-            other.gameObject.transform.position = SpritePositions[i].transform.position;
-           // other.transform.parent = this.gameObject.transform;
-            other.gameObject.transform.rotation = SpritePositions[i].transform.rotation;
+//            //Set the new position and rotation
+//            other.gameObject.transform.position = SpritePositions[i].transform.position;
+//           // other.transform.parent = this.gameObject.transform;
+//            other.gameObject.transform.rotation = SpritePositions[i].transform.rotation;
 
-            // Turn the object off
-            SpritePositions[i].SetActive(false);
+//            // Turn the object off
+//            SpritePositions[i].SetActive(false);
 
-            spritePieceList.Add(spritePiece);
+//            spritePieceList.Add(spritePiece);
 
-            //Set up the sprite
-            spritePiece.PlacedInSlot(i);
+//            //Set up the sprite
+//            spritePiece.PlacedInSlot(i);
 
-            slotArray[i] = true;
+//            slotArray[i] = true;
 
-            // If the piece is correct on placement
-            if (CheckNewPiece(i))
-            {
-                SoundManager.instance.playAudio("Correct");
-            }
+//            // If the piece is correct on placement
+//            if (CheckNewPiece(i))
+//            {
+//                SoundManager.instance.playAudio("Correct");
+//            }
 
-            // If the puzzle isn't completed yet
-            // Check each piece
-            if (CheckPuzzleStatus() == false)
-                CheckPuzzlePiece();
-            else
-                CompletedPuzzle();
+//            // If the puzzle isn't completed yet
+//            // Check each piece
+//            if (CheckPuzzleStatus() == false)
+//                CheckPuzzlePiece();
+//            else
+//                CompletedPuzzle();
 
-            break;
-        }
-    }
+//            break;
+//        }
+//    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        SpritePiece spritePiece = other.GetComponent<SpritePiece>();
-        if (spritePiece == null)
-            return;
+//    private void OnTriggerExit(Collider other)
+//    {
+//        SpritePiece spritePiece = other.GetComponent<SpritePiece>();
+//        if (spritePiece == null)
+//            return;
 
-        // Turn the object off
-        SpritePositions[spritePiece.GetSlodID()].SetActive(true);
+//        // Turn the object off
+//        SpritePositions[spritePiece.GetSlodID()].SetActive(true);
 
-        // Set the slot to empty
-        slotArray[spritePiece.GetSlodID()] = false;
-        spritePieceList.Remove(spritePiece);
-    }
+//        // Set the slot to empty
+//        slotArray[spritePiece.GetSlodID()] = false;
+//        spritePieceList.Remove(spritePiece);
+//    }
 }

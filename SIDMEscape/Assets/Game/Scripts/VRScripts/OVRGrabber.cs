@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRControllables.Base;
 
 /// <summary>
 /// Allows grabbing and throwing of objects with the OVRGrabbable component on them.
@@ -214,11 +215,11 @@ public class OVRGrabber : MonoBehaviour
                 continue;
             }
 
-            VRControllables.Base.BaseControllable grabbaleControllable = grabbable.gameObject.GetComponent<VRControllables.Base.BaseControllable>();
-           if (grabbaleControllable != null)
+            BaseControllable grabbaleControllable = grabbable.gameObject.GetComponent<BaseControllable>() ?? null;
+            if (grabbaleControllable != null)
             {
                 if (grabbaleControllable.isLocked == true)
-                     continue;
+                    continue;
             }
 
             for (int j = 0; j < grabbable.grabPoints.Length; ++j)
