@@ -91,7 +91,7 @@ public class SpriteTablePiece : MonoBehaviour
 
             //puzzleManager.spritePieceList.Add(spritePiece);
             //Destroy(other.gameObject.GetComponent<Controllable_Movables>());
-            //this.transform.GetChild(0).gameObject.SetActive(false);
+            //this.transform.GetChild(0).gazmeObject.SetActive(false);
             //other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             //other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             //other.gameObject.layer = 12;
