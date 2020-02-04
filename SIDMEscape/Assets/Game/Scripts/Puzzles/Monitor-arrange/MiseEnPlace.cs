@@ -71,8 +71,8 @@ public class MiseEnPlace : MonoBehaviour
         }
 
         // End the grabbing forcefully
-        if (monitorMovableScript.grabbedBy)
-            monitorMovableScript.grabbedBy.GrabEnd();
+        //if (monitorMovableScript.grabbedBy)
+        //    monitorMovableScript.grabbedBy.GrabEnd();
 
         float yOffset = GrabbableObject.transform.position.y - CoasterObject.transform.position.y;
 

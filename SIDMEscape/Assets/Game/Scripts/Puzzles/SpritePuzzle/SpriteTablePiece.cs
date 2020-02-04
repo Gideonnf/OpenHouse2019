@@ -76,8 +76,8 @@ public class SpriteTablePiece : MonoBehaviour
 
         if (other.gameObject == correctObject)
         {
-            if (spriteControl.grabbedBy)
-                spriteControl.grabbedBy.GrabEnd();
+            //if (spriteControl.grabbedBy)
+            //    spriteControl.grabbedBy.GrabEnd();
 
             correctPos = true;
             // Disable the translucent version

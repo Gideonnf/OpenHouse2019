@@ -209,6 +209,9 @@ public class OVRGrabber : MonoBehaviour
         // Iterate grab candidates and find the closest grabbable candidate
 		foreach (OVRGrabbable grabbable in m_grabCandidates.Keys)
         {
+            if (grabbable == null)
+                continue;
+
             bool canGrab = !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
             if (!canGrab)
             {
