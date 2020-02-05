@@ -8,6 +8,7 @@ public class AudioObject
     public string name;
     public AudioClip audioFile;
     public bool isLooping = false;
+    public bool isRepeatable = false;
 }
 
 public class SoundManager : MonoBehaviour
@@ -47,6 +48,13 @@ public class SoundManager : MonoBehaviour
         {
             if(audio.name == audioName)
             {
+                // If it is already playing
+                //if (audioSource.clip == audio.audioFile)
+                //{
+                //    if (audio.isRepeatable == false)
+                //        return false;
+                //}
+
                 audioSource.clip = audio.audioFile;
                 audioSource.loop = audio.isLooping;
                 audioSource.Play();

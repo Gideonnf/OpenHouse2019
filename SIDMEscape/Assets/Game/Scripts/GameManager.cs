@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
             b_blitzMode = true;
             animator.SetTrigger("FadeOut");
 
-            nextScene = 2;
+            nextScene = 1;
         }
         else if (go_full.GetComponent<VRControllables.Base.Controllable_Movables>().isGrabbed)
         {

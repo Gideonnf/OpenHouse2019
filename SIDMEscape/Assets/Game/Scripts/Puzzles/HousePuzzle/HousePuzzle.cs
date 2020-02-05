@@ -31,7 +31,7 @@ public class HousePuzzle : MonoBehaviour
         {
             if (Completed == false)
             {
-                // PuzzleLightManager.Instance.nextLight();
+                PuzzleLightManager.Instance.nextLight();
                 Debug.Log("Puzzle completed");
                 Completed = true;
             }

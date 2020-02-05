@@ -60,7 +60,7 @@ public class ChestCombiManager : MonoBehaviour
                 go_drawerObj.GetComponentInChildren<VRControllables.Base.Slider.Controllable_Slider>().isLocked = false; //unlock drawer
 
                 PuzzleLightManager.Instance.nextLight(); //puzzle complete, set next light
-                SoundManager.instance.playAudio("PuzzleComplete");
+               // SoundManager.instance.playAudio("PuzzleComplete");
                 Completed = true;
 
                 arr_testingCombi.Clear();
