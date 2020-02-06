@@ -31,6 +31,13 @@ public class PuzzleLightManager : MonoBehaviour
 
     public bool EndScene = false;
 
+    public Animator transitionAnim;
+
+    bool endPuzzle = false;
+    float endTimer = 0.0f;
+
+   // public int nextScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +98,9 @@ public class PuzzleLightManager : MonoBehaviour
         if (curLight + 1 >= this.transform.childCount)
         {
             //can end the game here
+            endPuzzle = true;
+            endTimer = 10.0f;
+            //nextScene = 2;
             return;
         }
         else
@@ -104,6 +114,19 @@ public class PuzzleLightManager : MonoBehaviour
     {
         if (EndScene)
             return;
+
+        // If the puzzles finished
+        if (endPuzzle)
+        {
+            endTimer -= Time.deltaTime;
+            // When hte timer is done, start the transition
+            // so that the player doesnt transition right after the end of the puzzle
+            if (endTimer <= 0.0f)
+            {
+                transitionAnim.SetTrigger("FadeOut");
+                GameManager.Instance.nextScene = 2;
+            }
+        }
 
         //run once
         if (!blocker && GameManager.Instance.getPuzzleSetStatus())
