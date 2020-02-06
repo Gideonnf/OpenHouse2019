@@ -29,6 +29,8 @@ public class PuzzleLightManager : MonoBehaviour
 
     bool blocker = false;
 
+    public bool EndScene = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,10 @@ public class PuzzleLightManager : MonoBehaviour
     public void init()
     {
         //find the light whose puzzle is inactive
+
+        if (EndScene)
+            return;
+
         int skipObj = 0;
         for (int i = 0; i < this.transform.childCount; ++i)
         {
@@ -77,6 +83,9 @@ public class PuzzleLightManager : MonoBehaviour
     /// </summary>
     public void nextLight()
     {
+        if (EndScene)
+            return;
+
         arr_Lights[curLight].SetActive(false);
         SoundManager.instance.playAudio("PuzzleComplete");
         if (curLight + 1 >= this.transform.childCount)
@@ -93,6 +102,9 @@ public class PuzzleLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EndScene)
+            return;
+
         //run once
         if (!blocker && GameManager.Instance.getPuzzleSetStatus())
         {

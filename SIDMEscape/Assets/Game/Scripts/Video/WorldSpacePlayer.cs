@@ -28,8 +28,9 @@ public class WorldSpacePlayer : MonoBehaviour
     {
         videoClipIndex = (int)MonitorRandomiser.Instance.n_monitorStates;
 
-        if (GameManager.Instance.getBlitzMode())
-            videoClipIndex = 3;
+        if (GameManager.Instance)
+            if (GameManager.Instance.getBlitzMode())
+                videoClipIndex = 3;
 
         videoPlayer.targetTexture.Release();
         videoPlayer.clip = videoClips[videoClipIndex];
