@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleLightManager : MonoBehaviour
 {
@@ -124,7 +125,8 @@ public class PuzzleLightManager : MonoBehaviour
             if (endTimer <= 0.0f)
             {
                 transitionAnim.SetTrigger("FadeOut");
-                GameManager.Instance.nextScene = 2;
+
+                SceneManager.LoadScene(2);
             }
         }
 

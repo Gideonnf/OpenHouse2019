@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Game/Scenes/MainMenu.unity
-    guid: 8da19383beac42e4297adb907496d4d1
   - enabled: 1
     path: Assets/Game/Scenes/Menu.unity
     guid: f08ecf4497c48934ca1da50d3bb99519
@@ -17,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Blitz.unity
     guid: 99b664f9ff3f62b49b1b4ed95d234ca3
+  - enabled: 1
+    path: Assets/Game/Scenes/End.unity
+    guid: c6390df8d5101684bb539e2b44fad728
   m_configObjects: {}
